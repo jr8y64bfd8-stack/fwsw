@@ -1,0 +1,29 @@
+[
+  {
+    "file": "images/portfolio/fixtures/mig-weld-fixture-fillet-tape-measure.jpg",
+    "category": "Fixtures",
+    "process": "MIG",
+    "alt": "Long continuous MIG fillet weld joining heavy steel fixture plates, with a tape measure laid alongside for scale",
+    "caption": "Continuous MIG fillet on heavy fixture plate",
+    "width": 1500,
+    "height": 2000
+  },
+  {
+    "file": "images/portfolio/fixtures/mig-weld-slotted-fixture-plate.jpg",
+    "category": "Fixtures",
+    "process": "MIG",
+    "alt": "Heavy slotted steel fixture plate with MIG fillet welds joining it to an upright back plate",
+    "caption": "Slotted fixture plate, MIG welded",
+    "width": 2000,
+    "height": 1500
+  },
+  {
+    "file": "images/portfolio/fixtures/mig-weld-fixture-fillet-closeup.jpg",
+    "category": "Fixtures",
+    "process": "MIG",
+    "alt": "Close-up of a MIG fillet weld at the inside corner of two thick steel fixture plates",
+    "caption": "MIG fillet weld close-up",
+    "width": 1500,
+    "height": 2000
+  }
+]

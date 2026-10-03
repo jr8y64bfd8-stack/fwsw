@@ -1,0 +1,20 @@
+[
+  {
+    "file": "images/portfolio/repair-buildup/mig-weld-roller-bearing-journal-shaft.jpg",
+    "category": "Repair & Build-Up",
+    "process": "MIG",
+    "alt": "Machined steel shaft MIG welded onto the end of a large grooved roller, forming the journal where the bearing rides",
+    "caption": "Bearing journal shaft welded onto a roller",
+    "width": 1500,
+    "height": 2000
+  },
+  {
+    "file": "images/portfolio/repair-buildup/tig-weld-gear-to-shaft.jpg",
+    "category": "Repair & Build-Up",
+    "process": "TIG",
+    "alt": "Shaft TIG welded into the hub of a gear",
+    "caption": "Gear welded to shaft",
+    "width": 1500,
+    "height": 2000
+  }
+]
