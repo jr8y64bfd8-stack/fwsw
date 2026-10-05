@@ -1,4 +1,7 @@
 /* Two-sided 3D logo medallion that turns behind the page as it scrolls.
+   Modeled as a machined challenge coin: brushed-steel face, raised rim,
+   knurled edge, and the logo raised in polished metal with glossy enamel
+   tops, lit by a studio environment so it catches reflections as it turns.
    Built from images/brand/logo.svg (a vector trace of the logo), so it is
    drawn fresh at screen resolution and never pixelates. Renders only while
    it is moving, to save battery. */
@@ -12,27 +15,74 @@
   } catch (e) { return; }
   renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 2));
   renderer.outputEncoding = THREE.sRGBEncoding;
+  renderer.toneMapping = THREE.ACESFilmicToneMapping;
+  renderer.toneMappingExposure = 1.05;
   host.appendChild(renderer.domElement);
 
   var scene = new THREE.Scene();
-  var camera = new THREE.PerspectiveCamera(30, 1, 1, 6000);
-  scene.add(new THREE.HemisphereLight(0xffffff, 0x8a7a5a, 0.85));
-  var key = new THREE.DirectionalLight(0xffffff, 0.9); key.position.set(-400, 500, 900); scene.add(key);
-  var rim = new THREE.DirectionalLight(0xffe7b0, 0.35); rim.position.set(600, -200, -400); scene.add(rim);
+  var camera = new THREE.PerspectiveCamera(30, 1, 1, 8000);
+
+  // studio reflections
+  if (THREE.RoomEnvironment) {
+    var pmrem = new THREE.PMREMGenerator(renderer);
+    scene.environment = pmrem.fromScene(new THREE.RoomEnvironment(), 0.04).texture;
+  }
+  scene.add(new THREE.HemisphereLight(0xffffff, 0x2a3550, 0.35));
+  var key = new THREE.DirectionalLight(0xffffff, 1.1); key.position.set(-500, 650, 900); scene.add(key);
+  var rim = new THREE.DirectionalLight(0xffe2a8, 0.6); rim.position.set(700, -250, -300); scene.add(rim);
 
   var badge = new THREE.Group();
-  var front, back, discR = 300;
+  var front, back, shadow, discR = 300;
   var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   var target = 0, current = 0, running = false;
 
   fetch('images/brand/logo.svg').then(function (r) { return r.text(); }).then(build).catch(function () {});
 
+  // one canvas drives both the brushing on the faces and the knurl on the edge
+  function coinSurface(bandStart, bandEnd) {
+    var w = 2048, h = 1024, c = document.createElement('canvas');
+    c.width = w; c.height = h;
+    var g = c.getContext('2d');
+    g.fillStyle = '#808080'; g.fillRect(0, 0, w, h);
+    // concentric machining marks: thin horizontal lines vary along the radius
+    for (var y = 0; y < h; y++) {
+      var v = 1 - y / h;
+      if (v > bandStart && v < bandEnd) continue;
+      var shade = 124 + Math.round((Math.random() - 0.5) * 12);
+      g.fillStyle = 'rgb(' + shade + ',' + shade + ',' + shade + ')';
+      g.fillRect(0, y, w, 1);
+    }
+    // diamond knurl on the edge band
+    var y0 = Math.floor((1 - bandEnd) * h), y1 = Math.ceil((1 - bandStart) * h);
+    g.save(); g.beginPath(); g.rect(0, y0, w, y1 - y0); g.clip();
+    g.fillStyle = '#6a6a6a'; g.fillRect(0, y0, w, y1 - y0);
+    g.strokeStyle = '#d8d8d8'; g.lineWidth = 3;
+    var step = 9;
+    for (var x = -h; x < w + h; x += step) {
+      g.beginPath(); g.moveTo(x, y0); g.lineTo(x + (y1 - y0), y1); g.stroke();
+      g.beginPath(); g.moveTo(x, y1); g.lineTo(x + (y1 - y0), y0); g.stroke();
+    }
+    g.restore();
+    var t = new THREE.CanvasTexture(c);
+    t.wrapS = THREE.RepeatWrapping; t.anisotropy = 4;
+    return t;
+  }
+
+  function shadowTexture() {
+    var c = document.createElement('canvas'); c.width = c.height = 256;
+    var g = c.getContext('2d');
+    var grd = g.createRadialGradient(128, 128, 10, 128, 128, 128);
+    grd.addColorStop(0, 'rgba(0,8,24,0.65)'); grd.addColorStop(0.55, 'rgba(0,8,24,0.28)'); grd.addColorStop(1, 'rgba(0,8,24,0)');
+    g.fillStyle = grd; g.fillRect(0, 0, 256, 256);
+    return new THREE.CanvasTexture(c);
+  }
+
   function build(svgText) {
     var data = new THREE.SVGLoader().parse(svgText);
-    var colors = [0x0B2D63, 0x3A5E3A];
+    var enamel = [0x061A3D, 0x1F4626];
     var geos = data.paths.map(function (path) {
       return new THREE.ExtrudeGeometry(THREE.SVGLoader.createShapes(path),
-        { depth: 14, bevelEnabled: true, bevelThickness: 2, bevelSize: 0.8, bevelSegments: 2, curveSegments: 10 });
+        { depth: 7, bevelEnabled: true, bevelThickness: 2.2, bevelSize: 1.1, bevelSegments: 3, curveSegments: 12 });
     });
     geos[1].computeBoundingBox();
     var box = geos[1].boundingBox;
@@ -40,13 +90,31 @@
     var ringR = (box.max.x - box.min.x) / 2;
     discR = ringR * 1.115;
 
+    // coin body: lathe profile with a raised rim and a straight knurled edge
+    var R = discR, H = 9, lip = 3.5;
+    var pts = [
+      [0.001, -H], [R * 0.935, -H], [R * 0.95, -H - lip], [R * 0.985, -H - lip], [R, -H + 1],
+      [R, H - 1], [R * 0.985, H + lip], [R * 0.95, H + lip], [R * 0.935, H], [0.001, H]
+    ].map(function (p) { return new THREE.Vector2(p[0], p[1]); });
+    var n = pts.length - 1;
+    var surf = coinSurface(4 / n, 5 / n);
+    var coinMat = new THREE.MeshStandardMaterial({
+      color: 0xcfc8b8, metalness: 1, roughness: 0.42,
+      roughnessMap: surf, bumpMap: surf, bumpScale: 0.45
+    });
+    coinMat.color.convertSRGBToLinear();
+    var coin = new THREE.Mesh(new THREE.LatheGeometry(pts, 220), coinMat);
+    coin.rotation.x = Math.PI / 2;   // lathe axis Y -> face the camera along Z
+    badge.add(coin);
+
     function buildFace() {
-      var face = new THREE.Group(), inner = new THREE.Group();
-      var mats = geos.map(function (geo, i) {
-        var mat = new THREE.MeshStandardMaterial({ color: colors[i] || 0x0B2D63, metalness: 0.45, roughness: 0.38, transparent: true });
-        mat.color.convertSRGBToLinear();
-        inner.add(new THREE.Mesh(geo, mat));
-        return mat;
+      var face = new THREE.Group(), inner = new THREE.Group(), mats = [];
+      geos.forEach(function (geo, i) {
+        var top = new THREE.MeshPhysicalMaterial({ color: enamel[i] || enamel[0], metalness: 0, roughness: 0.45, clearcoat: 0.6, clearcoatRoughness: 0.12, envMapIntensity: 0.25, transparent: true });
+        var side = new THREE.MeshStandardMaterial({ color: 0xe2dccf, metalness: 1, roughness: 0.2, transparent: true });
+        top.color.convertSRGBToLinear(); side.color.convertSRGBToLinear();
+        inner.add(new THREE.Mesh(geo, [top, side]));
+        mats.push(top, side);
       });
       inner.scale.set(1, -1, 1);
       inner.position.set(-cx, cy, 0);
@@ -54,21 +122,16 @@
       face.userData.mats = mats;
       return face;
     }
-    front = buildFace(); front.position.z = 6;
-    back = buildFace(); back.rotation.y = Math.PI; back.position.z = -12;
+    front = buildFace(); front.position.z = H - 1;
+    back = buildFace(); back.rotation.y = Math.PI; back.position.z = -(H - 1);
     badge.add(front, back);
-
-    var disc = new THREE.Mesh(
-      new THREE.CylinderGeometry(discR, discR, 18, 128),
-      [new THREE.MeshStandardMaterial({ color: 0xbdb3a0, metalness: 0.7, roughness: 0.42 }),
-       new THREE.MeshStandardMaterial({ color: 0xe9e4d8, metalness: 0.35, roughness: 0.5 }),
-       new THREE.MeshStandardMaterial({ color: 0xc9b48a, metalness: 0.6, roughness: 0.45 })]
-    );
-    disc.material.forEach(function (m) { m.color.convertSRGBToLinear(); });
-    disc.rotation.x = Math.PI / 2;
-    disc.position.z = -3;
-    badge.add(disc);
     scene.add(badge);
+
+    shadow = new THREE.Mesh(new THREE.PlaneGeometry(1, 1),
+      new THREE.MeshBasicMaterial({ map: shadowTexture(), transparent: true, depthWrite: false, toneMapped: false }));
+    shadow.position.set(0, -R * 0.06, -R * 0.55);
+    shadow.renderOrder = -1;
+    scene.add(shadow);
 
     resize(); onScroll(); current = target; draw();
     host.classList.add('is-ready');
@@ -105,6 +168,8 @@
     var facing = Math.cos(current);
     setFace(front, facing);
     setFace(back, -facing);
+    var spread = 0.18 + 0.82 * Math.abs(facing);
+    shadow.scale.set(discR * 2.5 * spread, discR * 2.3, 1);
     renderer.render(scene, camera);
   }
 

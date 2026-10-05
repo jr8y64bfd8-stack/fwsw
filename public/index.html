@@ -808,9 +808,15 @@
   (function () {
     var conn = navigator.connection;
     if (conn && conn.saveData) return;
+    function chain(list) {
+      if (!list.length) return;
+      var el = document.createElement('script'); el.src = list[0];
+      el.onload = function () { chain(list.slice(1)); };
+      document.body.appendChild(el);
+    }
     function load() {
       var s = document.createElement('script'); s.src = 'js/three.r128.min.js';
-      s.onload = function () { var l = document.createElement('script'); l.src = 'js/SVGLoader.r128.js'; l.onload = function () { var m = document.createElement('script'); m.src = 'js/medallion.js'; document.body.appendChild(m); }; document.body.appendChild(l); };
+      s.onload = function () { chain(['js/SVGLoader.r128.js', 'js/RoomEnvironment.r128.js', 'js/medallion.js']); };
       document.body.appendChild(s);
     }
     var go = function () { ('requestIdleCallback' in window) ? requestIdleCallback(load, { timeout: 2500 }) : setTimeout(load, 1200); };

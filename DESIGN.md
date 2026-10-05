@@ -34,4 +34,4 @@ Light sections stay transparent so the 3D medallion shows behind them; navy sect
 Custom ease-out `cubic-bezier(0.23, 1, 0.32, 1)`. Sections below the fold rise 18px into place once; hover zoom on gallery tiles gated to fine pointers; all movement off under reduced motion.
 
 ## 3D medallion
-`js/medallion.js` (three.js r128, self-hosted) builds the logo from `images/brand/logo.svg`, extrudes both faces onto a steel disc, turns one full rotation over the page scroll, fades whichever face turns away, renders only while moving, loads after the page is idle, and is skipped on Save-Data.
+`js/medallion.js` (three.js r128 with RoomEnvironment reflections, self-hosted) builds a machined challenge coin: brushed-steel face, raised rim, knurled edge, polished raised logo with navy and green enamel tops, soft shadow. It builds the logo from `images/brand/logo.svg`, extrudes both faces onto a steel disc, turns one full rotation over the page scroll, fades whichever face turns away, renders only while moving, loads after the page is idle, and is skipped on Save-Data.
