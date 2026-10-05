@@ -2,43 +2,743 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Fort Wayne Specialty Welding | Precision TIG &amp; MIG Welding</title>
-  <meta name="description" content="Precision TIG and MIG welding in Fort Wayne, Indiana. Stainless, tool steels, aluminum and exotic alloys. AWS D17.1 and D1.6 certified.">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Fort Wayne Specialty Welding | Precision TIG Repair for Molds, Dies &amp; Tool Steel</title>
+  <meta name="description" content="Precision TIG and micro-TIG welding in Fort Wayne, Indiana. Mold and die repair, tool steel build-up, stainless, aluminum and exotics. AWS D17.1 and D1.6 certified. Send drawings or photos for a quote.">
   <meta name="robots" content="noindex">
+  <meta name="theme-color" content="#0B2D63">
+  <meta property="og:title" content="Fort Wayne Specialty Welding">
+  <meta property="og:description" content="Precision TIG repair for molds, dies and tool steel. AWS D17.1 and D1.6 certified. Fort Wayne, Indiana.">
+  <meta property="og:image" content="images/hero-four-blocks-1600.jpg">
+  <link rel="icon" href="images/brand/favicon-32.png" sizes="32x32">
+  <link rel="icon" href="images/brand/logo.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="images/brand/apple-touch-icon.png">
+  <link rel="preload" href="fonts/archivo-var.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" as="image" imagesrcset="images/hero-four-blocks-900.jpg 900w, images/hero-four-blocks-1600.jpg 1600w" imagesizes="(max-width: 860px) 100vw, 55vw">
   <style>
-    :root { --navy: #1c2a44; --green: #2f5d45; --tan: #d9c4a0; --ink: #f4efe6; }
-    * { box-sizing: border-box; margin: 0; }
-    body {
-      min-height: 100vh; display: grid; place-items: center; padding: 24px 16px;
-      font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; color: var(--ink);
-      background: linear-gradient(rgba(20,30,50,.82), rgba(20,30,50,.92)),
-                  url("images/portfolio/tool-steels/tool-steel-tig-build-up-four-blocks.jpg") center / cover no-repeat fixed,
-                  var(--navy);
+    @font-face { font-family: "Archivo"; src: url("fonts/archivo-var.woff2") format("woff2-variations"); font-weight: 100 900; font-stretch: 62% 125%; font-display: swap; }
+    @font-face { font-family: "Source Sans 3"; src: url("fonts/source-sans-3-var.woff2") format("woff2-variations"); font-weight: 200 900; font-style: normal; font-display: swap; }
+    @font-face { font-family: "Source Sans 3"; src: url("fonts/source-sans-3-var-italic.woff2") format("woff2-variations"); font-weight: 200 900; font-style: italic; font-display: swap; }
+
+    :root {
+      --navy: #0B2D63;
+      --navy-deep: #081F45;
+      --ink: #14213A;
+      --ink-soft: #4A5568;
+      --green: #2F5D34;
+      --green-hover: #264D2B;
+      --tan: #C9B48A;
+      --tan-soft: #E7DCC4;
+      --ground: #F5F3EE;
+      --paper: #FFFFFF;
+      --rule: #DCD6C9;
+      --on-navy: #EEF1F6;
+      --on-navy-soft: #B7C3D8;
+
+      --display: "Archivo", "Arial Narrow", "Helvetica Neue", Arial, sans-serif;
+      --body: "Source Sans 3", "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+
+      --wrap: 1200px;
+      --gutter: clamp(20px, 4vw, 40px);
+      --radius: 4px;
+      --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
+      --section: clamp(72px, 10vw, 128px);
     }
-    main { max-width: 640px; text-align: center; }
-    .rule { width: 64px; height: 3px; background: var(--tan); margin: 20px auto; }
-    h1 { font-size: clamp(1.8rem, 5vw, 2.8rem); line-height: 1.15; letter-spacing: .01em; }
-    .sub { color: var(--tan); font-weight: 600; letter-spacing: .08em; text-transform: uppercase; font-size: .85rem; }
-    p { line-height: 1.6; margin-top: 12px; opacity: .92; }
-    a.btn {
-      display: inline-block; margin-top: 28px; padding: 14px 26px; border-radius: 4px;
-      background: var(--green); color: #fff; text-decoration: none; font-weight: 600;
-      border: 1px solid rgba(255,255,255,.18);
+
+    *, *::before, *::after { box-sizing: border-box; }
+    html { scroll-behavior: smooth; scroll-padding-top: 84px; -webkit-text-size-adjust: 100%; }
+    @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+    body { margin: 0; background: var(--ground); color: var(--ink); font-family: var(--body); font-size: 1.125rem; line-height: 1.6; -webkit-font-smoothing: antialiased; text-rendering: optimizeLegibility; }
+    img { max-width: 100%; display: block; }
+    a { color: inherit; text-underline-offset: 0.18em; text-decoration-thickness: 1px; }
+    ::selection { background: var(--tan); color: var(--navy-deep); }
+    :focus-visible { outline: 2px solid var(--tan); outline-offset: 3px; border-radius: 2px; }
+    html { scrollbar-color: #9AA3B2 var(--ground); }
+
+    h1, h2, h3 { font-family: var(--display); font-stretch: 88%; line-height: 1.04; letter-spacing: -0.015em; text-wrap: balance; margin: 0; color: var(--navy); }
+    h1 { font-size: clamp(2.6rem, 6vw, 4.6rem); font-weight: 800; }
+    h2 { font-size: clamp(2rem, 4vw, 3.1rem); font-weight: 780; }
+    h3 { font-size: 1.4rem; font-weight: 720; letter-spacing: -0.005em; }
+    p { margin: 0; text-wrap: pretty; }
+
+    .wrap { max-width: var(--wrap); margin: 0 auto; padding-inline: var(--gutter); }
+    .skip { position: absolute; left: -999px; top: 8px; background: var(--paper); color: var(--navy); padding: 8px 14px; z-index: 50; }
+    .skip:focus { left: 8px; }
+
+    /* ---------- buttons ---------- */
+    .btn { --bg: var(--green); display: inline-flex; align-items: center; gap: 10px; min-height: 52px; padding: 0 24px; border-radius: var(--radius); background: var(--bg); color: #fff; font-family: var(--display); font-stretch: 92%; font-weight: 680; font-size: 1.05rem; letter-spacing: 0.01em; text-decoration: none; border: 1px solid transparent; cursor: pointer; transition: background-color 160ms ease, transform 160ms var(--ease-out), border-color 160ms ease; }
+    .btn svg { width: 18px; height: 18px; flex: none; }
+    .btn:active { transform: scale(0.97); }
+    .btn-primary:hover { --bg: var(--green-hover); }
+    .btn-ghost { --bg: transparent; color: var(--on-navy); border-color: rgba(238,241,246,0.4); }
+    .btn-ghost:hover { border-color: var(--on-navy); background: rgba(255,255,255,0.06); }
+    .btn-line { --bg: transparent; color: var(--navy); border-color: var(--navy); }
+    .btn-line:hover { background: var(--navy); color: #fff; }
+
+    /* ---------- header ---------- */
+    .site-header { position: sticky; top: 0; z-index: 30; background: rgba(8,31,69,0.96); color: var(--on-navy); border-bottom: 1px solid rgba(255,255,255,0.08); padding-top: env(safe-area-inset-top, 0px); }
+    @supports (backdrop-filter: blur(8px)) { .site-header { background: rgba(8,31,69,0.88); backdrop-filter: blur(10px) saturate(1.2); } }
+    .header-row { display: flex; align-items: center; gap: 24px; min-height: 72px; }
+    .brand { display: flex; align-items: center; gap: 12px; text-decoration: none; margin-right: auto; }
+    .brand-mark { width: 52px; height: 52px; border-radius: 50%; background: #fff; padding: 3px; flex: none; }
+    .brand-mark img { width: 100%; height: 100%; object-fit: contain; }
+    .brand-name { font-family: var(--display); font-stretch: 85%; font-weight: 760; font-size: 1.08rem; line-height: 1.05; letter-spacing: 0.01em; }
+    .brand-name small { display: block; font-family: var(--body); font-weight: 500; font-size: 0.8rem; color: var(--on-navy-soft); letter-spacing: 0.02em; margin-top: 2px; font-stretch: normal; }
+    .nav { display: flex; gap: 26px; }
+    .nav a { text-decoration: none; font-weight: 600; font-size: 1rem; color: var(--on-navy-soft); transition: color 160ms ease; }
+    .nav a:hover { color: #fff; }
+    .header-phone { display: inline-flex; align-items: center; gap: 8px; font-family: var(--display); font-stretch: 92%; font-weight: 680; text-decoration: none; padding: 10px 16px; border: 1px solid rgba(201,180,138,0.55); border-radius: var(--radius); color: var(--tan-soft); font-variant-numeric: tabular-nums; transition: border-color 160ms ease, background-color 160ms ease; }
+    .header-phone:hover { border-color: var(--tan); background: rgba(201,180,138,0.1); }
+    .header-phone svg { width: 16px; height: 16px; }
+    @media (max-width: 900px) { .nav { display: none; } }
+    @media (max-width: 520px) { .brand-name small { display: none; } .brand-name { font-size: 0.98rem; } .header-phone span { display: none; } .header-phone { padding: 10px 12px; } .brand-mark { width: 44px; height: 44px; } }
+
+    /* ---------- hero ---------- */
+    .hero { position: relative; background: var(--navy-deep); color: var(--on-navy); overflow: hidden; isolation: isolate; }
+    .hero-grid { display: grid; grid-template-columns: minmax(0, 1.05fr) minmax(0, 1fr); min-height: min(720px, calc(100svh - 72px)); }
+    .hero-copy { padding: clamp(48px, 8vw, 104px) clamp(24px, 4vw, 56px) clamp(48px, 7vw, 88px) 0; display: flex; flex-direction: column; justify-content: center; gap: 28px; }
+    .hero h1 { color: #fff; }
+    .hero h1 em { font-style: normal; color: var(--tan); }
+    .hero-lede { font-size: clamp(1.15rem, 1.6vw, 1.3rem); color: var(--on-navy-soft); max-width: 34em; }
+    .hero-actions { display: flex; flex-wrap: wrap; gap: 12px; }
+    .hero-meta { list-style: none; margin: 0; padding-left: 0; display: flex; flex-wrap: wrap; gap: 8px 22px; padding-top: 24px; border-top: 1px solid rgba(255,255,255,0.12); font-size: 0.98rem; color: var(--on-navy-soft); }
+    .hero-meta li { display: flex; align-items: center; gap: 8px; }
+    .hero-meta svg { width: 16px; height: 16px; color: var(--tan); flex: none; }
+    .hero-photo { margin: 0; position: relative; margin-right: calc(-1 * max(var(--gutter), (100vw - var(--wrap)) / 2 + var(--gutter))); }
+    .hero-photo img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 50% 45%; }
+    .hero-photo::after { content: ""; position: absolute; inset: 0; background: linear-gradient(90deg, var(--navy-deep) 0%, rgba(8,31,69,0) 22%); pointer-events: none; }
+    .hero-photo figcaption { position: absolute; right: 16px; bottom: 14px; z-index: 1; font-size: 0.85rem; color: rgba(255,255,255,0.9); background: rgba(8,31,69,0.72); padding: 4px 10px; border-radius: 3px; }
+    @media (max-width: 860px) {
+      .hero-grid { grid-template-columns: 1fr; min-height: 0; }
+      .hero-copy { padding: 44px 0 40px; order: 2; }
+      .hero-photo { order: 1; margin: 0 calc(-1 * var(--gutter)); aspect-ratio: 4 / 3; }
+      .hero-photo::after { background: linear-gradient(0deg, var(--navy-deep) 0%, rgba(8,31,69,0) 30%); }
+      .hero-photo figcaption { bottom: auto; top: 12px; }
     }
-    a.btn:hover { background: #376b50; }
-    .certs { margin-top: 28px; font-size: .85rem; color: var(--tan); }
+
+    /* ---------- background medallion ---------- */
+    #medallion { position: fixed; inset: 0; z-index: 0; pointer-events: none; opacity: 0; transition: opacity 900ms ease; }
+    #medallion.is-ready { opacity: 0.28; }
+    #medallion canvas { width: 100% !important; height: 100% !important; display: block; }
+    main, .site-footer { position: relative; z-index: 1; }
+
+    /* ---------- facts band ---------- */
+    .facts { border-bottom: 1px solid var(--rule); background: rgba(255,255,255,0.72); }
+    .facts ul { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); }
+    .facts li { padding: 26px 24px 24px 0; display: grid; gap: 2px; }
+    .facts li + li { padding-left: 24px; border-left: 1px solid var(--rule); }
+    .facts strong { font-family: var(--display); font-stretch: 88%; font-weight: 760; font-size: 1.3rem; color: var(--navy); line-height: 1.15; }
+    .facts span { color: var(--ink-soft); font-size: 0.98rem; }
+    @media (max-width: 860px) { .facts ul { grid-template-columns: 1fr 1fr; } .facts li:nth-child(3) { border-left: 0; padding-left: 0; } .facts li:nth-child(n+3) { border-top: 1px solid var(--rule); } }
+    @media (max-width: 460px) { .facts ul { grid-template-columns: 1fr; } .facts li, .facts li + li { padding: 18px 0; border-left: 0; } .facts li + li { border-top: 1px solid var(--rule); } }
+
+    /* ---------- sections ---------- */
+    .section { padding-block: var(--section); }
+    .section-head { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 24px 64px; align-items: end; margin-bottom: clamp(36px, 5vw, 56px); }
+    .section-head p { color: var(--ink-soft); max-width: 36em; font-size: 1.15rem; }
+    @media (max-width: 860px) { .section-head { grid-template-columns: 1fr; } }
+
+    /* services: one feature plus a ruled list */
+    .feature { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr); background: var(--paper); border: 1px solid var(--rule); border-radius: var(--radius); overflow: hidden; box-shadow: 0 1px 2px rgba(20,33,58,0.05), 0 12px 32px -18px rgba(20,33,58,0.25); }
+    .feature-photo { position: relative; min-height: 380px; }
+    .feature-photo img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+    .feature-body { padding: clamp(28px, 4vw, 52px); display: flex; flex-direction: column; gap: 18px; justify-content: center; }
+    .feature-body p { color: var(--ink-soft); }
+    .feature-title { font-size: clamp(1.6rem, 2.6vw, 2.1rem); }
+    .alloys { display: flex; flex-wrap: wrap; gap: 8px; list-style: none; padding: 0; margin: 4px 0 0; }
+    .alloys li { font-size: 0.95rem; font-weight: 600; color: var(--navy); background: var(--tan-soft); padding: 4px 11px; border-radius: 3px; font-variant-numeric: tabular-nums; }
+    @media (max-width: 860px) { .feature { grid-template-columns: 1fr; } .feature-photo { min-height: 0; aspect-ratio: 4 / 3; } }
+
+    .service-list { list-style: none; margin: clamp(28px, 4vw, 44px) 0 0; padding: 0; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: 64px; }
+    .service-list li { display: grid; grid-template-columns: 88px minmax(0, 1fr); gap: 20px; align-items: start; padding: 26px 0; border-top: 1px solid var(--rule); }
+    .service-list img { width: 88px; height: 88px; object-fit: cover; border-radius: 3px; }
+    .service-list h3 { margin-bottom: 6px; }
+    .service-list p { color: var(--ink-soft); font-size: 1.05rem; }
+    @media (max-width: 860px) { .service-list { grid-template-columns: 1fr; } }
+    @media (max-width: 420px) { .service-list li { grid-template-columns: 64px minmax(0, 1fr); gap: 16px; } .service-list img { width: 64px; height: 64px; } }
+
+    /* ---------- work gallery ---------- */
+    .work { background: var(--navy-deep); color: var(--on-navy); }
+    .work h2 { color: #fff; }
+    .work .section-head p { color: var(--on-navy-soft); }
+    .filters { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 28px; }
+    .filters button { font: inherit; font-size: 0.98rem; font-weight: 600; color: var(--on-navy-soft); background: transparent; border: 1px solid rgba(255,255,255,0.18); border-radius: 999px; padding: 8px 16px; min-height: 40px; cursor: pointer; transition: color 160ms ease, background-color 160ms ease, border-color 160ms ease, transform 160ms var(--ease-out); }
+    .filters button:hover { color: #fff; border-color: rgba(255,255,255,0.4); }
+    .filters button:active { transform: scale(0.97); }
+    .filters button[aria-pressed="true"] { background: var(--tan); border-color: var(--tan); color: var(--navy-deep); }
+    .filters .count { font-variant-numeric: tabular-nums; opacity: 0.7; margin-left: 4px; }
+    .grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 10px; }
+    .tile { position: relative; margin: 0; aspect-ratio: 3 / 4; overflow: hidden; border-radius: 3px; background: #0e2a55; }
+    .tile button { all: unset; display: block; width: 100%; height: 100%; cursor: zoom-in; }
+    .tile button:focus-visible { outline: 2px solid var(--tan); outline-offset: 2px; }
+    .tile img { width: 100%; height: 100%; object-fit: cover; transition: transform 500ms var(--ease-out); }
+    .tile figcaption { position: absolute; left: 0; right: 0; bottom: 0; padding: 36px 12px 10px; font-size: 0.92rem; line-height: 1.3; color: #fff; background: linear-gradient(0deg, rgba(5,18,40,0.88), rgba(5,18,40,0)); opacity: 0; transform: translateY(6px); transition: opacity 220ms ease, transform 220ms var(--ease-out); pointer-events: none; }
+    @media (hover: hover) and (pointer: fine) { .tile:hover img { transform: scale(1.04); } .tile:hover figcaption, .tile:focus-within figcaption { opacity: 1; transform: none; } }
+    @media (hover: none) { .tile figcaption { opacity: 1; transform: none; } }
+    .tile[hidden] { display: none; }
+    .grid.is-filtering .tile { animation: tile-in 320ms var(--ease-out) both; }
+    @keyframes tile-in { from { opacity: 0; transform: translateY(8px); } }
+    @media (max-width: 1000px) { .grid { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+    @media (max-width: 640px) { .grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; } }
+    .more { margin-top: 28px; display: flex; justify-content: center; }
+
+    /* lightbox */
+    .lightbox { border: 0; padding: 0; max-width: none; max-height: none; width: 100vw; height: 100dvh; background: rgba(4,12,28,0.94); color: #fff; }
+    .lightbox::backdrop { background: rgba(4,12,28,0.6); }
+    .lightbox[open] { display: grid; grid-template-rows: auto minmax(0, 1fr) auto; animation: lb-in 220ms var(--ease-out); }
+    @keyframes lb-in { from { opacity: 0; } }
+    .lb-bar { display: flex; justify-content: space-between; align-items: center; padding: 12px 16px; padding-top: calc(12px + env(safe-area-inset-top, 0px)); font-variant-numeric: tabular-nums; color: var(--on-navy-soft); }
+    .lb-stage { position: relative; display: grid; place-items: center; padding: 0 64px; min-height: 0; }
+    .lb-stage img { max-width: 100%; max-height: 100%; object-fit: contain; border-radius: 2px; }
+    .lb-caption { padding: 14px 20px; padding-bottom: calc(18px + env(safe-area-inset-bottom, 0px)); text-align: center; color: var(--on-navy); max-width: 60em; margin: 0 auto; }
+    .lb-btn { font: inherit; color: #fff; background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.18); border-radius: 50%; width: 48px; height: 48px; display: grid; place-items: center; cursor: pointer; transition: background-color 160ms ease, transform 160ms var(--ease-out); }
+    .lb-btn:hover { background: rgba(255,255,255,0.16); }
+    .lb-btn:active { transform: scale(0.94); }
+    .lb-btn svg { width: 20px; height: 20px; }
+    .lb-prev, .lb-next { position: absolute; top: 50%; translate: 0 -50%; }
+    .lb-prev { left: 10px; } .lb-next { right: 10px; }
+    @media (max-width: 640px) { .lb-stage { padding: 0 8px; } .lb-prev, .lb-next { top: auto; bottom: -58px; translate: none; } .lb-prev { left: 16px; } .lb-next { right: 16px; } .lb-caption { padding-inline: 80px; } }
+
+    /* ---------- process ---------- */
+    .steps { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 0; counter-reset: step; border-top: 2px solid var(--navy); }
+    .steps li { padding: 26px 28px 0 0; counter-increment: step; display: grid; gap: 10px; align-content: start; }
+    .steps li + li { padding-left: 28px; border-left: 1px solid var(--rule); }
+    .steps li::before { content: counter(step); font-family: var(--display); font-stretch: 80%; font-weight: 800; font-size: 3rem; line-height: 1; color: var(--tan); font-variant-numeric: tabular-nums; }
+    .steps p { color: var(--ink-soft); font-size: 1.05rem; }
+    @media (max-width: 960px) { .steps { grid-template-columns: 1fr 1fr; row-gap: 36px; } .steps li:nth-child(3) { border-left: 0; padding-left: 0; } }
+    @media (max-width: 560px) { .steps { grid-template-columns: 1fr; row-gap: 0; border-top: 0; } .steps li, .steps li + li { padding: 22px 0; border-left: 0; border-top: 1px solid var(--rule); grid-template-columns: 56px minmax(0, 1fr); } .steps li::before { grid-row: span 2; font-size: 2.4rem; } }
+
+    /* ---------- about ---------- */
+    .about { display: grid; grid-template-columns: minmax(0, 0.9fr) minmax(0, 1fr); gap: clamp(32px, 6vw, 80px); align-items: center; }
+    .about-photo { margin: 0; border-radius: var(--radius); overflow: hidden; box-shadow: 0 1px 2px rgba(20,33,58,0.06), 0 18px 40px -22px rgba(20,33,58,0.35); }
+    .about-photo img { width: 100%; aspect-ratio: 4 / 5; object-fit: cover; object-position: 50% 78%; }
+    .about-copy { display: grid; gap: 20px; }
+    .about-copy p { color: var(--ink-soft); max-width: 36em; }
+    .about-copy .lead { font-size: 1.3rem; color: var(--ink); line-height: 1.5; }
+    .checks { list-style: none; padding: 0; margin: 4px 0 0; display: grid; gap: 10px; }
+    .checks li { display: flex; gap: 12px; align-items: baseline; }
+    .checks svg { width: 18px; height: 18px; color: var(--green); flex: none; translate: 0 3px; }
+    @media (max-width: 860px) { .about { grid-template-columns: 1fr; } .about-photo img { aspect-ratio: 16 / 10; } }
+
+    /* ---------- quote / contact ---------- */
+    .quote { background: var(--navy); color: var(--on-navy); }
+    .quote h2 { color: #fff; }
+    .quote-grid { display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr); gap: clamp(32px, 6vw, 80px); }
+    .quote-intro { display: grid; gap: 20px; align-content: start; }
+    .quote-intro > p { color: var(--on-navy-soft); font-size: 1.15rem; max-width: 32em; }
+    .checklist { background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.14); border-radius: var(--radius); padding: 24px 26px; }
+    .checklist h3 { color: #fff; font-size: 1.15rem; margin-bottom: 12px; }
+    .checklist ul { margin: 0; padding: 0; list-style: none; display: grid; gap: 8px; }
+    .checklist li { display: flex; gap: 12px; color: var(--on-navy); }
+    .checklist li::before { content: ""; width: 7px; height: 7px; margin-top: 0.62em; background: var(--tan); border-radius: 1px; flex: none; }
+    .contact-card { background: var(--paper); color: var(--ink); border-radius: var(--radius); padding: clamp(26px, 4vw, 40px); display: grid; gap: 22px; align-content: start; box-shadow: 0 24px 48px -24px rgba(0,0,0,0.5); }
+    .contact-card .btn { width: 100%; justify-content: center; }
+    .contact-row { display: grid; gap: 2px; padding-top: 18px; border-top: 1px solid var(--rule); }
+    .contact-row:first-of-type { border-top: 0; padding-top: 0; }
+    .label { font-size: 0.88rem; font-weight: 600; color: var(--ink-soft); }
+    .contact-row a, .contact-row .value { font-family: var(--display); font-stretch: 90%; font-weight: 720; font-size: 1.45rem; color: var(--navy); text-decoration: none; font-variant-numeric: tabular-nums; overflow-wrap: anywhere; line-height: 1.2; }
+    .contact-row a:hover { text-decoration: underline; }
+    .contact-row small { color: var(--ink-soft); font-size: 0.98rem; }
+    .copy-line { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
+    .copy-btn { font: inherit; font-size: 0.9rem; font-weight: 600; color: var(--navy); background: var(--ground); border: 1px solid var(--rule); border-radius: 3px; padding: 4px 10px; cursor: pointer; transition: background-color 160ms ease, transform 160ms var(--ease-out); }
+    .copy-btn:hover { background: var(--tan-soft); }
+    .copy-btn:active { transform: scale(0.96); }
+    @media (max-width: 860px) { .quote-grid { grid-template-columns: 1fr; } }
+
+    /* ---------- footer ---------- */
+    .site-footer { background: var(--navy-deep); color: var(--on-navy-soft); padding-block: 48px calc(40px + env(safe-area-inset-bottom, 0px)); font-size: 0.98rem; }
+    .footer-row { display: flex; flex-wrap: wrap; gap: 24px 48px; justify-content: space-between; align-items: center; }
+    .footer-brand { display: flex; align-items: center; gap: 14px; }
+    .footer-brand .brand-mark { width: 64px; height: 64px; }
+    .footer-brand strong { color: #fff; font-family: var(--display); font-stretch: 88%; font-weight: 740; font-size: 1.1rem; display: block; }
+    .footer-links { display: flex; flex-wrap: wrap; gap: 8px 24px; }
+    .footer-links a { text-decoration: none; } .footer-links a:hover { color: #fff; }
+    .legal { margin-top: 28px; padding-top: 22px; border-top: 1px solid rgba(255,255,255,0.1); font-size: 0.9rem; }
+
+    /* light sections stay see-through so the medallion turns behind them */
+    .services, .process, .about-section { background: transparent; }
+    .process + .about-section { padding-top: 0; }
+
+    /* gentle reveal from an already-visible state */
+    @media (prefers-reduced-motion: no-preference) {
+      .js .reveal { transition: opacity 700ms var(--ease-out), transform 700ms var(--ease-out); }
+      .js .reveal.is-pending { opacity: 0.001; transform: translateY(18px); }
+    }
   </style>
 </head>
 <body>
-  <main>
-    <div class="sub">Fort Wayne, Indiana</div>
-    <div class="rule"></div>
-    <h1>Fort Wayne Specialty Welding</h1>
-    <p>Precision TIG and MIG welding for contractors and manufacturers: stainless, tool steels, aluminum and exotic alloys.</p>
-    <p>Our new website is on the way. In the meantime, send us your drawings or photos for a quote.</p>
-    <a class="btn" href="mailto:sales@fwspecialtyweld.com">sales@fwspecialtyweld.com</a>
-    <div class="certs">AWS D17.1 &amp; D1.6 certified</div>
+  <a class="skip" href="#main">Skip to content</a>
+  <div id="medallion" aria-hidden="true"></div>
+
+  <header class="site-header">
+    <div class="wrap header-row">
+      <a class="brand" href="#top" aria-label="Fort Wayne Specialty Welding, back to top">
+        <span class="brand-mark"><img src="images/brand/logo.svg" alt="" width="46" height="46"></span>
+        <span class="brand-name">Fort Wayne Specialty Welding<small>Precision TIG &amp; MIG · Fort Wayne, IN</small></span>
+      </a>
+      <nav class="nav" aria-label="Main">
+        <a href="#services">Services</a>
+        <a href="#work">Work</a>
+        <a href="#process">How it works</a>
+        <a href="#about">About</a>
+        <a href="#quote">Quote</a>
+      </nav>
+      <a class="header-phone" href="tel:+12605153263" aria-label="Call 260-515-3263">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2z"/></svg>
+        <span>260-515-3263</span>
+      </a>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="hero" id="top">
+      <div class="wrap hero-grid">
+        <div class="hero-copy">
+          <h1>Precision TIG repair for <em>molds, dies</em> and tool steel.</h1>
+          <p class="hero-lede">Micro-TIG under a stereo microscope for worn edges, cavities and parting lines, built up clean and ready to re-machine. Fast turnaround when your tool is down.</p>
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="#quote">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 3v4a1 1 0 0 0 1 1h4"/><path d="M17 21H7a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h7l5 5v11a2 2 0 0 1-2 2z"/><path d="M12 11v6M9 14l3-3 3 3"/></svg>
+              Send drawings for a quote
+            </a>
+            <a class="btn btn-ghost" href="tel:+12605153263">Call 260-515-3263</a>
+          </div>
+          <ul class="hero-meta" role="list">
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>AWS D17.1 &amp; D1.6 certified</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>25 years welding</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Weekends available</li>
+          </ul>
+        </div>
+        <figure class="hero-photo">
+          <img src="images/hero-four-blocks-1600.jpg" srcset="images/hero-four-blocks-900.jpg 900w, images/hero-four-blocks-1600.jpg 1600w" sizes="(max-width: 860px) 100vw, 55vw" alt="Four tool steel blocks, each with a full-face multi-pass TIG build-up showing rainbow heat tint" width="1568" height="1600" fetchpriority="high">
+          <figcaption>Matched build-up, four tool steel blocks</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <section class="facts" aria-label="At a glance">
+      <div class="wrap">
+        <ul>
+          <li><strong>AWS D17.1 &amp; D1.6</strong><span>Aerospace and stainless structural certified</span></li>
+          <li><strong>Micro-TIG</strong><span>Fine repair under a stereo microscope</span></li>
+          <li><strong>25 years</strong><span>Welding experience, all hands-on</span></li>
+          <li><strong>7am–5pm</strong><span>Weekends available for rush work</span></li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="section services" id="services">
+      <div class="wrap">
+        <div class="section-head reveal">
+          <h2>Welding for parts that have to go back in the machine.</h2>
+          <p>Most of the work here is repair and build-up on parts that get re-machined to print afterward, so the weld has to be sound, clean and right where it needs to be.</p>
+        </div>
+
+        <article class="feature reveal">
+          <div class="feature-photo">
+            <img src="images/portfolio/tool-steels/thumbs/tool-steel-tig-build-up-sloped-face.jpg" alt="Multi-pass TIG build-up covering a sloped face of a tool steel part" loading="lazy" width="540" height="720">
+          </div>
+          <div class="feature-body">
+            <h3 class="feature-title">Mold &amp; die repair, tool steel build-up</h3>
+            <p>Worn edges, chipped parting lines, washed-out cavities and damaged inserts, built up in controlled passes so your toolroom can machine them back to size instead of replacing the steel.</p>
+            <p>Edge work as fine as a single bead along a bore, or full-face pads across a block.</p>
+            <ul class="alloys" aria-label="Materials">
+              <li>H13</li><li>D2</li><li>4140</li><li>17-4</li><li>Beryllium copper</li><li>Stainless</li><li>Aluminum</li>
+            </ul>
+            <div><a class="btn btn-line" href="#quote">Quote a repair</a></div>
+          </div>
+        </article>
+
+        <ul class="service-list">
+          <li class="reveal">
+            <img src="images/portfolio/tool-steels/thumbs/tool-steel-tig-edge-build-up-quarter-scale.jpg" alt="" loading="lazy" width="88" height="88">
+            <div><h3>Micro-TIG precision work</h3><p>Fine beads on small features and sharp edges, done under a stereo microscope so the heat goes only where it should.</p></div>
+          </li>
+          <li class="reveal">
+            <img src="images/portfolio/stainless-exotics/thumbs/tig-weld-flange-to-shaft-ring.jpg" alt="" loading="lazy" width="88" height="88">
+            <div><h3>Stainless, aluminum &amp; exotics</h3><p>TIG welding on stainless, aluminum, 17-4 and beryllium copper, from single parts to fabricated assemblies.</p></div>
+          </li>
+          <li class="reveal">
+            <img src="images/portfolio/production-runs/thumbs/stainless-tig-welded-brackets-production-run.jpg" alt="" loading="lazy" width="88" height="88">
+            <div><h3>Production runs</h3><p>Repeat weldments that match from the first part to the last, set up on a positioner for consistency.</p></div>
+          </li>
+          <li class="reveal">
+            <img src="images/portfolio/repair-buildup/thumbs/tig-weld-gear-to-shaft.jpg" alt="" loading="lazy" width="88" height="88">
+            <div><h3>Shaft, gear &amp; machine repair</h3><p>Journals, hubs and worn shafts welded and built up for re-machining, plus heavy MIG work on fixtures and plate.</p></div>
+          </li>
+          <li class="reveal">
+            <img src="images/portfolio/fixtures/thumbs/mig-weld-slotted-fixture-plate.jpg" alt="" loading="lazy" width="88" height="88">
+            <div><h3>Fixtures &amp; fabrication</h3><p>Welding fixtures, plate work and custom fabrication, including ornamental and one-off pieces.</p></div>
+          </li>
+          <li class="reveal">
+            <img src="images/portfolio/production-runs/thumbs/tig-welded-tube-mounts-on-positioner.jpg" alt="" loading="lazy" width="88" height="88">
+            <div><h3>On-site &amp; mobile</h3><p>Repairs at your shop in Fort Wayne and the surrounding area, about 25 miles out. Call to talk through the job.</p></div>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="section work" id="work">
+      <div class="wrap">
+        <div class="section-head">
+          <h2>Recent work</h2>
+          <p>Every photo here is a real part from this shop. Tap any one to see it full size.</p>
+        </div>
+        <div class="filters" role="group" aria-label="Filter photos">
+          <button type="button" data-filter="all" aria-pressed="true">All<span class="count">35</span></button>
+          <button type="button" data-filter="tool-steels" aria-pressed="false">Tool steel &amp; molds<span class="count">19</span></button>
+          <button type="button" data-filter="stainless-exotics" aria-pressed="false">Stainless &amp; exotics<span class="count">5</span></button>
+          <button type="button" data-filter="aluminum" aria-pressed="false">Aluminum<span class="count">3</span></button>
+          <button type="button" data-filter="production-runs" aria-pressed="false">Production runs<span class="count">3</span></button>
+          <button type="button" data-filter="repair" aria-pressed="false">Repair &amp; fixtures<span class="count">5</span></button>
+        </div>
+        <div class="grid" id="grid">
+          <figure class="tile" data-cat="tool-steels" data-full="images/portfolio/tool-steels/tool-steel-tig-build-up-weave-closeup.jpg">
+            <button type="button" aria-label="View larger: Build-up passes, close-up"><img src="images/portfolio/tool-steels/thumbs/tool-steel-tig-build-up-weave-closeup.jpg" alt="Extreme close-up of overlapping TIG build-up passes" loading="lazy" decoding="async" width="540" height="720"></button>
+            <figcaption>Build-up passes, close-up</figcaption>
+          </figure>
+          <figure class="tile" data-cat="stainless-exotics" data-full="images/portfolio/stainless-exotics/tig-weld-tube-to-plate-ring.jpg">
+            <button type="button" aria-label="View larger: Tube-to-plate weld"><img src="images/portfolio/stainless-exotics/thumbs/tig-weld-tube-to-plate-ring.jpg" alt="TIG weld ring joining a tube to a base plate" loading="lazy" decoding="async" width="540" height="720"></button>
+            <figcaption>Tube-to-plate weld</figcaption>
+          </figure>
+          <figure class="tile" data-cat="tool-steels" data-full="images/portfolio/tool-steels/tool-steel-tig-build-up-curved-edge.jpg">
+            <button type="button" aria-label="View larger: Build-up on a curved edge"><img src="images/portfolio/tool-steels/thumbs/tool-steel-tig-build-up-curved-edge.jpg" alt="TIG build-up following the curved edge of a tool steel component" loading="lazy" decoding="async" width="540" height="720"></button>
+            <figcaption>Build-up on a curved edge</figcaption>
+          </figure>
+          <figure class="tile" data-cat="tool-steels" data-full="images/portfolio/tool-steels/tool-steel-tig-weld-insert-ring.jpg">
+            <button type="button" aria-label="View larger: Welded insert ring and bore"><img src="images/portfolio/tool-steels/thumbs/tool-steel-tig-weld-insert-ring.jpg" alt="TIG weld ring around a domed insert, with a second weld around the central bore" loading="lazy" decoding="async" width="540" height="720"></button>
+            <figcaption>Welded insert ring and bore</figcaption>
+          </figure>
+          <figure class="tile" data-cat="stainless-exotics" data-full="images/portfolio/stainless-exotics/tig-weld-flange-to-shaft-ring.jpg">
+            <button type="button" aria-label="View larger: Flange-to-shaft weld"><img src="images/portfolio/stainless-exotics/thumbs/tig-weld-flange-to-shaft-ring.jpg" alt="TIG weld ring joining a shaft to an oval flange, showing heat tint" loading="lazy" decoding="async" width="540" height="720"></button>
+            <figcaption>Flange-to-shaft weld</figcaption>
+          </figure>
+          <figure class="tile" data-cat="tool-steels" data-full="images/portfolio/tool-steels/tool-steel-tig-build-up-wide-pad.jpg">
+            <button type="button" aria-label="View larger: Wide multi-pass build-up pad"><img src="images/portfolio/tool-steels/thumbs/tool-steel-tig-build-up-wide-pad.jpg" alt="Wide multi-pass TIG build-up pad filling a recessed area of a tool steel part" loading="lazy" decoding="async" width="540" height="720"></button>
+            <figcaption>Wide multi-pass build-up pad</figcaption>
+          </figure>
+          <figure class="tile" data-cat="production-runs" data-full="images/portfolio/production-runs/stainless-tig-welded-brackets-production-run.jpg">
+            <button type="button" aria-label="View larger: Production run of TIG-welded brackets"><img src="images/portfolio/production-runs/thumbs/stainless-tig-welded-brackets-production-run.jpg" alt="Row of identical machined brackets with TIG welds at each base, from a production run" loading="lazy" decoding="async" width="540" height="720"></button>
+            <figcaption>Production run of TIG-welded brackets</figcaption>
+          </figure>
+          <figure class="tile" data-cat="tool-steels" data-full="images/portfolio/tool-steels/tool-steel-tig-edge-build-up-quarter-scale.jpg">
+            <button type="button" aria-label="View larger: Edge build-up next to a quarter"><img src="images/portfolio/tool-steels/thumbs/tool-steel-tig-edge-build-up-quarter-scale.jpg" alt="Fine TIG build-up bead along a curved plate edge, with a quarter for scale" loading="lazy" decoding="async" width="540" height="720"></button>
+            <figcaption>Edge build-up next to a quarter</figcaption>
+          </figure>
+          <figure class="tile" data-cat="stainless-exotics" data-full="images/portfolio/stainless-exotics/tig-weld-tube-to-knurled-collar.jpg">
+            <button type="button" aria-label="View larger: Tube welded to knurled collar"><img src="images/portfolio/stainless-exotics/thumbs/tig-weld-tube-to-knurled-collar.jpg" alt="Small tube TIG welded into a knurled collar held in a lathe chuck" loading="lazy" decoding="async" width="540" height="720"></button>
+            <figcaption>Tube welded to knurled collar</figcaption>
+          </figure>
+          <figure class="tile" data-cat="tool-steels" data-full="images/portfolio/tool-steels/tool-steel-tig-build-up-long-channel.jpg">
+            <button type="button" aria-label="View larger: Long channel build-up"><img src="images/portfolio/tool-steels/thumbs/tool-steel-tig-build-up-long-channel.jpg" alt="Long multi-pass TIG build-up filling a channel along a tool steel part, with a stringer bead beside it" loading="lazy" decoding="async" width="540" height="720"></button>
+            <figcaption>Long channel build-up</figcaption>
+          </figure>
+          <figure class="tile" data-cat="aluminum" data-full="images/portfolio/aluminum/aluminum-tig-weld-bead-plate.jpg">
+            <button type="button" aria-label="View larger: Aluminum TIG weld on plate"><img src="images/portfolio/aluminum/thumbs/aluminum-tig-weld-bead-plate.jpg" alt="Close-up of a uniform stacked-dime aluminum TIG weld bead running along an aluminum plate" loading="lazy" decoding="async" width="540" height="720"></button>
+            <figcaption>Aluminum TIG weld on plate</figcaption>
+          </figure>
+          <figure class="tile" data-cat="repair" data-full="images/portfolio/repair-buildup/tig-weld-gear-to-shaft.jpg">
+            <button type="button" aria-label="View larger: Gear welded to shaft"><img src="images/portfolio/repair-buildup/thumbs/tig-weld-gear-to-shaft.jpg" alt="Shaft TIG welded into the hub of a gear" loading="lazy" decoding="async" width="540" height="720"></button>
+            <figcaption>Gear welded to shaft</figcaption>
+          </figure>
+          <figure class="tile" data-cat="tool-steels" data-full="images/portfolio/tool-steels/tool-steel-tig-weld-collage-mold-details.jpg">
+            <button type="button" aria-label="View larger: TIG welds on mold components"><img src="images/portfolio/tool-steels/thumbs/tool-steel-tig-weld-collage-mold-details.jpg" alt="Collage of three TIG welds on tool steel mold components, including a bead in a machined channel and a weld ring around a port" loading="lazy" decoding="async" width="540" height="720"></button>
+            <figcaption>TIG welds on mold components</figcaption>
+          </figure>
+          <figure class="tile" data-cat="tool-steels" data-full="images/portfolio/tool-steels/tool-steel-tig-edge-build-up-stepped-profile.jpg">
+            <button type="button" aria-label="View larger: Edge build-up on a stepped profile"><img src="images/portfolio/tool-steels/thumbs/tool-steel-tig-edge-build-up-stepped-profile.jpg" alt="Multi-pass TIG build-up along the stepped edge of a tool steel part, ready for re-machining" loading="lazy" decoding="async" width="540" height="720"></button>
+            <figcaption>Edge build-up on a stepped profile</figcaption>
+          </figure>
+          <figure class="tile" data-cat="tool-steels" data-full="images/portfolio/tool-steels/tool-steel-tig-multi-pass-edge-build-up.jpg">
+            <button type="button" aria-label="View larger: Multi-pass edge build-up"><img src="images/portfolio/tool-steels/thumbs/tool-steel-tig-multi-pass-edge-build-up.jpg" alt="Heavy multi-pass TIG build-up along the edge of a tool steel plate" loading="lazy" decoding="async" width="540" height="720"></button>
+            <figcaption>Multi-pass edge build-up</figcaption>
+          </figure>
+          <figure class="tile" data-cat="tool-steels" data-full="images/portfolio/tool-steels/tool-steel-tig-build-up-threaded-plate.jpg">
+            <button type="button" aria-label="View larger: Face build-up around threaded holes"><img src="images/portfolio/tool-steels/thumbs/tool-steel-tig-build-up-threaded-plate.jpg" alt="TIG build-up across the face of a plate around threaded holes, held in a vise" loading="lazy" decoding="async" width="540" height="720"></button>
+            <figcaption>Face build-up around threaded holes</figcaption>
+          </figure>
+          <figure class="tile" data-cat="tool-steels" data-full="images/portfolio/tool-steels/tool-steel-tig-build-up-sloped-face.jpg">
+            <button type="button" aria-label="View larger: Build-up on a sloped face"><img src="images/portfolio/tool-steels/thumbs/tool-steel-tig-build-up-sloped-face.jpg" alt="Multi-pass TIG build-up covering a sloped face of a tool steel part" loading="lazy" decoding="async" width="540" height="720"></button>
+            <figcaption>Build-up on a sloped face</figcaption>
+          </figure>
+          <figure class="tile" data-cat="tool-steels" data-full="images/portfolio/tool-steels/tool-steel-tig-build-up-block-with-scale.jpg">
+            <button type="button" aria-label="View larger: Layered build-up with scale"><img src="images/portfolio/tool-steels/thumbs/tool-steel-tig-build-up-block-with-scale.jpg" alt="Layered TIG build-up on a small block with a steel rule alongside for scale" loading="lazy" decoding="async" width="540" height="720"></button>
+            <figcaption>Layered build-up with scale</figcaption>
+          </figure>
+          <figure class="tile" data-cat="tool-steels" data-full="images/portfolio/tool-steels/tool-steel-tig-multi-pass-build-up-block.jpg">
+            <button type="button" aria-label="View larger: Multi-pass build-up on a block"><img src="images/portfolio/tool-steels/thumbs/tool-steel-tig-multi-pass-build-up-block.jpg" alt="Thick multi-pass TIG build-up layered across a tool steel block" loading="lazy" decoding="async" width="540" height="720"></button>
+            <figcaption>Multi-pass build-up on a block</figcaption>
+          </figure>
+          <figure class="tile" data-cat="tool-steels" data-full="images/portfolio/tool-steels/tool-steel-tig-build-up-bars-set-of-four.jpg">
+            <button type="button" aria-label="View larger: Set of four build-up bars"><img src="images/portfolio/tool-steels/thumbs/tool-steel-tig-build-up-bars-set-of-four.jpg" alt="Set of four tool steel bars with TIG build-up on their top faces, beside a mold section" loading="lazy" decoding="async" width="540" height="720"></button>
+            <figcaption>Set of four build-up bars</figcaption>
+          </figure>
+          <figure class="tile" data-cat="tool-steels" data-full="images/portfolio/tool-steels/tool-steel-tig-edge-build-up-ported-block.jpg">
+            <button type="button" aria-label="View larger: Edge build-up on a ported block"><img src="images/portfolio/tool-steels/thumbs/tool-steel-tig-edge-build-up-ported-block.jpg" alt="TIG build-up along the edge of a ported tool steel block" loading="lazy" decoding="async" width="540" height="720"></button>
+            <figcaption>Edge build-up on a ported block</figcaption>
+          </figure>
+          <figure class="tile" data-cat="tool-steels" data-full="images/portfolio/tool-steels/tool-steel-tig-fillet-weld-closeup.jpg">
+            <button type="button" aria-label="View larger: TIG fillet weld close-up"><img src="images/portfolio/tool-steels/thumbs/tool-steel-tig-fillet-weld-closeup.jpg" alt="Close-up of a TIG fillet weld on tool steel" loading="lazy" decoding="async" width="540" height="720"></button>
+            <figcaption>TIG fillet weld close-up</figcaption>
+          </figure>
+          <figure class="tile" data-cat="tool-steels" data-full="images/portfolio/tool-steels/tool-steel-tig-face-build-up-block-in-vise.jpg">
+            <button type="button" aria-label="View larger: Full-face build-up on a block"><img src="images/portfolio/tool-steels/thumbs/tool-steel-tig-face-build-up-block-in-vise.jpg" alt="Full-face TIG build-up on a tool steel block held in a vise" loading="lazy" decoding="async" width="540" height="720"></button>
+            <figcaption>Full-face build-up on a block</figcaption>
+          </figure>
+          <figure class="tile" data-cat="tool-steels" data-full="images/portfolio/tool-steels/tool-steel-tig-build-up-finned-core.jpg">
+            <button type="button" aria-label="View larger: Build-up on a finned core"><img src="images/portfolio/tool-steels/thumbs/tool-steel-tig-build-up-finned-core.jpg" alt="TIG build-up pad on the flat of a finned cylindrical tool steel part" loading="lazy" decoding="async" width="540" height="720"></button>
+            <figcaption>Build-up on a finned core</figcaption>
+          </figure>
+          <figure class="tile" data-cat="tool-steels" data-full="images/portfolio/tool-steels/tool-steel-tig-edge-build-up-half-bore-scale.jpg">
+            <button type="button" aria-label="View larger: Edge build-up on a half bore"><img src="images/portfolio/tool-steels/thumbs/tool-steel-tig-edge-build-up-half-bore-scale.jpg" alt="Fine TIG build-up bead along the edge of a half-round bore, with a steel rule for scale" loading="lazy" decoding="async" width="540" height="720"></button>
+            <figcaption>Edge build-up on a half bore</figcaption>
+          </figure>
+          <figure class="tile" data-cat="stainless-exotics" data-full="images/portfolio/stainless-exotics/tig-fillet-weld-stacked-bead-closeup.jpg">
+            <button type="button" aria-label="View larger: TIG fillet weld close-up"><img src="images/portfolio/stainless-exotics/thumbs/tig-fillet-weld-stacked-bead-closeup.jpg" alt="Close-up of a uniform TIG fillet weld along an inside corner" loading="lazy" decoding="async" width="540" height="720"></button>
+            <figcaption>TIG fillet weld close-up</figcaption>
+          </figure>
+          <figure class="tile" data-cat="stainless-exotics" data-full="images/portfolio/stainless-exotics/tig-weld-shaft-through-oval-flange.jpg">
+            <button type="button" aria-label="View larger: Shaft through oval flange"><img src="images/portfolio/stainless-exotics/thumbs/tig-weld-shaft-through-oval-flange.jpg" alt="Shaft TIG welded through an oval flange" loading="lazy" decoding="async" width="540" height="720"></button>
+            <figcaption>Shaft through oval flange</figcaption>
+          </figure>
+          <figure class="tile" data-cat="aluminum" data-full="images/portfolio/aluminum/aluminum-tig-weld-tapered-vessel-lid.jpg">
+            <button type="button" aria-label="View larger: Aluminum TIG-welded tapered vessel"><img src="images/portfolio/aluminum/thumbs/aluminum-tig-weld-tapered-vessel-lid.jpg" alt="Tapered aluminum vessel with a TIG-welded circumferential seam joining the top, set up on a rotary positioner" loading="lazy" decoding="async" width="540" height="720"></button>
+            <figcaption>Aluminum TIG-welded tapered vessel</figcaption>
+          </figure>
+          <figure class="tile" data-cat="aluminum" data-full="images/portfolio/aluminum/aluminum-tig-fabricated-angled-box.jpg">
+            <button type="button" aria-label="View larger: Custom aluminum fabrication, TIG welded"><img src="images/portfolio/aluminum/thumbs/aluminum-tig-fabricated-angled-box.jpg" alt="Four views of a fabricated multi-panel aluminum box with TIG-welded corner and edge seams" loading="lazy" decoding="async" width="540" height="720"></button>
+            <figcaption>Custom aluminum fabrication, TIG welded</figcaption>
+          </figure>
+          <figure class="tile" data-cat="production-runs" data-full="images/portfolio/production-runs/tig-welded-tube-mounts-on-positioner.jpg">
+            <button type="button" aria-label="View larger: Tube mounts on the positioner"><img src="images/portfolio/production-runs/thumbs/tig-welded-tube-mounts-on-positioner.jpg" alt="Two tube-to-plate TIG weldments on a rotary positioner, with more from the same run behind them" loading="lazy" decoding="async" width="540" height="720"></button>
+            <figcaption>Tube mounts on the positioner</figcaption>
+          </figure>
+          <figure class="tile" data-cat="production-runs" data-full="images/portfolio/production-runs/tig-welded-tube-mounts-production-run.jpg">
+            <button type="button" aria-label="View larger: Tube mount production run"><img src="images/portfolio/production-runs/thumbs/tig-welded-tube-mounts-production-run.jpg" alt="Row of identical tube-to-plate TIG weldments from a production run" loading="lazy" decoding="async" width="540" height="720"></button>
+            <figcaption>Tube mount production run</figcaption>
+          </figure>
+          <figure class="tile" data-cat="repair" data-full="images/portfolio/repair-buildup/mig-weld-roller-bearing-journal-shaft.jpg">
+            <button type="button" aria-label="View larger: Bearing journal shaft welded onto a roller"><img src="images/portfolio/repair-buildup/thumbs/mig-weld-roller-bearing-journal-shaft.jpg" alt="Machined steel shaft MIG welded onto the end of a large grooved roller, forming the journal where the bearing rides" loading="lazy" decoding="async" width="540" height="720"></button>
+            <figcaption>Bearing journal shaft welded onto a roller</figcaption>
+          </figure>
+          <figure class="tile" data-cat="repair" data-full="images/portfolio/fixtures/mig-weld-fixture-fillet-tape-measure.jpg">
+            <button type="button" aria-label="View larger: Continuous MIG fillet on heavy fixture plate"><img src="images/portfolio/fixtures/thumbs/mig-weld-fixture-fillet-tape-measure.jpg" alt="Long continuous MIG fillet weld joining heavy steel fixture plates, with a tape measure laid alongside for scale" loading="lazy" decoding="async" width="540" height="720"></button>
+            <figcaption>Continuous MIG fillet on heavy fixture plate</figcaption>
+          </figure>
+          <figure class="tile" data-cat="repair" data-full="images/portfolio/fixtures/mig-weld-slotted-fixture-plate.jpg">
+            <button type="button" aria-label="View larger: Slotted fixture plate, MIG welded"><img src="images/portfolio/fixtures/thumbs/mig-weld-slotted-fixture-plate.jpg" alt="Heavy slotted steel fixture plate with MIG fillet welds joining it to an upright back plate" loading="lazy" decoding="async" width="540" height="720"></button>
+            <figcaption>Slotted fixture plate, MIG welded</figcaption>
+          </figure>
+          <figure class="tile" data-cat="repair" data-full="images/portfolio/fixtures/mig-weld-fixture-fillet-closeup.jpg">
+            <button type="button" aria-label="View larger: MIG fillet weld close-up"><img src="images/portfolio/fixtures/thumbs/mig-weld-fixture-fillet-closeup.jpg" alt="Close-up of a MIG fillet weld at the inside corner of two thick steel fixture plates" loading="lazy" decoding="async" width="540" height="720"></button>
+            <figcaption>MIG fillet weld close-up</figcaption>
+          </figure>
+        </div>
+        <div class="more"><button class="btn btn-ghost" id="show-more" type="button">Show all 35 photos</button></div>
+      </div>
+    </section>
+
+    <section class="section process" id="process">
+      <div class="wrap">
+        <div class="section-head reveal">
+          <h2>How a job works</h2>
+          <p>No forms or portals. You talk straight to the welder doing the work.</p>
+        </div>
+        <ol class="steps reveal">
+          <li><h3>Send drawings or photos</h3><p>Email the print or a few clear photos of the damage, plus the material and when you need it back.</p></li>
+          <li><h3>Get a quote</h3><p>You'll hear back with a price and timing. If it's urgent, call and say so.</p></li>
+          <li><h3>Drop off or on-site</h3><p>Bring the part to the Fort Wayne shop by arrangement, or the work comes to you.</p></li>
+          <li><h3>Ready to machine</h3><p>The part goes back with sound, clean weld where you need it, ready for your toolroom.</p></li>
+        </ol>
+      </div>
+    </section>
+
+    <section class="section about-section" id="about">
+      <div class="wrap about">
+        <figure class="about-photo reveal">
+          <img src="images/portfolio/tool-steels/thumbs/tool-steel-tig-edge-build-up-half-bore-scale.jpg" alt="Fine TIG build-up bead along the edge of a half-round bore, with a steel rule laid across for scale" loading="lazy" width="540" height="720">
+        </figure>
+        <div class="about-copy reveal">
+          <h2>One welder.<br>25&nbsp;years. Your part.</h2>
+          <p class="lead">Fort Wayne Specialty Welding is a one-person shop. The person who answers the phone is the person under the microscope welding your part.</p>
+          <p>That means straight answers about what can be saved, no hand-offs, and the same care on a single insert as on a production run.</p>
+          <ul class="checks">
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>AWS D17.1 (aerospace) and D1.6 (stainless structural) certified</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>TIG, micro-TIG and MIG</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Rush work and weekends available</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="section quote" id="quote">
+      <div class="wrap quote-grid">
+        <div class="quote-intro reveal">
+          <h2>Send your drawings or photos for a quote.</h2>
+          <p>Email works best: attach the print or a few photos and you'll get a reply with price and timing. Tool down right now? Call.</p>
+          <div class="checklist">
+            <h3>Helpful to include</h3>
+            <ul>
+              <li>Drawing or clear photos of the damaged area</li>
+              <li>Material or alloy, if you know it (H13, D2, stainless…)</li>
+              <li>Quantity and the date you need it back</li>
+              <li>Drop-off, or on-site at your shop</li>
+            </ul>
+          </div>
+        </div>
+        <div class="contact-card reveal">
+          <a class="btn btn-primary" href="mailto:sales@fwspecialtyweld.com?subject=Quote%20request&amp;body=Part%20%2F%20what%20needs%20welding%3A%0A%0AMaterial%20or%20alloy%3A%0AQuantity%3A%0ANeeded%20back%20by%3A%0ADrop-off%20or%20on-site%3A%0A%0A(Attach%20drawings%20or%20photos)%0A">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 6L2 7"/></svg>
+            Email a quote request
+          </a>
+          <div class="contact-row">
+            <span class="label">Email</span>
+            <div class="copy-line"><a href="mailto:sales@fwspecialtyweld.com" id="email-text">sales@fwspecialtyweld.com</a><button class="copy-btn" type="button" data-copy="sales@fwspecialtyweld.com">Copy</button></div>
+          </div>
+          <div class="contact-row">
+            <span class="label">Phone</span>
+            <div class="copy-line"><a href="tel:+12605153263">260-515-3263</a><button class="copy-btn" type="button" data-copy="260-515-3263">Copy</button></div>
+            <small>Call for rush jobs or to arrange drop-off.</small>
+          </div>
+          <div class="contact-row">
+            <span class="label">Hours</span>
+            <span class="value">7am – 5pm</span>
+            <small>Weekends available.</small>
+          </div>
+          <div class="contact-row">
+            <span class="label">Location</span>
+            <span class="value">Fort Wayne, Indiana</span>
+            <small>Drop-off by arrangement. On-site work about 25 miles around Fort Wayne.</small>
+          </div>
+        </div>
+      </div>
+    </section>
   </main>
+
+  <footer class="site-footer">
+    <div class="wrap">
+      <div class="footer-row">
+        <div class="footer-brand">
+          <span class="brand-mark"><img src="images/brand/logo.svg" alt="" width="58" height="58"></span>
+          <div><strong>Fort Wayne Specialty Welding</strong>Precision TIG &amp; MIG · AWS D17.1 &amp; D1.6</div>
+        </div>
+        <nav class="footer-links" aria-label="Footer">
+          <a href="#services">Services</a><a href="#work">Work</a><a href="#process">How it works</a><a href="#quote">Quote</a>
+          <a href="tel:+12605153263">260-515-3263</a>
+        </nav>
+      </div>
+      <p class="legal">© <span id="year">2026</span> Fort Wayne Specialty Welding &amp; Co., LLC · Fort Wayne, Indiana</p>
+    </div>
+  </footer>
+
+  <dialog class="lightbox" id="lightbox" aria-label="Photo viewer">
+    <div class="lb-bar">
+      <span id="lb-count"></span>
+      <button class="lb-btn" type="button" id="lb-close" aria-label="Close">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M18 6 6 18M6 6l12 12"/></svg>
+      </button>
+    </div>
+    <div class="lb-stage">
+      <button class="lb-btn lb-prev" type="button" id="lb-prev" aria-label="Previous photo"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m15 18-6-6 6-6"/></svg></button>
+      <img id="lb-img" alt="">
+      <button class="lb-btn lb-next" type="button" id="lb-next" aria-label="Next photo"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg></button>
+    </div>
+    <p class="lb-caption" id="lb-caption"></p>
+  </dialog>
+
+  <script>
+  document.documentElement.classList.add('js');
+  (function () {
+    var y = document.getElementById('year'); if (y) y.textContent = new Date().getFullYear();
+
+    // reveal on scroll, from an already-visible resting state
+    var reveals = [].slice.call(document.querySelectorAll('.reveal'));
+    if ('IntersectionObserver' in window && !matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      var io = new IntersectionObserver(function (entries) {
+        entries.forEach(function (e) { if (e.isIntersecting) { e.target.classList.remove('is-pending'); io.unobserve(e.target); } });
+      }, { rootMargin: '0px 0px -8% 0px' });
+      reveals.forEach(function (el) {
+        var r = el.getBoundingClientRect();
+        if (r.top > innerHeight) { el.classList.add('is-pending'); io.observe(el); }
+      });
+    }
+
+    // copy buttons
+    document.querySelectorAll('[data-copy]').forEach(function (b) {
+      b.addEventListener('click', function () {
+        var text = b.getAttribute('data-copy');
+        var done = function () { b.textContent = 'Copied'; setTimeout(function () { b.textContent = 'Copy'; }, 1600); };
+        if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(text).then(done, function () { selectText(b.previousElementSibling); });
+        else selectText(b.previousElementSibling);
+      });
+    });
+    function selectText(el) { var r = document.createRange(); r.selectNodeContents(el); var s = getSelection(); s.removeAllRanges(); s.addRange(r); }
+
+    // gallery filters + show more
+    var grid = document.getElementById('grid');
+    var tiles = [].slice.call(grid.querySelectorAll('.tile'));
+    var moreBtn = document.getElementById('show-more');
+    var current = 'all', expanded = false, LIMIT = 12;
+    function apply(animate) {
+      var shown = 0;
+      tiles.forEach(function (t) {
+        var match = current === 'all' || t.dataset.cat === current;
+        var visible = match && (expanded || current !== 'all' || shown < LIMIT);
+        if (match) shown++;
+        t.hidden = !visible;
+      });
+      moreBtn.parentElement.hidden = expanded || current !== 'all';
+      if (animate) { grid.classList.remove('is-filtering'); void grid.offsetWidth; grid.classList.add('is-filtering'); }
+    }
+    document.querySelectorAll('.filters button').forEach(function (b) {
+      b.addEventListener('click', function () {
+        document.querySelectorAll('.filters button').forEach(function (x) { x.setAttribute('aria-pressed', x === b ? 'true' : 'false'); });
+        current = b.dataset.filter; apply(true);
+      });
+    });
+    moreBtn.addEventListener('click', function () { expanded = true; apply(true); });
+    apply(false);
+
+    // lightbox
+    var lb = document.getElementById('lightbox'), lbImg = document.getElementById('lb-img'), lbCap = document.getElementById('lb-caption'), lbCount = document.getElementById('lb-count');
+    var list = [], idx = 0, opener = null;
+    function show(i) {
+      idx = (i + list.length) % list.length;
+      var t = list[idx], img = t.querySelector('img');
+      lbImg.src = t.dataset.full; lbImg.alt = img.alt;
+      lbCap.textContent = t.querySelector('figcaption').textContent;
+      lbCount.textContent = (idx + 1) + ' / ' + list.length;
+    }
+    tiles.forEach(function (t) {
+      t.querySelector('button').addEventListener('click', function () {
+        list = tiles.filter(function (x) { return !x.hidden; });
+        opener = this; show(list.indexOf(t));
+        if (lb.showModal) lb.showModal(); else window.open(t.dataset.full, '_blank');
+      });
+    });
+    document.getElementById('lb-close').addEventListener('click', function () { lb.close(); });
+    document.getElementById('lb-prev').addEventListener('click', function () { show(idx - 1); });
+    document.getElementById('lb-next').addEventListener('click', function () { show(idx + 1); });
+    lb.addEventListener('click', function (e) { if (e.target === lb || e.target.classList.contains('lb-stage')) lb.close(); });
+    lb.addEventListener('close', function () { lbImg.removeAttribute('src'); if (opener) opener.focus(); });
+    lb.addEventListener('keydown', function (e) { if (e.key === 'ArrowLeft') show(idx - 1); if (e.key === 'ArrowRight') show(idx + 1); });
+    var sx = null;
+    lb.addEventListener('touchstart', function (e) { sx = e.touches[0].clientX; }, { passive: true });
+    lb.addEventListener('touchend', function (e) { if (sx === null) return; var dx = e.changedTouches[0].clientX - sx; if (Math.abs(dx) > 50) show(idx + (dx < 0 ? 1 : -1)); sx = null; });
+  })();
+
+  // 3D logo medallion: loads after the page so it never slows the first view
+  (function () {
+    var conn = navigator.connection;
+    if (conn && conn.saveData) return;
+    function load() {
+      var s = document.createElement('script'); s.src = 'js/three.r128.min.js';
+      s.onload = function () { var l = document.createElement('script'); l.src = 'js/SVGLoader.r128.js'; l.onload = function () { var m = document.createElement('script'); m.src = 'js/medallion.js'; document.body.appendChild(m); }; document.body.appendChild(l); };
+      document.body.appendChild(s);
+    }
+    var go = function () { ('requestIdleCallback' in window) ? requestIdleCallback(load, { timeout: 2500 }) : setTimeout(load, 1200); };
+    if (document.readyState === 'complete') go(); else addEventListener('load', go);
+  })();
+  </script>
 </body>
 </html>
