@@ -173,6 +173,13 @@
     .service-list li { display: grid; grid-template-columns: 88px minmax(0, 1fr); gap: 20px; align-items: start; padding: 26px 0; border-top: 1px solid var(--rule); }
     .service-list img { width: 88px; height: 88px; object-fit: cover; border-radius: 3px; }
     .service-list h3 { margin-bottom: 6px; }
+    .soon { margin-top: clamp(32px, 5vw, 48px); display: grid; grid-template-columns: auto minmax(0, 1fr) auto; gap: 16px 28px; align-items: center; padding: 24px 28px; border: 1px solid rgba(201,180,138,0.55); border-radius: var(--radius); background: rgba(8,31,69,0.72); }
+    .soon-tag { font-family: var(--display); font-stretch: 88%; font-weight: 720; font-size: 0.85rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--navy-deep); background: var(--tan); padding: 6px 12px; border-radius: 3px; white-space: nowrap; }
+    .soon-body { display: grid; gap: 4px; }
+    .on-photo .soon-body p { color: #D3DBE8; max-width: 52em; }
+    .on-photo .soon-btn { color: var(--tan-soft); border-color: rgba(201,180,138,0.6); white-space: nowrap; }
+    .on-photo .soon-btn:hover { background: var(--tan); color: var(--navy-deep); border-color: var(--tan); }
+    @media (max-width: 860px) { .soon { grid-template-columns: 1fr; justify-items: start; padding: 22px; } }
     .svc-icon { width: 88px; height: 88px; border-radius: 3px; display: grid; place-items: center; background: rgba(201,180,138,0.12); color: var(--tan); box-shadow: inset 0 0 0 1px rgba(201,180,138,0.4); }
     .svc-icon svg { width: 44px; height: 44px; }
     .service-list p { color: var(--ink-soft); font-size: 1.05rem; }
@@ -446,6 +453,14 @@
             <div><h3>Cast iron repair</h3><p>Cracked and broken cast iron parts, housings and castings repaired so they can go back in service.</p></div>
           </li>
         </ul>
+        <aside class="soon reveal" aria-labelledby="soon-title">
+          <span class="soon-tag">Coming soon</span>
+          <div class="soon-body">
+            <h3 id="soon-title">Laser welding</h3>
+            <p>Laser welding is coming to the shop, backed by 15+ years of laser welding experience. If you have laser work coming up, get in touch so we can plan for it.</p>
+          </div>
+          <a class="btn btn-line soon-btn" href="mailto:sales@fwspecialtyweld.com?subject=Laser%20welding%20inquiry">Tell us about your laser work</a>
+        </aside>
       </div>
     </section>
 
@@ -640,6 +655,7 @@
           <ul class="checks">
             <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>AWS D17.1 (aerospace) and D1.6 (stainless structural) certified</li>
             <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>TIG, micro-TIG and MIG</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>15+ years of laser welding experience</li>
             <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Rush work and weekends available</li>
           </ul>
         </div>

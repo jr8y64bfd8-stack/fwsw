@@ -41,6 +41,7 @@ A one-person precision shop doing micro-TIG repair under a stereo microscope: to
 - Work types shown in the portfolio: tool steel build-up and mold/die repair, stainless and exotics, aluminum, production runs, shaft/gear repair and build-up, welding fixtures.
 - Fast / rush turnaround available.
 - Also offered (owner confirmed from the brochure): silver soldering and cast iron repair.
+- Laser welding: owner has 15+ years of laser welding experience but does not own a laser welder yet; plans to buy one. Site lists the experience and a "Coming soon: laser welding" note only. Never present laser welding as a current service. Past laser job photos may be added later as a separate, clearly labeled set (not in the main shop gallery), after checking them for former-employer or customer details.
 - AWS certifications (from the owner's brochure, owner approved for the site): GTAW D1.6 on 304 SS, 2F; GTAW D17.1 on 17-4 SS, 420 SS, 455 SS and 316L, all 2F.
 - Phone: 260-515-3263 is correct; the 260-625-3187 number on the old brochure is not to be used.
 - Solo operation: no team, no front desk.
