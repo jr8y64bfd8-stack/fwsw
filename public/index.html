@@ -123,7 +123,7 @@
     main, .site-footer { position: relative; z-index: 1; }
 
     /* ---------- facts band ---------- */
-    .facts { border-bottom: 1px solid var(--rule); background: rgba(255,255,255,0.72); }
+    .facts { position: relative; border-bottom: 1px solid var(--rule); background: var(--ground); }
     .facts ul { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); }
     .facts li { padding: 26px 24px 24px 0; display: grid; gap: 2px; }
     .facts li + li { padding-left: 24px; border-left: 1px solid var(--rule); }
@@ -255,8 +255,24 @@
     .footer-links a { text-decoration: none; } .footer-links a:hover { color: #fff; }
     .legal { margin-top: 28px; padding-top: 22px; border-top: 1px solid rgba(255,255,255,0.1); font-size: 0.9rem; }
 
-    /* light sections stay see-through so the medallion turns behind them */
-    .services, .process, .about-section { background: transparent; }
+    /* photo sections: navy-tinted weld photos sit behind the medallion, like the brochure */
+    body { background: var(--navy-deep); }
+    .backdrop { position: fixed; inset: 0; z-index: 0; pointer-events: none; background: var(--navy-deep); }
+    .backdrop-photo { position: absolute; inset: 0; background-size: cover; background-position: center; opacity: 0; transition: opacity 900ms ease; }
+    .backdrop-photo.is-on { opacity: 1; }
+    .backdrop::after { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(8,31,69,0.55), rgba(8,31,69,0.7)); }
+    .on-photo { background: transparent; color: var(--on-navy); }
+    .on-photo h2, .on-photo h3 { color: #fff; }
+    .on-photo .section-head p, .on-photo .service-list p, .on-photo .steps p, .on-photo .about-copy p { color: var(--on-navy-soft); }
+    .on-photo .about-copy .lead { color: var(--on-navy); }
+    .on-photo .service-list li { border-top-color: rgba(255,255,255,0.16); }
+    .on-photo .steps { border-top-color: var(--tan); }
+    .on-photo .steps li + li { border-left-color: rgba(255,255,255,0.16); }
+    .on-photo .checks svg { color: var(--tan); }
+    .on-photo .feature h3 { color: var(--navy); }
+    .on-photo .feature-body p { color: var(--ink-soft); }
+    .on-photo .service-list img, .on-photo .about-photo { box-shadow: 0 0 0 1px rgba(255,255,255,0.14); }
+    @media (max-width: 560px) { .on-photo .steps li, .on-photo .steps li + li { border-top-color: rgba(255,255,255,0.16); } }
     .process + .about-section { padding-top: 0; }
 
     /* gentle reveal from an already-visible state */
@@ -268,6 +284,11 @@
 </head>
 <body>
   <a class="skip" href="#main">Skip to content</a>
+  <div class="backdrop" aria-hidden="true">
+    <div class="backdrop-photo is-on" data-bg="services" style="background-image:url(images/backdrops/backdrop-brackets.jpg)"></div>
+    <div class="backdrop-photo" data-bg="process" style="background-image:url(images/backdrops/backdrop-weave.jpg)"></div>
+    <div class="backdrop-photo" data-bg="about" style="background-image:url(images/backdrops/backdrop-tube-mounts.jpg)"></div>
+  </div>
   <div id="medallion" aria-hidden="true"></div>
 
   <header class="site-header">
@@ -327,7 +348,7 @@
       </div>
     </section>
 
-    <section class="section services" id="services">
+    <section class="section services on-photo" id="services" data-backdrop="services">
       <div class="wrap">
         <div class="section-head reveal">
           <h2>Welding for parts that have to go back in the machine.</h2>
@@ -538,7 +559,7 @@
       </div>
     </section>
 
-    <section class="section process" id="process">
+    <section class="section process on-photo" id="process" data-backdrop="process">
       <div class="wrap">
         <div class="section-head reveal">
           <h2>How a job works</h2>
@@ -553,7 +574,7 @@
       </div>
     </section>
 
-    <section class="section about-section" id="about">
+    <section class="section about-section on-photo" id="about" data-backdrop="about">
       <div class="wrap about">
         <figure class="about-photo reveal">
           <img src="images/portfolio/tool-steels/thumbs/tool-steel-tig-edge-build-up-half-bore-scale.jpg" alt="Fine TIG build-up bead along the edge of a half-round bore, with a steel rule laid across for scale" loading="lazy" width="540" height="720">
@@ -661,6 +682,20 @@
         var r = el.getBoundingClientRect();
         if (r.top > innerHeight) { el.classList.add('is-pending'); io.observe(el); }
       });
+    }
+
+    // swap the navy backdrop photo to match the section in view
+    var photos = {};
+    [].slice.call(document.querySelectorAll('.backdrop-photo')).forEach(function (el) { photos[el.dataset.bg] = el; });
+    if ('IntersectionObserver' in window) {
+      var bgio = new IntersectionObserver(function (entries) {
+        entries.forEach(function (e) {
+          if (!e.isIntersecting) return;
+          var key = e.target.dataset.backdrop;
+          Object.keys(photos).forEach(function (k) { photos[k].classList.toggle('is-on', k === key); });
+        });
+      }, { rootMargin: '-45% 0px -45% 0px' });
+      [].slice.call(document.querySelectorAll('[data-backdrop]')).forEach(function (el) { bgio.observe(el); });
     }
 
     // copy buttons
