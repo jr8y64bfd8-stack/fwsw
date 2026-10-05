@@ -32,7 +32,8 @@ A one-person precision shop doing micro-TIG repair under a stereo microscope: to
 - Parts arrive by customer drop-off locally; the owner also works on-site / mobile at customer shops. Ship-in is not offered (not confirmed).
 - Contact: phone 260-515-3263; email sales@fwspecialtyweld.com.
 - Service area for on-site work: Fort Wayne and surrounding area, tentatively up to 25 miles.
-- Hours: 7am–5pm (days of the week not yet specified).
+- Hours: 7am–5pm; weekends also available.
+- Address: not published. Site shows "Fort Wayne, IN" and asks customers to call to arrange drop-off.
 
 ## Capabilities and Constraints
 
@@ -40,7 +41,6 @@ A one-person precision shop doing micro-TIG repair under a stereo microscope: to
 - Work types shown in the portfolio: tool steel build-up and mold/die repair, stainless and exotics, aluminum, production runs, shaft/gear repair and build-up, welding fixtures.
 - Fast / rush turnaround available.
 - Solo operation: no team, no front desk.
-- Open (not yet provided): days of the week for business hours; whether to publish a shop address.
 
 ## Brand Commitments
 
