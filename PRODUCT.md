@@ -52,7 +52,7 @@ A one-person precision shop doing micro-TIG repair under a stereo microscope: to
 - Phone: 260-515-3263. Email: sales@fwspecialtyweld.com.
 - Experience: 25 years.
 - Visual direction: the owner chose a conventional, standard industrial welding-shop site (photo-led hero, services, gallery, process, contact) over more unusual concepts. Keep it straightforward and polished.
-- Signature element: the two-sided 3D logo medallion that turns behind the page on scroll, at medium strength (about 28% opacity), each face fading as it turns away.
+- Signature element: the two-sided 3D logo medallion that turns behind the page on scroll, at bold strength (about 60% opacity; owner changed it from medium), each face fading as it turns away.
 
 ## Evidence on Hand
 
