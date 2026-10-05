@@ -30,7 +30,9 @@ A one-person precision shop doing micro-TIG repair under a stereo microscope: to
 
 - Customers evaluate the shop by looking at weld quality in photos, then send drawings or photos of their part.
 - Parts arrive by customer drop-off locally; the owner also works on-site / mobile at customer shops. Ship-in is not offered (not confirmed).
-- Primary contact today: sales@fwspecialtyweld.com.
+- Contact: phone 260-515-3263; email sales@fwspecialtyweld.com.
+- Service area for on-site work: Fort Wayne and surrounding area, tentatively up to 25 miles.
+- Hours: 7am–5pm (days of the week not yet specified).
 
 ## Capabilities and Constraints
 
@@ -38,19 +40,20 @@ A one-person precision shop doing micro-TIG repair under a stereo microscope: to
 - Work types shown in the portfolio: tool steel build-up and mold/die repair, stainless and exotics, aluminum, production runs, shaft/gear repair and build-up, welding fixtures.
 - Fast / rush turnaround available.
 - Solo operation: no team, no front desk.
-- Open (not yet provided): phone number, shop address or service radius for on-site work, business hours.
+- Open (not yet provided): days of the week for business hours; whether to publish a shop address.
 
 ## Brand Commitments
 
 - Name: Fort Wayne Specialty Welding (legal: Fort Wayne Specialty Welding & Co., LLC; no DBA).
 - Certifications: AWS D17.1 and D1.6.
-- Email: sales@fwspecialtyweld.com.
+- Phone: 260-515-3263. Email: sales@fwspecialtyweld.com.
+- Experience: 25 years.
 
 ## Evidence on Hand
 
 - About 40 real portfolio photos with alt text and captions in `public/images/portfolio/<category>/` with a `manifest.json` per category: tool-steels, stainless-exotics, aluminum, production-runs, repair-buildup, fixtures.
-- Customer testimonials exist but the text has not been provided yet. Do not write or paraphrase any quotes until the owner supplies them.
-- Years of experience: owner is comfortable stating a number, but it has not been provided yet. Do not invent one.
+- Customer testimonials: owner is still collecting them; to be added later. Do not write or paraphrase any quotes until the owner supplies them, and design so the site works without them.
+- Years of experience: 25 (confirmed by owner).
 - No named clients, no pricing. Do not fabricate customers, logos, industries served, stats, or prices.
 
 ## Product Principles
