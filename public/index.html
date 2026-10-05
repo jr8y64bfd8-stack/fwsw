@@ -153,9 +153,11 @@
     .service-list li { display: grid; grid-template-columns: 88px minmax(0, 1fr); gap: 20px; align-items: start; padding: 26px 0; border-top: 1px solid var(--rule); }
     .service-list img { width: 88px; height: 88px; object-fit: cover; border-radius: 3px; }
     .service-list h3 { margin-bottom: 6px; }
+    .svc-icon { width: 88px; height: 88px; border-radius: 3px; display: grid; place-items: center; background: rgba(201,180,138,0.12); color: var(--tan); box-shadow: inset 0 0 0 1px rgba(201,180,138,0.4); }
+    .svc-icon svg { width: 44px; height: 44px; }
     .service-list p { color: var(--ink-soft); font-size: 1.05rem; }
     @media (max-width: 860px) { .service-list { grid-template-columns: 1fr; } }
-    @media (max-width: 420px) { .service-list li { grid-template-columns: 64px minmax(0, 1fr); gap: 16px; } .service-list img { width: 64px; height: 64px; } }
+    @media (max-width: 420px) { .service-list li { grid-template-columns: 64px minmax(0, 1fr); gap: 16px; } .service-list img, .svc-icon { width: 64px; height: 64px; } .svc-icon svg { width: 34px; height: 34px; } }
 
     /* ---------- work gallery ---------- */
     .work { background: var(--navy-deep); color: var(--on-navy); }
@@ -219,6 +221,17 @@
     .checks li { display: flex; gap: 12px; align-items: baseline; }
     .checks svg { width: 18px; height: 18px; color: var(--green); flex: none; translate: 0 3px; }
     @media (max-width: 860px) { .about { grid-template-columns: 1fr; } .about-photo img { aspect-ratio: 16 / 10; } }
+    .certs { margin-top: clamp(56px, 8vw, 96px); display: grid; grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.6fr); gap: 24px clamp(32px, 6vw, 80px); align-items: start; }
+    .certs-head { display: grid; gap: 8px; }
+    .certs-head p { color: var(--on-navy-soft); }
+    .certs-head h3 { font-size: clamp(1.6rem, 2.6vw, 2.1rem); }
+    .table-scroll { overflow-x: auto; min-width: 0; }
+    .certs table { width: 100%; border-collapse: collapse; font-variant-numeric: tabular-nums; font-size: 1.05rem; }
+    .certs th { text-align: left; font-family: var(--display); font-stretch: 90%; font-weight: 680; font-size: 0.95rem; color: var(--tan); padding: 0 16px 10px 0; border-bottom: 2px solid var(--tan); white-space: nowrap; }
+    .certs td { padding: 12px 16px 12px 0; border-bottom: 1px solid rgba(255,255,255,0.14); color: var(--on-navy); white-space: nowrap; }
+    .certs td:nth-child(2) { font-family: var(--display); font-stretch: 90%; font-weight: 720; color: #fff; }
+    @media (max-width: 860px) { .certs { grid-template-columns: 1fr; } }
+    @media (max-width: 420px) { .certs table { font-size: 0.98rem; } .certs th, .certs td { padding-right: 12px; } }
 
     /* ---------- quote / contact ---------- */
     .quote { background: var(--navy); color: var(--on-navy); }
@@ -394,6 +407,14 @@
           <li class="reveal">
             <img src="images/portfolio/production-runs/thumbs/tig-welded-tube-mounts-on-positioner.jpg" alt="" loading="lazy" width="88" height="88">
             <div><h3>On-site &amp; mobile</h3><p>Repairs at your shop in Fort Wayne and the surrounding area, about 25 miles out. Call to talk through the job.</p></div>
+          </li>
+          <li class="reveal">
+            <span class="svc-icon" aria-hidden="true"><svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 30h22M6 36h22"/><path d="M28 27v12"/><path d="M28 33h6l8-8"/><path d="M36 15c0 3-2 4-2 6s1 3 2 3 2-1 2-3-2-3-2-6z"/></svg></span>
+            <div><h3>Silver soldering</h3><p>Silver-soldered joints on copper, brass and assemblies where a weld isn't the right fit.</p></div>
+          </li>
+          <li class="reveal">
+            <span class="svc-icon" aria-hidden="true"><svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="7" y="12" width="34" height="24" rx="3"/><circle cx="16" cy="24" r="4"/><circle cx="32" cy="24" r="4"/><path d="M24 12l-3 6 4 4-3 5 2 9"/></svg></span>
+            <div><h3>Cast iron repair</h3><p>Cracked and broken cast iron parts, housings and castings repaired so they can go back in service.</p></div>
           </li>
         </ul>
       </div>
@@ -588,6 +609,24 @@
             <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>TIG, micro-TIG and MIG</li>
             <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Rush work and weekends available</li>
           </ul>
+        </div>
+      </div>
+      <div class="wrap certs reveal">
+        <div class="certs-head">
+          <h3>AWS certifications</h3>
+          <p>Welder qualifications by code, base material and position.</p>
+        </div>
+        <div class="table-scroll">
+          <table>
+            <thead><tr><th scope="col">Process</th><th scope="col">AWS code</th><th scope="col">Base material</th><th scope="col">Position</th></tr></thead>
+            <tbody>
+              <tr><td>GTAW (TIG)</td><td>D1.6</td><td>304 stainless</td><td>2F</td></tr>
+              <tr><td>GTAW (TIG)</td><td>D17.1</td><td>17-4 stainless</td><td>2F</td></tr>
+              <tr><td>GTAW (TIG)</td><td>D17.1</td><td>420 stainless</td><td>2F</td></tr>
+              <tr><td>GTAW (TIG)</td><td>D17.1</td><td>455 stainless</td><td>2F</td></tr>
+              <tr><td>GTAW (TIG)</td><td>D17.1</td><td>316L stainless</td><td>2F</td></tr>
+            </tbody>
+          </table>
         </div>
       </div>
     </section>
