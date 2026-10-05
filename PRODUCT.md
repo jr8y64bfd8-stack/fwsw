@@ -45,6 +45,8 @@ A one-person precision shop doing micro-TIG repair under a stereo microscope: to
 ## Brand Commitments
 
 - Name: Fort Wayne Specialty Welding (legal: Fort Wayne Specialty Welding & Co., LLC; no DBA).
+- Colors: keep the existing navy, forest green, and tan (owner confirmed these carry over from the placeholder).
+- Must not feel generic (stock sparks-and-flames welding look) or corporate (pretending to be a big company).
 - Certifications: AWS D17.1 and D1.6.
 - Phone: 260-515-3263. Email: sales@fwspecialtyweld.com.
 - Experience: 25 years.

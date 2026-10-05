@@ -1,0 +1,371 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-10-05T01:45:10+00:00",
+  "title": "Design System: Fort Wayne Specialty Welding",
+  "extensions": {
+    "colorMeta": {
+      "navy": {
+        "role": "neutral",
+        "displayName": "Blueprint Navy",
+        "canonical": "oklch(28.6% 0.052 262.1)",
+        "tonalRamp": [
+          "#020920",
+          "#16233d",
+          "#31405b",
+          "#4e5e7b",
+          "#6d7e9d",
+          "#8d9fbf",
+          "#b2c5e6",
+          "#dcefff"
+        ]
+      },
+      "navy-deep": {
+        "role": "neutral",
+        "displayName": "Deep Navy",
+        "canonical": "oklch(24.1% 0.045 263.2)",
+        "tonalRamp": [
+          "#030a1e",
+          "#18243a",
+          "#334058",
+          "#505e78",
+          "#6f7e99",
+          "#909fbb",
+          "#b5c5e2",
+          "#dfefff"
+        ]
+      },
+      "navy-lift": {
+        "role": "neutral",
+        "displayName": "Navy, Lifted",
+        "canonical": "oklch(33.6% 0.068 263.1)",
+        "tonalRamp": [
+          "#010727",
+          "#122245",
+          "#2c3f64",
+          "#495d84",
+          "#687da6",
+          "#889fc9",
+          "#adc5f1",
+          "#d7efff"
+        ]
+      },
+      "tan": {
+        "role": "secondary",
+        "displayName": "Drafting Tan",
+        "canonical": "oklch(82.9% 0.054 81.1)",
+        "tonalRamp": [
+          "#160700",
+          "#312100",
+          "#4e3d1c",
+          "#6d5b3a",
+          "#8e7a59",
+          "#b09b79",
+          "#d6c19d",
+          "#ffecc7"
+        ]
+      },
+      "tan-dim": {
+        "role": "secondary",
+        "displayName": "Tan Line, Dim",
+        "canonical": "rgba(217,196,160,.55)",
+        "tonalRamp": [
+          "rgba(217,196,160,.08)",
+          "rgba(217,196,160,.15)",
+          "rgba(217,196,160,.22)",
+          "rgba(217,196,160,.32)",
+          "rgba(217,196,160,.42)",
+          "rgba(217,196,160,.55)",
+          "rgba(217,196,160,.7)",
+          "rgba(217,196,160,.85)"
+        ]
+      },
+      "tan-faint": {
+        "role": "secondary",
+        "displayName": "Tan Line, Faint",
+        "canonical": "rgba(217,196,160,.22)",
+        "tonalRamp": [
+          "rgba(217,196,160,.08)",
+          "rgba(217,196,160,.15)",
+          "rgba(217,196,160,.22)",
+          "rgba(217,196,160,.32)",
+          "rgba(217,196,160,.42)",
+          "rgba(217,196,160,.55)",
+          "rgba(217,196,160,.7)",
+          "rgba(217,196,160,.85)"
+        ]
+      },
+      "paper": {
+        "role": "neutral",
+        "displayName": "Paper",
+        "canonical": "oklch(95.4% 0.013 82.4)",
+        "tonalRamp": [
+          "#0e0b06",
+          "#27241d",
+          "#433f38",
+          "#615d55",
+          "#817d75",
+          "#a29e95",
+          "#c8c3bb",
+          "#f3eee5"
+        ]
+      },
+      "ink": {
+        "role": "neutral",
+        "displayName": "Ink",
+        "canonical": "oklch(90.0% 0.025 83.4)",
+        "tonalRamp": [
+          "#100a02",
+          "#2a2316",
+          "#463f31",
+          "#645d4e",
+          "#847c6d",
+          "#a69d8d",
+          "#ccc3b2",
+          "#f7eddc"
+        ]
+      },
+      "green": {
+        "role": "primary",
+        "displayName": "Shop Green",
+        "canonical": "oklch(43.8% 0.065 159.3)",
+        "tonalRamp": [
+          "#001203",
+          "#002d18",
+          "#1b4a33",
+          "#3b6950",
+          "#5b896f",
+          "#7bab90",
+          "#a0d2b5",
+          "#cafddf"
+        ]
+      },
+      "green-hover": {
+        "role": "primary",
+        "displayName": "Shop Green, Worked",
+        "canonical": "oklch(48.3% 0.072 159.4)",
+        "tonalRamp": [
+          "#001302",
+          "#002e17",
+          "#154b32",
+          "#366a4f",
+          "#568b6e",
+          "#77ad8f",
+          "#9cd3b4",
+          "#c6fede"
+        ]
+      },
+      "green-line": {
+        "role": "primary",
+        "displayName": "Callout Green",
+        "canonical": "oklch(76.3% 0.080 158.2)",
+        "tonalRamp": [
+          "#001301",
+          "#002f14",
+          "#0b4c2f",
+          "#316b4c",
+          "#518c6b",
+          "#73ae8c",
+          "#98d4b1",
+          "#c2ffda"
+        ]
+      }
+    },
+    "typographyMeta": {
+      "display": {
+        "displayName": "Display",
+        "purpose": "The single hero H1, uppercase."
+      },
+      "headline": {
+        "displayName": "Headline",
+        "purpose": "Sheet titles."
+      },
+      "title": {
+        "displayName": "Title",
+        "purpose": "Numbered note headings and rev-block step names."
+      },
+      "body": {
+        "displayName": "Body",
+        "purpose": "Running prose, max 62ch."
+      },
+      "lede": {
+        "displayName": "Lede",
+        "purpose": "Paragraph under each sheet title."
+      },
+      "label": {
+        "displayName": "Label",
+        "purpose": "Nav, chips, view labels, captions, fact terms."
+      },
+      "label-cell": {
+        "displayName": "Cell label",
+        "purpose": "Field name inside a title-block or cert cell only."
+      },
+      "value-cell": {
+        "displayName": "Cell value",
+        "purpose": "Value under a cell label; button label face."
+      }
+    },
+    "shadows": [],
+    "motion": [
+      {
+        "name": "ease-house",
+        "value": "cubic-bezier(.16,1,.3,1)",
+        "purpose": "All state transitions and the leader-line entrance."
+      },
+      {
+        "name": "state",
+        "value": "0.2s",
+        "purpose": "Button, chip and thumbnail border/background transitions."
+      },
+      {
+        "name": "leader-draw",
+        "value": "stroke-dashoffset 1.1s, stagger 0.15s",
+        "purpose": "Hero leader lines draw on once; static under reduced motion."
+      },
+      {
+        "name": "callout-settle",
+        "value": "opacity/translateY(4px)/blur(3px) 0.6s, from 0.7s, stagger 0.15s",
+        "purpose": "Hero callouts settle after the lines."
+      }
+    ],
+    "breakpoints": [
+      {
+        "name": "stack",
+        "value": "1080px"
+      },
+      {
+        "name": "nav-collapse",
+        "value": "820px"
+      },
+      {
+        "name": "phone",
+        "value": "640px"
+      }
+    ]
+  },
+  "components": [
+    {
+      "name": "Primary Button",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "The one green action: send drawings or photos.",
+      "html": "<a class=\"ds-btn\" href=\"#\"><svg width=\"18\" height=\"18\" viewBox=\"0 0 18 18\" aria-hidden=\"true\"><path d=\"M3 15 V3 h8 l4 4 v8 z M11 3 v4 h4\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.6\"/></svg>Send drawings or photos</a>",
+      "css": ":host,:root{--navy:#1c2a44;--navy-deep:#141f35;--navy-lift:#24365a;--tan:#d9c4a0;--tan-dim:rgba(217,196,160,.55);--tan-faint:rgba(217,196,160,.22);--paper:#f4efe6;--ink:#e6ddcc;--green:#2f5d45;--green-hover:#376b50;--green-line:#86c29f;--cond:'Barlow Condensed','Arial Narrow',sans-serif;--body:Barlow,system-ui,sans-serif;--ease:cubic-bezier(.16,1,.3,1)} .ds-btn{display:inline-flex;align-items:center;gap:10px;background:var(--green);color:#fff;font:600 1.05rem/1 var(--cond);letter-spacing:.08em;text-transform:uppercase;text-decoration:none;padding:14px 20px;border:1px solid rgba(255,255,255,.22);border-radius:0;cursor:pointer;transition:background .2s var(--ease),transform .2s var(--ease)} .ds-btn:hover{background:var(--green-hover)} .ds-btn:active{transform:translateY(1px)} .ds-btn:focus-visible{outline:2px solid var(--tan);outline-offset:3px}"
+    },
+    {
+      "name": "Ghost Button",
+      "kind": "button",
+      "refersTo": "button-ghost",
+      "description": "Secondary action beside the primary, usually the phone.",
+      "html": "<a class=\"ds-btn ds-ghost\" href=\"#\"><svg width=\"18\" height=\"18\" viewBox=\"0 0 18 18\" aria-hidden=\"true\"><path d=\"M4 2 h3 l1.5 4 -2 1.5 a9 9 0 0 0 4 4 l1.5 -2 4 1.5 v3 a2 2 0 0 1 -2 2 A13 13 0 0 1 2 4 a2 2 0 0 1 2 -2 z\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.5\"/></svg>260-515-3263</a>",
+      "css": ":host,:root{--navy:#1c2a44;--navy-deep:#141f35;--navy-lift:#24365a;--tan:#d9c4a0;--tan-dim:rgba(217,196,160,.55);--tan-faint:rgba(217,196,160,.22);--paper:#f4efe6;--ink:#e6ddcc;--green:#2f5d45;--green-hover:#376b50;--green-line:#86c29f;--cond:'Barlow Condensed','Arial Narrow',sans-serif;--body:Barlow,system-ui,sans-serif;--ease:cubic-bezier(.16,1,.3,1)} .ds-btn{display:inline-flex;align-items:center;gap:10px;background:var(--green);color:#fff;font:600 1.05rem/1 var(--cond);letter-spacing:.08em;text-transform:uppercase;text-decoration:none;padding:14px 20px;border:1px solid rgba(255,255,255,.22);border-radius:0;cursor:pointer;transition:background .2s var(--ease),transform .2s var(--ease)} .ds-btn:hover{background:var(--green-hover)} .ds-btn:active{transform:translateY(1px)} .ds-btn:focus-visible{outline:2px solid var(--tan);outline-offset:3px} .ds-ghost{background:transparent;border-color:var(--tan-dim);color:var(--paper)} .ds-ghost:hover{background:var(--navy-lift)}"
+    },
+    {
+      "name": "Filter Chips",
+      "kind": "chip",
+      "refersTo": "filter-chip",
+      "description": "Square toggles for filtering detail views; pressed fills tan.",
+      "html": "<div class=\"ds-chips\"><button class=\"ds-chip\" aria-pressed=\"true\">All</button><button class=\"ds-chip\" aria-pressed=\"false\"><b>A</b>Tool steel</button><button class=\"ds-chip\" aria-pressed=\"false\"><b>B</b>Stainless</button></div>",
+      "css": ":host,:root{--navy:#1c2a44;--navy-deep:#141f35;--navy-lift:#24365a;--tan:#d9c4a0;--tan-dim:rgba(217,196,160,.55);--tan-faint:rgba(217,196,160,.22);--paper:#f4efe6;--ink:#e6ddcc;--green:#2f5d45;--green-hover:#376b50;--green-line:#86c29f;--cond:'Barlow Condensed','Arial Narrow',sans-serif;--body:Barlow,system-ui,sans-serif;--ease:cubic-bezier(.16,1,.3,1)} .ds-chips{display:flex;flex-wrap:wrap;gap:6px;background:var(--navy);padding:16px} .ds-chip{appearance:none;background:transparent;color:var(--tan);border:1px solid var(--tan-faint);border-radius:0;font:500 .95rem/1 var(--cond);letter-spacing:.08em;text-transform:uppercase;padding:10px 12px;cursor:pointer;transition:background .2s var(--ease),color .2s var(--ease),border-color .2s var(--ease)} .ds-chip:hover{color:var(--paper);border-color:var(--tan-dim)} .ds-chip:focus-visible{outline:2px solid var(--tan);outline-offset:3px} .ds-chip[aria-pressed=true]{background:var(--tan);color:var(--navy);border-color:var(--tan)} .ds-chip b{font-weight:600;margin-right:6px}"
+    },
+    {
+      "name": "Sheet Index (Nav)",
+      "kind": "nav",
+      "refersTo": "nav-link",
+      "description": "Sticky top bar: mark, section links, phone, small primary button.",
+      "html": "<header class=\"ds-nav\"><a class=\"ds-mark\" href=\"#\"><svg width=\"34\" height=\"22\" viewBox=\"0 0 34 22\" aria-hidden=\"true\"><path d=\"M1 21 L7 1 L13 21 M19 21 L23 9 L27 21 L33 1\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linejoin=\"miter\"/></svg>Fort Wayne Specialty Welding</a><nav><a href=\"#\">Capabilities</a><a href=\"#\">Work</a><a href=\"#\">The shop</a></nav><a class=\"ds-tel\" href=\"#\">260-515-3263</a><a class=\"ds-btn ds-sm\" href=\"#\">Send drawings</a></header>",
+      "css": ":host,:root{--navy:#1c2a44;--navy-deep:#141f35;--navy-lift:#24365a;--tan:#d9c4a0;--tan-dim:rgba(217,196,160,.55);--tan-faint:rgba(217,196,160,.22);--paper:#f4efe6;--ink:#e6ddcc;--green:#2f5d45;--green-hover:#376b50;--green-line:#86c29f;--cond:'Barlow Condensed','Arial Narrow',sans-serif;--body:Barlow,system-ui,sans-serif;--ease:cubic-bezier(.16,1,.3,1)} .ds-btn{display:inline-flex;align-items:center;gap:10px;background:var(--green);color:#fff;font:600 1.05rem/1 var(--cond);letter-spacing:.08em;text-transform:uppercase;text-decoration:none;padding:14px 20px;border:1px solid rgba(255,255,255,.22);border-radius:0;cursor:pointer;transition:background .2s var(--ease),transform .2s var(--ease)} .ds-btn:hover{background:var(--green-hover)} .ds-btn:active{transform:translateY(1px)} .ds-btn:focus-visible{outline:2px solid var(--tan);outline-offset:3px} .ds-nav{display:flex;align-items:center;gap:20px;padding:10px 16px;background:rgba(20,31,53,.94);border-bottom:1px solid var(--tan-faint)} .ds-mark{display:flex;align-items:center;gap:10px;color:var(--paper);text-decoration:none;font:600 1.05rem/1 var(--cond);letter-spacing:.08em;text-transform:uppercase;white-space:nowrap} .ds-nav nav{display:flex;gap:4px;margin-left:auto} .ds-nav nav a{font:500 .95rem/1 var(--cond);letter-spacing:.08em;text-transform:uppercase;color:var(--tan);text-decoration:none;padding:9px 10px;border:1px solid transparent} .ds-nav nav a:hover{color:var(--paper);border-color:var(--tan-faint)} .ds-nav a:focus-visible{outline:2px solid var(--tan);outline-offset:3px} .ds-tel{font:600 1rem/1 var(--cond);letter-spacing:.06em;color:var(--paper);text-decoration:none} .ds-sm{padding:10px 14px;font-size:.95rem}"
+    },
+    {
+      "name": "Title Block",
+      "kind": "card",
+      "refersTo": "title-block-cell",
+      "description": "Signature fact grid: ruled cells of label over value, with the action cell.",
+      "html": "<div class=\"ds-tb\"><div><small>Location</small><strong>Fort Wayne, IN</strong></div><div><small>Dwg no.</small><strong>FWSW-001</strong></div><div><small>Rev</small><strong>A</strong></div><div><small>Process</small><strong>TIG · Micro-TIG · MIG</strong></div><div><small>Certified</small><strong>AWS D17.1 · D1.6</strong></div><div><small>Experience</small><strong>25 years</strong></div><div class=\"ds-act\"><a class=\"ds-btn\" href=\"#\"><svg width=\"18\" height=\"18\" viewBox=\"0 0 18 18\" aria-hidden=\"true\"><path d=\"M3 15 V3 h8 l4 4 v8 z M11 3 v4 h4\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.6\"/></svg>Send drawings or photos</a><div class=\"ds-row\"><a href=\"#\">260-515-3263</a><span>Sheet 1 of 5</span></div></div></div>",
+      "css": ":host,:root{--navy:#1c2a44;--navy-deep:#141f35;--navy-lift:#24365a;--tan:#d9c4a0;--tan-dim:rgba(217,196,160,.55);--tan-faint:rgba(217,196,160,.22);--paper:#f4efe6;--ink:#e6ddcc;--green:#2f5d45;--green-hover:#376b50;--green-line:#86c29f;--cond:'Barlow Condensed','Arial Narrow',sans-serif;--body:Barlow,system-ui,sans-serif;--ease:cubic-bezier(.16,1,.3,1)} .ds-btn{display:inline-flex;align-items:center;gap:10px;background:var(--green);color:#fff;font:600 1.05rem/1 var(--cond);letter-spacing:.08em;text-transform:uppercase;text-decoration:none;padding:14px 20px;border:1px solid rgba(255,255,255,.22);border-radius:0;cursor:pointer;transition:background .2s var(--ease),transform .2s var(--ease)} .ds-btn:hover{background:var(--green-hover)} .ds-btn:active{transform:translateY(1px)} .ds-btn:focus-visible{outline:2px solid var(--tan);outline-offset:3px} .ds-tb{display:grid;grid-template-columns:repeat(3,auto);border:2px solid var(--tan-dim);background:var(--navy);font-family:var(--cond);text-transform:uppercase;max-width:520px} .ds-tb>div{border:1px solid var(--tan-faint);padding:7px 12px 9px} .ds-tb small{display:block;font:500 .66rem/1 var(--cond);letter-spacing:.14em;color:var(--tan);margin-bottom:6px} .ds-tb strong{display:block;font:600 1.05rem/1.15 var(--cond);letter-spacing:.05em;color:var(--paper)} .ds-act{grid-column:1/-1;padding:12px!important;background:var(--navy-deep)} .ds-act .ds-btn{width:100%;justify-content:center;box-sizing:border-box} .ds-row{display:flex;justify-content:space-between;align-items:baseline;margin-top:10px} .ds-row a{font:600 1.35rem/1 var(--cond);letter-spacing:.05em;color:var(--paper);text-decoration:none} .ds-row a:hover{color:var(--tan)} .ds-row span{font:500 .8rem/1 var(--cond);letter-spacing:.1em;color:var(--tan)}"
+    },
+    {
+      "name": "View Frame with Callouts",
+      "kind": "custom",
+      "refersTo": "view-frame",
+      "description": "Photo in a ruled frame with green leader lines, callouts and a drawing-view label.",
+      "html": "<figure class=\"ds-vf\"><div class=\"ds-pv\"><div class=\"ds-ph\"></div><svg viewBox=\"0 0 100 60\" preserveAspectRatio=\"none\" aria-hidden=\"true\"><path d=\"M14 9 L18 9 L30 30\" /><circle cx=\"30\" cy=\"30\" r=\".9\"/></svg><span class=\"ds-call\">Multi-pass TIG build-up</span></div><figcaption><span><b>Part view</b>&nbsp; Tool steel build-up</span><span>Scale: NTS</span></figcaption></figure>",
+      "css": ":host,:root{--navy:#1c2a44;--navy-deep:#141f35;--navy-lift:#24365a;--tan:#d9c4a0;--tan-dim:rgba(217,196,160,.55);--tan-faint:rgba(217,196,160,.22);--paper:#f4efe6;--ink:#e6ddcc;--green:#2f5d45;--green-hover:#376b50;--green-line:#86c29f;--cond:'Barlow Condensed','Arial Narrow',sans-serif;--body:Barlow,system-ui,sans-serif;--ease:cubic-bezier(.16,1,.3,1)} .ds-vf{margin:0;padding:16px;background:var(--navy);max-width:520px} .ds-pv{position:relative;border:1px solid var(--tan-dim);background:var(--navy-deep)} .ds-ph{aspect-ratio:5/3;background:linear-gradient(135deg,#3a3f47,#6b6f75 55%,#2b2f36)} .ds-pv svg{position:absolute;inset:0;width:100%;height:100%} .ds-pv path{stroke:var(--green-line);stroke-width:1.6;fill:none;vector-effect:non-scaling-stroke} .ds-pv circle{fill:var(--green-line)} .ds-call{position:absolute;left:3%;top:6%;font:600 .9rem/1.15 var(--cond);letter-spacing:.08em;text-transform:uppercase;color:var(--paper);background:rgba(20,31,53,.9);border:1px solid var(--green-line);padding:6px 9px} .ds-vf figcaption{display:flex;justify-content:space-between;gap:16px;margin-top:12px;font:500 .95rem/1.3 var(--cond);letter-spacing:.08em;text-transform:uppercase;color:var(--tan)} .ds-vf b{color:var(--paper);font-weight:600;text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:.3em}"
+    },
+    {
+      "name": "Revision Block",
+      "kind": "custom",
+      "description": "Process steps as a drawing revision table.",
+      "html": "<table class=\"ds-rev\"><thead><tr><th>Rev</th><th>Description</th></tr></thead><tbody><tr><td>A</td><td><strong>Send drawings or photos</strong><p>By email, or call and talk it through.</p></td></tr><tr><td>B</td><td><strong>Get a quote</strong><p>Repair, material and deadline talked through first.</p></td></tr></tbody></table>",
+      "css": ":host,:root{--navy:#1c2a44;--navy-deep:#141f35;--navy-lift:#24365a;--tan:#d9c4a0;--tan-dim:rgba(217,196,160,.55);--tan-faint:rgba(217,196,160,.22);--paper:#f4efe6;--ink:#e6ddcc;--green:#2f5d45;--green-hover:#376b50;--green-line:#86c29f;--cond:'Barlow Condensed','Arial Narrow',sans-serif;--body:Barlow,system-ui,sans-serif;--ease:cubic-bezier(.16,1,.3,1)} .ds-rev{border-collapse:collapse;border:2px solid var(--tan-dim);background:var(--navy);color:var(--ink);font:400 1rem/1.6 var(--body);max-width:520px} .ds-rev th,.ds-rev td{border:1px solid var(--tan-faint);padding:14px 16px;text-align:left;vertical-align:top} .ds-rev thead th{font:500 .72rem/1 var(--cond);letter-spacing:.14em;color:var(--tan);background:var(--navy-deep);text-transform:uppercase;padding:9px 16px} .ds-rev td:first-child{font:600 1.5rem/1 var(--cond);color:var(--tan);width:4.2rem;text-align:center} .ds-rev strong{display:block;font:600 1.2rem/1.15 var(--cond);letter-spacing:.04em;text-transform:uppercase;color:var(--paper);margin-bottom:4px} .ds-rev p{margin:0}"
+    },
+    {
+      "name": "General Notes",
+      "kind": "custom",
+      "description": "Numbered capability notes, ruled like drawing notes.",
+      "html": "<ol class=\"ds-notes\"><li><h3>Tool steel build-up for mold and die repair</h3><p>Built up in multiple passes and left proud for re-machining.</p></li><li><h3>Micro-TIG under a stereo microscope</h3><p>Fine edges and small features welded under magnification.</p></li></ol>",
+      "css": ":host,:root{--navy:#1c2a44;--navy-deep:#141f35;--navy-lift:#24365a;--tan:#d9c4a0;--tan-dim:rgba(217,196,160,.55);--tan-faint:rgba(217,196,160,.22);--paper:#f4efe6;--ink:#e6ddcc;--green:#2f5d45;--green-hover:#376b50;--green-line:#86c29f;--cond:'Barlow Condensed','Arial Narrow',sans-serif;--body:Barlow,system-ui,sans-serif;--ease:cubic-bezier(.16,1,.3,1)} .ds-notes{list-style:none;margin:0;padding:0 16px;background:var(--navy);counter-reset:n;border-top:1px solid var(--tan-faint);max-width:560px} .ds-notes li{counter-increment:n;display:grid;grid-template-columns:3.2rem 1fr;gap:4px 12px;padding:18px 0 20px;border-bottom:1px solid var(--tan-faint)} .ds-notes li::before{content:counter(n) '.';font:600 1.5rem/1 var(--cond);color:var(--tan);grid-row:span 2;padding-top:2px} .ds-notes h3{margin:0;font:600 1.45rem/1.05 var(--cond);letter-spacing:.03em;text-transform:uppercase;color:var(--paper)} .ds-notes p{margin:0;color:var(--ink);font:400 1.0625rem/1.6 var(--body)}"
+    }
+  ],
+  "narrative": {
+    "northStar": "The Shop Print",
+    "overview": "**Creative North Star: \"The Shop Print\"**\n\nThe site is an engineering drawing sheet, read the way a machinist reads the prints they send in. Every section is a sheet: a faint outer border, a heavier inner frame, zone ticks (8 to 1 across the top, D to A down the side), a sheet number at bottom-right. Inside, content is organised the way a print is: a part view with leader-line callouts, general notes, detail views, a revision block, and a title block that carries the name, phone, certifications and the action.\n\nThe ground is blueprint navy; everything drawn on it is single-stroke tan linework and condensed drafting capitals. Ornament is limited to what a print actually carries: AWS weld symbols, leader lines with terminal dots, ruled cells. Real photographs of finished welds sit inside thin-ruled view frames labeled like drawing views (\"Part view\", \"Detail\", \"Scale: NTS\"). Forest green appears only where something is live: the primary action, and the leader lines and callouts that point at the work.\n\nDensity is moderate and sheet-bound: generous frame padding, tight ruled cells inside. Nothing is rounded, nothing floats on a shadow. The world refuses the welding-category default of a dark sparks-and-flames hero over three service cards, and refuses corporate polish; it should read as one skilled specialist's own print.",
+    "keyCharacteristics": [
+      "Blueprint navy ground, tan hairline and 2px linework, no shadows.",
+      "Barlow Condensed uppercase for every heading, label and value; Barlow for running prose.",
+      "Sheet frames with zone ticks and a sheet number on every major section.",
+      "Title-block grids of labeled cells for facts (location, process, certs, phone).",
+      "Green reserved for the primary action and for leader lines and callouts on photos.",
+      "Square corners everywhere."
+    ],
+    "rules": [
+      {
+        "name": "The One Signal Rule",
+        "body": "Green means \"act here\" or \"look here\". It fills only the primary action and draws only the leader lines and callouts on the work. Never use it for headings, borders, section fills or decoration.",
+        "section": "colors"
+      },
+      {
+        "name": "The Pinned Three Rule",
+        "body": "Navy `#1c2a44`, green `#2f5d45` and tan `#d9c4a0` are owner-pinned brand colors. Derive tints and states from them; do not replace or re-hue them.",
+        "section": "colors"
+      },
+      {
+        "name": "The Line Is Not Text Rule",
+        "body": "`tan-dim` and `tan-faint` are line colors. Text that must be read is set in `tan`, `ink` or `paper`.",
+        "section": "colors"
+      },
+      {
+        "name": "The Drafting Capitals Rule",
+        "body": "Anything that labels, names or counts is Barlow Condensed uppercase with positive tracking (0.04em to 0.14em; smaller sizes get more). Running sentences are Barlow in sentence case. Never set prose in condensed capitals.",
+        "section": "typography"
+      },
+      {
+        "name": "The Cell Pair Rule",
+        "body": "A fact is shown as a cell: small tracked label above, condensed value below. That pair is the system's only \"small text over big text\" device, and it lives only inside ruled cells, never floating above a heading.",
+        "section": "typography"
+      },
+      {
+        "name": "The Drawn Depth Rule",
+        "body": "Hierarchy comes from line weight and ruled containment, never from shadow or glow. If something needs to stand forward, give it a heavier rule or a `navy-deep` inset.",
+        "section": "elevation"
+      }
+    ],
+    "dos": [
+      "**Do** put every major section on a sheet: faint outer border, 2px `tan-dim` frame, zone ticks, sheet number at bottom-right.",
+      "**Do** show facts as title-block cells: small tracked label over a condensed value, inside shared ruled borders.",
+      "**Do** present the work as real photos in view frames with drawing-view labels, and annotate a hero photo with `green-line` leader lines, dots and callouts rather than overlaid marketing copy.",
+      "**Do** use AWS weld symbols and leader lines as the only ornament.",
+      "**Do** keep green to the primary action and to live callouts (The One Signal Rule).",
+      "**Do** set readable text in `tan`, `ink` or `paper`; keep `tan-dim` and `tan-faint` for lines.",
+      "**Do** make leader-line drawing the one entrance motion, and show it static under reduced motion."
+    ],
+    "donts": [
+      "**Don't** use sparks, flames, glowing arcs or a dark hero over three service cards.",
+      "**Don't** add drop shadows, glows or rounded corners; depth is drawn with line weight and `navy-deep` insets.",
+      "**Don't** use green for headings, borders, backgrounds or decoration.",
+      "**Don't** re-hue or substitute the pinned navy, green and tan.",
+      "**Don't** float a small tracked label above a section heading; the cell-label face belongs inside ruled cells only.",
+      "**Don't** set running prose in condensed capitals.",
+      "**Don't** use icon fonts or filled pictogram sets; icons are single-stroke inline SVG in `currentColor`."
+    ]
+  }
+}
