@@ -71,3 +71,9 @@ A one-person precision shop doing micro-TIG repair under a stereo microscope: to
 3. Make sending drawings or photos the easiest thing on every page.
 4. Honest scale: a skilled solo specialist, not a pretend large company.
 5. Respect urgency: make it obvious that fast turnaround is possible and how to start.
+
+## Terms of service (terms.html)
+- Written from scratch for this shop (not adapted from any other company's terms). Linked from the footer and the quote section.
+- Owner's choices: payment due at pickup for individuals, net 30 for approved business accounts; 15-day workmanship warranty (redo or refund); finished parts held free 60 days, then a storage fee; never post customer parts, drawings or tooling.
+- Defaults the owner hasn't confirmed: quotes good for 30 days; storage fee amount not stated.
+- Draft until the owner's lawyer reviews it. Keep the photo clause consistent with the gallery.
