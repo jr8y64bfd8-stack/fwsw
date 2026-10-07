@@ -28,7 +28,7 @@ Light sections stay transparent so the 3D medallion shows behind them; navy sect
 - Services: one feature card (photo + copy + material chips) followed by a two-column ruled list with 88px photo thumbs.
 - Gallery: filter pills, 4/3/2-column grid of 3:4 tiles, first 12 shown with "Show all", native `<dialog>` lightbox with arrows, swipe and keyboard.
 - Process: four numbered steps on a navy rule (a real sequence).
-- Contact card: email / phone with copy buttons, hours, location.
+- Quote section: intro and contact details (phone, email with copy buttons, hours, location, terms link) on the navy left; the white quote form card on the right (form under the intro on phones, details after). Form: labels above 48px fields, "(optional)" marks instead of asterisks, segmented Drop-off / On-site / Not sure control, dashed drop zone with a file list, full-width green submit, inline errors in red under the field, a check-mark confirmation panel on success.
 - Back to top: 52px round navy button (46px on phones), tan border and arrow, fixed bottom-right above the safe area. Appears once the visitor is past the hero film, jumps straight to the top (no long glide through the film), turns tan on hover.
 
 ## Motion

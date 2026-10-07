@@ -1,8 +1,20 @@
 {
   // Static site: everything in ./public is served as-is. No build step.
+  // src/worker.js runs only for requests that don't match a file, which is the
+  // quote form at /api/quote.
   "name": "fwspecialtyweld",
+  "main": "src/worker.js",
   "compatibility_date": "2026-09-01",
   "assets": {
-    "directory": "./public"
-  }
+    "directory": "./public",
+    "binding": "ASSETS"
+  },
+  "vars": {
+    "QUOTE_TO": "sales@fwspecialtyweld.com",
+    "QUOTE_FROM": "FWSW Website <quotes@fwspecialtyweld.com>"
+  },
+  // Secrets are set in the Cloudflare dashboard, never in this file:
+  //   RESEND_API_KEY    API key from resend.com (sends the email)
+  //   TURNSTILE_SECRET  Turnstile secret key (spam check)
+  "observability": { "enabled": true }
 }

@@ -323,30 +323,88 @@
     /* ---------- quote / contact ---------- */
     .quote { background: var(--navy); color: var(--on-navy); }
     .quote h2 { color: #fff; }
-    .quote-grid { display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr); gap: clamp(32px, 6vw, 80px); }
-    .quote-intro { display: grid; gap: 20px; align-content: start; }
+    .quote-grid { display: grid; grid-template-columns: minmax(0, 0.85fr) minmax(0, 1.25fr); grid-template-areas: "intro form" "details form"; grid-template-rows: auto 1fr; gap: 36px clamp(32px, 6vw, 80px); align-items: start; }
+    .quote-intro { grid-area: intro; display: grid; gap: 18px; }
     .quote-intro > p { color: var(--on-navy-soft); font-size: 1.15rem; max-width: 32em; }
-    .checklist { background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.14); border-radius: var(--radius); padding: 24px 26px; }
-    .checklist h3 { color: #fff; font-size: 1.15rem; margin-bottom: 12px; }
-    .checklist ul { margin: 0; padding: 0; list-style: none; display: grid; gap: 8px; }
-    .checklist li { display: flex; gap: 12px; color: var(--on-navy); }
-    .checklist li::before { content: ""; width: 7px; height: 7px; margin-top: 0.62em; background: var(--tan); border-radius: 1px; flex: none; }
-    .terms-note { color: var(--on-navy-soft); font-size: 1rem; }
+    .quote-details { grid-area: details; display: grid; align-content: start; }
+    .detail-row { display: grid; gap: 2px; padding-block: 16px; border-top: 1px solid rgba(255,255,255,0.14); }
+    .detail-row:first-child { border-top: 0; padding-top: 0; }
+    .label { font-size: 0.88rem; font-weight: 600; color: var(--ink-soft); }
+    .detail-row .label { color: var(--on-navy-soft); }
+    .detail-row a, .detail-row .value { font-family: var(--display); font-stretch: 90%; font-weight: 720; font-size: 1.35rem; color: #fff; text-decoration: none; font-variant-numeric: tabular-nums; overflow-wrap: anywhere; line-height: 1.2; }
+    .detail-row a:hover { text-decoration: underline; }
+    .detail-row small { color: var(--on-navy-soft); font-size: 0.98rem; }
+    .copy-line { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
+    .copy-btn { font: inherit; font-size: 0.88rem; font-weight: 600; color: var(--tan-soft); background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.2); border-radius: 3px; padding: 3px 10px; cursor: pointer; transition: background-color 160ms ease, transform 160ms var(--ease-out); }
+    .copy-btn:hover { background: rgba(255,255,255,0.14); }
+    .copy-btn:active { transform: scale(0.96); }
+    .terms-note { color: var(--on-navy-soft); font-size: 1rem; padding-top: 16px; border-top: 1px solid rgba(255,255,255,0.14); }
     .terms-note a { color: var(--tan-soft); }
     .terms-note a:hover { color: #fff; }
-    .contact-card { background: var(--paper); color: var(--ink); border-radius: var(--radius); padding: clamp(26px, 4vw, 40px); display: grid; gap: 22px; align-content: start; box-shadow: 0 24px 48px -24px rgba(0,0,0,0.5); }
-    .contact-card .btn { width: 100%; justify-content: center; }
-    .contact-row { display: grid; gap: 2px; padding-top: 18px; border-top: 1px solid var(--rule); }
-    .contact-row:first-of-type { border-top: 0; padding-top: 0; }
-    .label { font-size: 0.88rem; font-weight: 600; color: var(--ink-soft); }
-    .contact-row a, .contact-row .value { font-family: var(--display); font-stretch: 90%; font-weight: 720; font-size: 1.45rem; color: var(--navy); text-decoration: none; font-variant-numeric: tabular-nums; overflow-wrap: anywhere; line-height: 1.2; }
-    .contact-row a:hover { text-decoration: underline; }
-    .contact-row small { color: var(--ink-soft); font-size: 0.98rem; }
-    .copy-line { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
-    .copy-btn { font: inherit; font-size: 0.9rem; font-weight: 600; color: var(--navy); background: var(--ground); border: 1px solid var(--rule); border-radius: 3px; padding: 4px 10px; cursor: pointer; transition: background-color 160ms ease, transform 160ms var(--ease-out); }
-    .copy-btn:hover { background: var(--tan-soft); }
-    .copy-btn:active { transform: scale(0.96); }
-    @media (max-width: 860px) { .quote-grid { grid-template-columns: 1fr; } }
+
+    /* quote form */
+    .quote-form-card { grid-area: form; background: var(--paper); color: var(--ink); border-radius: var(--radius); padding: clamp(24px, 3.4vw, 40px); box-shadow: 0 24px 48px -24px rgba(0,0,0,0.5); }
+    .form-title { font-size: 1.45rem; }
+    .form-sub { color: var(--ink-soft); font-size: 1rem; margin: 6px 0 22px; }
+    .form-grid { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 18px 16px; }
+    .field { display: grid; gap: 6px; align-content: start; min-width: 0; margin: 0; padding: 0; border: 0; }
+    .field.span-2 { grid-column: 1 / -1; }
+    .field > label, .field > legend, .field .label-like { font-size: 0.95rem; font-weight: 650; color: var(--ink); padding: 0; }
+    .field > legend { margin-bottom: 6px; }
+    .opt { font-weight: 400; color: var(--ink-soft); }
+    .field input:not([type="radio"]):not([type="file"]), .field select, .field textarea { font: inherit; font-size: 1rem; color: var(--ink); background: #fff; border: 1px solid #C4BCAB; border-radius: var(--radius); padding: 11px 13px; min-height: 48px; width: 100%; transition: border-color 160ms ease, box-shadow 160ms ease; }
+    .field textarea { min-height: 132px; resize: vertical; line-height: 1.5; }
+    .field select { appearance: none; -webkit-appearance: none; padding-right: 42px; cursor: pointer; background: #fff url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%230B2D63' stroke-width='2.4' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E") no-repeat right 14px center / 16px; }
+    .field ::placeholder { color: #8C8676; }
+    .field input:focus, .field select:focus, .field textarea:focus { outline: none; border-color: var(--navy); box-shadow: 0 0 0 3px rgba(11,45,99,0.16); }
+    .field [aria-invalid="true"] { border-color: #B3261E !important; }
+    .field-error { color: #B3261E; font-size: 0.9rem; font-weight: 600; }
+    .field-error:empty { display: none; }
+    .choice-row { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); }
+    .choice { position: relative; display: flex; }
+    .choice input { position: absolute; inset: 0; opacity: 0; margin: 0; cursor: pointer; }
+    .choice span { flex: 1; display: flex; align-items: center; justify-content: center; text-align: center; min-height: 48px; padding: 0 8px; border: 1px solid #C4BCAB; margin-left: -1px; font-size: 0.96rem; background: #fff; transition: border-color 160ms ease, background-color 160ms ease; }
+    .choice:first-child span { margin-left: 0; border-radius: var(--radius) 0 0 var(--radius); }
+    .choice:last-child span { border-radius: 0 var(--radius) var(--radius) 0; }
+    .choice input:checked + span { position: relative; z-index: 1; border-color: var(--navy); background: #EDF1F8; color: var(--navy); font-weight: 650; box-shadow: inset 0 0 0 1px var(--navy); }
+    .choice input:focus-visible + span { z-index: 2; outline: 2px solid var(--tan); outline-offset: 2px; }
+    .dropzone { position: relative; display: flex; align-items: center; flex-wrap: wrap; gap: 10px 14px; padding: 14px 16px; border: 1.5px dashed #B9B09D; border-radius: var(--radius); background: var(--ground); transition: border-color 160ms ease, background-color 160ms ease; }
+    .dropzone.is-over { border-color: var(--navy); background: #EDF1F8; }
+    .file-input { position: absolute; width: 1px; height: 1px; opacity: 0; overflow: hidden; clip-path: inset(50%); }
+    .btn-sm { min-height: 44px; padding: 0 16px; font-size: 0.98rem; }
+    .file-input:focus-visible + .btn { outline: 2px solid var(--tan); outline-offset: 3px; }
+    .drop-hint { color: var(--ink-soft); font-size: 0.95rem; }
+    .file-list { list-style: none; margin: 0; padding: 0; display: grid; gap: 6px; }
+    .file-list:empty { display: none; }
+    .file-list li { display: flex; align-items: center; gap: 10px; padding: 6px 6px 6px 12px; background: var(--ground); border: 1px solid var(--rule); border-radius: var(--radius); font-size: 0.95rem; }
+    .file-list .fname { flex: 1; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+    .file-list .fsize { color: var(--ink-soft); font-variant-numeric: tabular-nums; white-space: nowrap; }
+    .file-remove { flex: none; width: 34px; height: 34px; display: grid; place-items: center; border: 0; border-radius: 3px; background: transparent; color: var(--ink-soft); cursor: pointer; }
+    .file-remove:hover { background: rgba(0,0,0,0.06); color: var(--ink); }
+    .file-remove svg { width: 16px; height: 16px; }
+    .hp-field { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
+    .turnstile-slot { margin-top: 18px; }
+    .turnstile-slot:empty { display: none; }
+    .form-submit { width: 100%; justify-content: center; margin-top: 22px; }
+    .form-submit[disabled] { opacity: 0.75; cursor: progress; }
+    .form-submit .spin { width: 18px; height: 18px; border: 2px solid rgba(255,255,255,0.4); border-top-color: #fff; border-radius: 50%; animation: spin 0.8s linear infinite; display: none; }
+    .form-submit.is-busy .spin { display: inline-block; }
+    @keyframes spin { to { transform: rotate(360deg); } }
+    .form-status { margin-top: 12px; font-size: 0.98rem; }
+    .form-status:empty { display: none; }
+    .form-status.is-error { color: #B3261E; font-weight: 600; }
+    .form-status a { color: inherit; }
+    .form-note { margin-top: 14px; color: var(--ink-soft); font-size: 0.95rem; }
+    .form-note a { color: var(--navy); font-weight: 600; }
+    .form-done { display: grid; gap: 12px; justify-items: start; padding-block: 12px; }
+    .form-done[hidden] { display: none; }
+    .form-done .done-icon { width: 52px; height: 52px; border-radius: 50%; display: grid; place-items: center; background: #E6EFE6; color: var(--green); }
+    .form-done .done-icon svg { width: 26px; height: 26px; }
+    .form-done p { color: var(--ink-soft); }
+    .form-done a { color: var(--navy); font-weight: 600; }
+    @media (max-width: 860px) { .quote-grid { grid-template-columns: 1fr; grid-template-areas: "intro" "form" "details"; grid-template-rows: none; } }
+    @media (max-width: 560px) { .form-grid { grid-template-columns: 1fr; } .drop-hint .drag { display: none; } }
+    @media (prefers-reduced-motion: reduce) { .form-submit .spin { animation-duration: 2s; } }
 
     /* ---------- footer ---------- */
     .site-footer { background: var(--navy-deep); color: var(--on-navy-soft); padding-block: 48px calc(40px + env(safe-area-inset-bottom, 0px)); font-size: 0.98rem; }
@@ -739,7 +797,7 @@
           <p>No forms or portals. You talk straight to the welder doing the work.</p>
         </div>
         <ol class="steps reveal">
-          <li><h3>Send drawings or photos</h3><p>Email the print or a few clear photos of the damage, plus the material and when you need it back.</p></li>
+          <li><h3>Send drawings or photos</h3><p>Use the quote form or email the print and a few clear photos of the damage, plus the material and when you need it back.</p></li>
           <li><h3>Get a quote</h3><p>You'll hear back with a price and timing. If it's urgent, call and say so.</p></li>
           <li><h3>Drop off or on-site</h3><p>Bring the part to the Fort Wayne shop by arrangement, or the work comes to you.</p></li>
           <li><h3>Ready to machine</h3><p>The part goes back with sound, clean weld where you need it, ready for your toolroom.</p></li>
@@ -792,42 +850,118 @@
       <div class="wrap quote-grid">
         <div class="quote-intro reveal">
           <h2>Send your drawings or photos for a quote.</h2>
-          <p>Email works best: attach the print or a few photos and you'll get a reply with price and timing. Tool down right now? Call.</p>
-          <div class="checklist">
-            <h3>Helpful to include</h3>
-            <ul>
-              <li>Drawing or clear photos of the damaged area</li>
-              <li>Material or alloy, if you know it (H13, D2, stainless…)</li>
-              <li>Quantity and the date you need it back</li>
-              <li>Drop-off, or on-site at your shop</li>
-            </ul>
-          </div>
-          <p class="terms-note">All work is done under our <a href="terms.html">terms of service</a>: quotes, payment, warranty and pickup.</p>
+          <p>Fill out the form and attach the print or a few clear photos. You'll get a reply with price and timing. Tool down right now? Call.</p>
         </div>
-        <div class="contact-card reveal">
-          <a class="btn btn-primary" href="mailto:sales@fwspecialtyweld.com?subject=Quote%20request&amp;body=Part%20%2F%20what%20needs%20welding%3A%0A%0AMaterial%20or%20alloy%3A%0AQuantity%3A%0ANeeded%20back%20by%3A%0ADrop-off%20or%20on-site%3A%0A%0A(Attach%20drawings%20or%20photos)%0A">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 6L2 7"/></svg>
-            Email a quote request
-          </a>
-          <div class="contact-row">
-            <span class="label">Email</span>
-            <div class="copy-line"><a href="mailto:sales@fwspecialtyweld.com" id="email-text">sales@fwspecialtyweld.com</a><button class="copy-btn" type="button" data-copy="sales@fwspecialtyweld.com">Copy</button></div>
+
+        <div class="quote-form-card reveal">
+          <form class="quote-form" id="quote-form" action="/api/quote" method="post" novalidate data-turnstile-sitekey="">
+            <h3 class="form-title">Request a quote</h3>
+            <p class="form-sub">Fields marked optional can be left blank.</p>
+            <div class="form-grid">
+              <div class="field">
+                <label for="qf-name">Name</label>
+                <input id="qf-name" name="name" autocomplete="name" required maxlength="100" aria-describedby="qf-name-err">
+                <span class="field-error" id="qf-name-err"></span>
+              </div>
+              <div class="field">
+                <label for="qf-company">Company <span class="opt">(optional)</span></label>
+                <input id="qf-company" name="company" autocomplete="organization" maxlength="120">
+              </div>
+              <div class="field">
+                <label for="qf-email">Email</label>
+                <input id="qf-email" name="email" type="email" autocomplete="email" required maxlength="200" aria-describedby="qf-email-err">
+                <span class="field-error" id="qf-email-err"></span>
+              </div>
+              <div class="field">
+                <label for="qf-phone">Phone <span class="opt">(optional)</span></label>
+                <input id="qf-phone" name="phone" type="tel" autocomplete="tel" maxlength="40">
+              </div>
+              <div class="field span-2">
+                <label for="qf-service">Type of work</label>
+                <select id="qf-service" name="service">
+                  <option value="">Choose one</option>
+                  <option>Mold, die &amp; tool steel repair</option>
+                  <option>Micro-TIG precision work</option>
+                  <option>Stainless, aluminum or exotics</option>
+                  <option>Production run</option>
+                  <option>Shaft, gear or machine repair</option>
+                  <option>Farm or agricultural repair</option>
+                  <option>Fixtures or fabrication</option>
+                  <option>Silver soldering</option>
+                  <option>Cast iron repair</option>
+                  <option>Something else</option>
+                </select>
+              </div>
+              <div class="field span-2">
+                <label for="qf-details">Describe the job</label>
+                <textarea id="qf-details" name="details" rows="5" required maxlength="4000" placeholder="What's damaged or needed, sizes or tolerances, anything we should know" aria-describedby="qf-details-err"></textarea>
+                <span class="field-error" id="qf-details-err"></span>
+              </div>
+              <div class="field">
+                <label for="qf-material">Material or alloy <span class="opt">(if known)</span></label>
+                <input id="qf-material" name="material" maxlength="120" placeholder="H13, D2, 304 stainless…">
+              </div>
+              <div class="field">
+                <label for="qf-qty">Quantity <span class="opt">(optional)</span></label>
+                <input id="qf-qty" name="quantity" inputmode="numeric" maxlength="20">
+              </div>
+              <div class="field">
+                <label for="qf-date">Needed back by <span class="opt">(optional)</span></label>
+                <input id="qf-date" name="needed_by" type="date">
+              </div>
+              <fieldset class="field">
+                <legend>Drop-off or on-site</legend>
+                <div class="choice-row">
+                  <label class="choice"><input type="radio" name="where" value="Drop-off at the shop"><span>Drop-off</span></label>
+                  <label class="choice"><input type="radio" name="where" value="On-site at my location"><span>On-site</span></label>
+                  <label class="choice"><input type="radio" name="where" value="Not sure yet"><span>Not sure</span></label>
+                </div>
+              </fieldset>
+              <div class="field span-2">
+                <span class="label-like" id="qf-files-label">Drawings or photos <span class="opt">(optional, up to 6 files)</span></span>
+                <div class="dropzone" id="qf-drop">
+                  <input class="file-input" id="qf-files" type="file" multiple accept="image/*,.pdf,.dxf,.dwg,.step,.stp,.igs,.iges" aria-labelledby="qf-files-label qf-files-btn" aria-describedby="qf-files-err">
+                  <label class="btn btn-line btn-sm" id="qf-files-btn" for="qf-files">Add files</label>
+                  <span class="drop-hint"><span class="drag">or drag them here. </span>Photos, PDF, DXF, DWG or STEP.</span>
+                </div>
+                <ul class="file-list" id="qf-file-list" aria-live="polite"></ul>
+                <span class="field-error" id="qf-files-err"></span>
+              </div>
+            </div>
+            <div class="hp-field" aria-hidden="true"><label>Leave this empty <input name="website" tabindex="-1" autocomplete="off"></label></div>
+            <div class="turnstile-slot" id="qf-turnstile"></div>
+            <button class="btn btn-primary form-submit" type="submit"><span class="spin" aria-hidden="true"></span><span class="submit-text">Send quote request</span></button>
+            <p class="form-status" id="qf-status" role="status" aria-live="polite"></p>
+            <p class="form-note">Prefer email? Send it to <a href="mailto:sales@fwspecialtyweld.com">sales@fwspecialtyweld.com</a>.</p>
+          </form>
+          <div class="form-done" id="quote-done" hidden tabindex="-1">
+            <span class="done-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg></span>
+            <h3 class="form-title">Request sent.</h3>
+            <p>Thanks<span id="quote-done-name"></span>. You'll get a reply by email or phone with price and timing. Tool down? Call <a href="tel:+12605153263">260-515-3263</a>.</p>
           </div>
-          <div class="contact-row">
+        </div>
+
+        <div class="quote-details reveal">
+          <div class="detail-row">
             <span class="label">Phone</span>
             <div class="copy-line"><a href="tel:+12605153263">260-515-3263</a><button class="copy-btn" type="button" data-copy="260-515-3263">Copy</button></div>
             <small>Call for rush jobs or to arrange drop-off.</small>
           </div>
-          <div class="contact-row">
+          <div class="detail-row">
+            <span class="label">Email</span>
+            <div class="copy-line"><a href="mailto:sales@fwspecialtyweld.com" id="email-text">sales@fwspecialtyweld.com</a><button class="copy-btn" type="button" data-copy="sales@fwspecialtyweld.com">Copy</button></div>
+          </div>
+          <div class="detail-row">
             <span class="label">Hours</span>
             <span class="value">7am – 5pm</span>
             <small>Weekends available.</small>
           </div>
-          <div class="contact-row">
+          <div class="detail-row">
             <span class="label">Location</span>
             <span class="value">Fort Wayne, Indiana</span>
             <small>Drop-off by arrangement. On-site work about 25 miles around Fort Wayne.</small>
           </div>
+          <p class="terms-note">All work is done under our <a href="terms.html">terms of service</a>: quotes, payment, warranty and pickup.</p>
         </div>
       </div>
     </section>
@@ -1101,6 +1235,172 @@
       size();
       if (set === 'm' && wantSet() === 'd') loadSet('d');
       onScroll(); request(true);
+    });
+  })();
+
+  // quote form: checks the fields, shrinks big photos, and sends everything to /api/quote
+  (function () {
+    var form = document.getElementById('quote-form');
+    if (!form || !window.fetch || !window.FileReader || !window.Blob) return;
+    var MAX_FILES = 6, MAX_FILE = 10 * 1024 * 1024, MAX_TOTAL = 12 * 1024 * 1024;
+    var OK_EXT = /\.(jpe?g|png|webp|heic|heif|avif|gif|tiff?|bmp|pdf|dxf|dwg|step|stp|igs|iges)$/i;
+    var input = document.getElementById('qf-files'), list = document.getElementById('qf-file-list');
+    var drop = document.getElementById('qf-drop'), filesErr = document.getElementById('qf-files-err');
+    var status = document.getElementById('qf-status'), btn = form.querySelector('.form-submit');
+    var done = document.getElementById('quote-done');
+    var files = [], pending = 0;
+    var FALLBACK = ' Please email your request to <a href="mailto:sales@fwspecialtyweld.com">sales@fwspecialtyweld.com</a> or call <a href="tel:+12605153263">260-515-3263</a>.';
+
+    var date = document.getElementById('qf-date');
+    if (date) { var t = new Date(); t.setMinutes(t.getMinutes() - t.getTimezoneOffset()); date.min = t.toISOString().slice(0, 10); }
+
+    function v(id) { var el = document.getElementById(id); return el ? el.value : ''; }
+    function size(n) { return n < 1048576 ? Math.max(1, Math.round(n / 1024)) + ' KB' : (n / 1048576).toFixed(1) + ' MB'; }
+    function total() { return files.reduce(function (a, f) { return a + f.file.size; }, 0); }
+    function esc(t) { return String(t).replace(/[&<>"]/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]; }); }
+
+    // big phone photos are resized in the browser (long side 2400px), so uploads stay quick
+    function shrink(file) {
+      return new Promise(function (resolve) {
+        if (!/^image\/(jpeg|png|webp|heic|heif)$/i.test(file.type) || file.size < 1200000 || !window.createImageBitmap) return resolve(file);
+        createImageBitmap(file, { imageOrientation: 'from-image' }).then(function (bmp) {
+          var k = Math.min(1, 2400 / Math.max(bmp.width, bmp.height));
+          var c = document.createElement('canvas'); c.width = Math.round(bmp.width * k); c.height = Math.round(bmp.height * k);
+          var g = c.getContext('2d'); g.fillStyle = '#fff'; g.fillRect(0, 0, c.width, c.height); g.drawImage(bmp, 0, 0, c.width, c.height);
+          c.toBlob(function (b) {
+            if (!b || b.size >= file.size) return resolve(file);
+            resolve(new File([b], file.name.replace(/\.[^.]+$/, '') + '.jpg', { type: 'image/jpeg' }));
+          }, 'image/jpeg', 0.86);
+        }).catch(function () { resolve(file); });
+      });
+    }
+
+    function render() {
+      list.innerHTML = '';
+      files.forEach(function (f, i) {
+        var li = document.createElement('li');
+        li.innerHTML = '<span class="fname"></span><span class="fsize"></span><button type="button" class="file-remove"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M18 6 6 18M6 6l12 12"/></svg></button>';
+        li.querySelector('.fname').textContent = f.file.name;
+        li.querySelector('.fsize').textContent = size(f.file.size);
+        var rm = li.querySelector('.file-remove');
+        rm.setAttribute('aria-label', 'Remove ' + f.file.name);
+        rm.addEventListener('click', function () { files.splice(i, 1); filesErr.textContent = ''; render(); input.focus(); });
+        list.appendChild(li);
+      });
+    }
+
+    function add(picked) {
+      filesErr.textContent = '';
+      var msgs = [];
+      [].slice.call(picked).forEach(function (file) {
+        if (files.length + pending >= MAX_FILES) { msgs.push('Up to ' + MAX_FILES + ' files.'); return; }
+        if (!OK_EXT.test(file.name)) { msgs.push(file.name + ' isn\'t a photo, PDF, DXF, DWG or STEP file.'); return; }
+        pending++;
+        shrink(file).then(function (f) {
+          pending--;
+          if (f.size > MAX_FILE) { filesErr.textContent = f.name + ' is over 10 MB. Email large files instead.'; return; }
+          if (total() + f.size > MAX_TOTAL) { filesErr.textContent = 'Files can total up to 12 MB. Email the rest to sales@fwspecialtyweld.com.'; return; }
+          files.push({ file: f }); render();
+        });
+      });
+      if (msgs.length) filesErr.textContent = msgs.filter(function (m, i) { return msgs.indexOf(m) === i; }).join(' ');
+    }
+
+    input.addEventListener('change', function () { add(input.files); input.value = ''; });
+    ['dragenter', 'dragover'].forEach(function (ev) { drop.addEventListener(ev, function (e) { e.preventDefault(); drop.classList.add('is-over'); }); });
+    ['dragleave', 'drop'].forEach(function (ev) { drop.addEventListener(ev, function (e) { e.preventDefault(); drop.classList.remove('is-over'); }); });
+    drop.addEventListener('drop', function (e) { if (e.dataTransfer && e.dataTransfer.files) add(e.dataTransfer.files); });
+
+    // spam check (Cloudflare Turnstile) loads only when the form is near and a site key is set
+    var siteKey = form.getAttribute('data-turnstile-sitekey');
+    if (siteKey) {
+      var loaded = false, loadTs = function () {
+        if (loaded) return; loaded = true;
+        window.onFwswTurnstile = function () { window.turnstile.render('#qf-turnstile', { sitekey: siteKey, appearance: 'interaction-only' }); };
+        var sc = document.createElement('script'); sc.async = true; sc.src = 'https://challenges.cloudflare.com/turnstile/v0/api.js?onload=onFwswTurnstile&render=explicit';
+        document.head.appendChild(sc);
+      };
+      if ('IntersectionObserver' in window) {
+        var tio = new IntersectionObserver(function (en) { if (en[0].isIntersecting) { loadTs(); tio.disconnect(); } }, { rootMargin: '800px 0px' });
+        tio.observe(form);
+      } else loadTs();
+      form.addEventListener('focusin', loadTs);
+    }
+
+    function setErr(id, msg) {
+      var el = document.getElementById(id), err = document.getElementById(id + '-err');
+      if (el) el.setAttribute('aria-invalid', msg ? 'true' : 'false');
+      if (err) err.textContent = msg || '';
+      return !msg;
+    }
+    function validate() {
+      var ok = true, first = null;
+      var name = v('qf-name').trim(), email = v('qf-email').trim(), details = v('qf-details').trim();
+      if (!setErr('qf-name', name ? '' : 'Enter your name.')) { ok = false; first = first || 'qf-name'; }
+      if (!setErr('qf-email', !email ? 'Enter your email so you can get a reply.' : (/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email) ? '' : 'Check the email address.'))) { ok = false; first = first || 'qf-email'; }
+      if (!setErr('qf-details', details ? '' : 'Tell us a little about the job.')) { ok = false; first = first || 'qf-details'; }
+      if (first) document.getElementById(first).focus();
+      return ok;
+    }
+    ['qf-name', 'qf-email', 'qf-details'].forEach(function (id) {
+      document.getElementById(id).addEventListener('input', function () { if (this.getAttribute('aria-invalid') === 'true') setErr(id, ''); });
+    });
+
+    function b64(file) {
+      return new Promise(function (resolve, reject) {
+        var r = new FileReader();
+        r.onload = function () { var s = String(r.result); resolve(s.slice(s.indexOf(',') + 1)); };
+        r.onerror = function () { reject(r.error); };
+        r.readAsDataURL(file);
+      });
+    }
+
+    function busy(on) {
+      btn.disabled = on; btn.classList.toggle('is-busy', on);
+      btn.querySelector('.submit-text').textContent = on ? 'Sending…' : 'Send quote request';
+    }
+    function fail(msg) {
+      status.className = 'form-status is-error';
+      status.innerHTML = esc(msg) + FALLBACK;
+      busy(false);
+      if (window.turnstile && siteKey) { try { window.turnstile.reset('#qf-turnstile'); } catch (e) {} }
+    }
+
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      status.textContent = ''; status.className = 'form-status';
+      if (pending) { status.textContent = 'Still preparing your photos, one moment…'; return; }
+      if (!validate()) return;
+      var tokenEl = form.querySelector('[name="cf-turnstile-response"]');
+      if (siteKey && (!tokenEl || !tokenEl.value)) { status.className = 'form-status is-error'; status.textContent = 'One moment, the spam check is still loading. Try again in a few seconds.'; return; }
+      busy(true);
+      var where = form.querySelector('input[name="where"]:checked');
+      var meta = {
+        name: v('qf-name').trim(), company: v('qf-company').trim(), email: v('qf-email').trim(),
+        phone: v('qf-phone').trim(), service: v('qf-service'), details: v('qf-details').trim(),
+        material: v('qf-material').trim(), quantity: v('qf-qty').trim(), needed_by: v('qf-date'),
+        where: where ? where.value : '', website: form.querySelector('[name="website"]').value, token: tokenEl ? tokenEl.value : '',
+        files: files.map(function (f) { return { name: f.file.name, size: f.file.size, type: f.file.type }; })
+      };
+      Promise.all(files.map(function (f) { return b64(f.file); })).then(function (encoded) {
+        // body: "FWQ1" + 8-digit length + details as JSON + attachments as a JSON array
+        var metaBytes = new TextEncoder().encode(JSON.stringify(meta));
+        var parts = ['FWQ1', ('0000000' + metaBytes.length).slice(-8), metaBytes, '['];
+        encoded.forEach(function (c, i) { parts.push((i ? ',' : '') + '{"filename":' + JSON.stringify(files[i].file.name) + ',"content":"' + c + '"}'); });
+        parts.push(']');
+        var ctl = window.AbortController ? new AbortController() : null;
+        var timer = setTimeout(function () { if (ctl) ctl.abort(); }, 90000);
+        return fetch(form.getAttribute('action'), { method: 'POST', body: new Blob(parts, { type: 'application/octet-stream' }), signal: ctl ? ctl.signal : undefined })
+          .then(function (r) { clearTimeout(timer); return r.json().catch(function () { return { ok: false }; }).then(function (j) { j.status = r.status; return j; }); });
+      }).then(function (res) {
+        if (res && res.ok) {
+          document.getElementById('quote-done-name').textContent = meta.name ? ', ' + meta.name.split(/\s+/)[0] : '';
+          form.hidden = true; done.hidden = false; done.focus();
+          files = []; render(); form.reset();
+        } else {
+          fail(res && res.message ? res.message : 'Sorry, the form couldn\'t send.');
+        }
+      }).catch(function () { fail('Sorry, the form couldn\'t send.'); });
     });
   })();
 

@@ -1,2 +1,5 @@
-.impeccable/review/
+.dev.vars
 .impeccable/config.local.json
+.impeccable/review/
+.wrangler/
+node_modules/

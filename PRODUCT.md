@@ -76,3 +76,12 @@ A one-person precision shop doing micro-TIG repair under a stereo microscope: to
 - Written from scratch for this shop (not adapted from any other company's terms). Linked from the footer and the quote section.
 - Owner's choices: payment due at pickup for individuals, net 30 for approved business accounts; 15-day workmanship warranty (redo or refund); finished parts held free 60 days, then a storage fee (no amount stated, by choice); quotes good for 30 days. No photo rules in the terms (owner removed them so they don't conflict with the gallery); the confidentiality line for drawings and part details stays.
 - Draft until the owner's lawyer reviews it.
+
+## Quote form
+- Owner asked for an on-site form (like other shops' contact forms) on Oct 7 2026. Fields are our own, built around quotes: name, company, email, phone, type of work, job description, material, quantity, needed-by date, drop-off/on-site, and up to 6 drawings or photos (12 MB total; photos over 1.2 MB are resized in the browser to 2400 px).
+- Sending: src/worker.js handles POST /api/quote and emails sales@fwspecialtyweld.com through Resend, with reply-to set to the customer. The browser base64-encodes attachments and the Worker streams them through untouched, so each request stays within the Workers free plan's 10 ms CPU limit (building the email in the Worker measured ~50 ms).
+- The domain's mail is iCloud (MX mx01/mx02.mail.icloud.com), so Cloudflare Email Routing's send_email can't be used. Resend's DNS records live on the "send" subdomain and resend._domainkey, so they don't touch iCloud mail.
+- Spam: Cloudflare Turnstile (invisible unless needed) plus a hidden honeypot field. The site key goes in data-turnstile-sitekey on #quote-form; the secret is a Worker secret.
+- Until RESEND_API_KEY is set the form answers "not switched on yet" with the email and phone as fallback. In the claude.ai preview the form can't send (no Worker there).
+- Setup before go-live (owner, in their accounts): 1) resend.com account, add domain fwspecialtyweld.com, let it add DNS records in Cloudflare, create an API key; 2) Cloudflare > Turnstile > add widget for fwspecialtyweld.com, note site key and secret; 3) Cloudflare > Workers > fwspecialtyweld > Settings > Variables and secrets: add RESEND_API_KEY and TURNSTILE_SECRET as secrets; 4) give Claude the Turnstile site key (public) to put in the page.
+
