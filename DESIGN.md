@@ -29,6 +29,7 @@ Light sections stay transparent so the 3D medallion shows behind them; navy sect
 - Gallery: filter pills, 4/3/2-column grid of 3:4 tiles, first 12 shown with "Show all", native `<dialog>` lightbox with arrows, swipe and keyboard.
 - Process: four numbered steps on a navy rule (a real sequence).
 - Contact card: email / phone with copy buttons, hours, location.
+- Back to top: 52px round navy button (46px on phones), tan border and arrow, fixed bottom-right above the safe area. Appears once the visitor is past the hero film, jumps straight to the top (no long glide through the film), turns tan on hover.
 
 ## Motion
 Custom ease-out `cubic-bezier(0.23, 1, 0.32, 1)`. Sections below the fold rise 18px into place once; hover zoom on gallery tiles gated to fine pointers; all movement off under reduced motion.
