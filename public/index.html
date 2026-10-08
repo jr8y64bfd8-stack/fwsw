@@ -15,8 +15,7 @@
   <link rel="icon" href="images/brand/logo.svg" type="image/svg+xml">
   <link rel="apple-touch-icon" href="images/brand/apple-touch-icon.png">
   <link rel="preload" href="fonts/archivo-var.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="preload" as="image" href="images/film/m/f000.webp" media="(max-width: 860px)">
-  <link rel="preload" as="image" href="images/film/d/f000.webp" media="(min-width: 861px)">
+  <link rel="preload" as="image" imagesrcset="images/brand/coin-900.webp 900w, images/brand/coin-1400.webp 1400w" imagesizes="(max-width: 520px) min(60svh, 100vw, 700px), min(64svh, 82vw, 700px)" fetchpriority="high">
   <style>
     @font-face { font-family: "Archivo"; src: url("fonts/archivo-var.woff2") format("woff2-variations"); font-weight: 100 900; font-stretch: 62% 125%; font-display: swap; }
     @font-face { font-family: "Source Sans 3"; src: url("fonts/source-sans-3-var.woff2") format("woff2-variations"); font-weight: 200 900; font-style: normal; font-display: swap; }
@@ -119,6 +118,32 @@
     }
     @media (prefers-reduced-motion: reduce) { .header-row, .brand-mark, .brand-rule { transition: none; } }
 
+    /* ---------- intro: the coin opens the page ---------- */
+    /* sits under the sticky header (negative margin) so the header floats over the opening scene */
+    .intro { --hdr: 92px; position: relative; margin-top: calc(-1 * var(--hdr)); min-height: 100svh; display: grid; place-items: center; padding: calc(var(--hdr) + 8px) var(--gutter) 88px; color: var(--on-navy); text-align: center; }
+    @media (max-width: 640px) { .intro { --hdr: 72px; padding-bottom: 76px; } }
+    .intro-inner { display: grid; justify-items: center; gap: clamp(6px, 1.6vh, 18px); }
+    .intro-coin { width: min(64svh, 82vw, 700px); height: auto; aspect-ratio: 1; margin: -5.5% 0 -4%; transition: opacity 700ms ease; }
+    .intro-coin.is-live { opacity: 0; }
+    .intro-tag { display: flex; align-items: center; gap: 14px; margin: 0; font-family: var(--display); font-stretch: 92%; font-weight: 650; font-size: clamp(0.8rem, 1.05vw, 0.95rem); letter-spacing: 0.24em; text-transform: uppercase; color: var(--tan); }
+    .intro-tag::before, .intro-tag::after { content: ""; width: clamp(22px, 4vw, 56px); height: 1px; background: linear-gradient(90deg, rgba(201,180,138,0), var(--tan)); }
+    .intro-tag::after { transform: scaleX(-1); }
+    .intro-tag .sep { color: rgba(201,180,138,0.6); }
+    .intro-cue { position: absolute; left: 50%; bottom: 20px; translate: -50% 0; display: flex; flex-direction: column; align-items: center; gap: 8px; font-size: 0.8rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--on-navy-soft); text-decoration: none; }
+    .intro-cue::after { content: ""; width: 1px; height: 34px; background: linear-gradient(var(--tan), rgba(201,180,138,0)); animation: cue 1.8s var(--ease-out) infinite; transform-origin: top; }
+    .intro-cue:hover { color: #fff; }
+    .intro-tag, .intro-cue { animation: intro-in 900ms var(--ease-out) 350ms both; }
+    @keyframes intro-in { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: none; } }
+    .intro-tag > span { white-space: nowrap; }
+    @media (max-width: 520px) {
+      .intro-tag { flex-direction: column; gap: 6px; letter-spacing: 0.2em; }
+      .intro-tag::before, .intro-tag::after, .intro-tag .sep { display: none; }
+      .intro-coin { width: min(60svh, 100vw, 700px); }
+    }
+    @media (prefers-reduced-motion: reduce) { .intro-tag, .intro-cue { animation: none; } .intro-cue::after { animation: none; } }
+    .intro:focus { outline: none; }
+    .intro::after { content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 140px; pointer-events: none; background: linear-gradient(rgba(8,31,69,0), var(--navy-deep)); }
+
     /* ---------- hero film ---------- */
     .hero-lede { font-size: clamp(1.1rem, 1.5vw, 1.28rem); color: var(--on-navy-soft); max-width: 34em; }
     .hero-actions { display: flex; flex-wrap: wrap; gap: 12px; }
@@ -126,8 +151,7 @@
     .hero-meta li { display: flex; align-items: center; gap: 8px; }
     .hero-meta svg { width: 16px; height: 16px; color: var(--tan); flex: none; }
 
-    /* the film sits under the sticky header so nothing jumps when it pins */
-    .film { --hdr: 92px; position: relative; margin-top: calc(-1 * var(--hdr)); background: var(--navy-deep); color: var(--on-navy); isolation: isolate; }
+    .film { --hdr: 92px; position: relative; background: var(--navy-deep); color: var(--on-navy); isolation: isolate; }
     @media (max-width: 640px) { .film { --hdr: 72px; } }
     .film-sticky { position: relative; height: 100svh; min-height: 560px; overflow: hidden; }
     .film { --film-scroll: 2800px; }
@@ -444,6 +468,13 @@
     .backdrop-photo { position: absolute; inset: 0; background-size: cover; background-position: center; opacity: 0; transition: opacity 900ms ease; }
     .backdrop-photo.is-on { opacity: 1; }
     .backdrop::after { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(8,31,69,0.55), rgba(8,31,69,0.7)); }
+    .backdrop-intro { z-index: 1; overflow: hidden; background:
+        radial-gradient(circle at 50% var(--coin-y, 47%), rgba(126,160,212,0.46) 0, rgba(76,112,172,0.26) 24vmin, rgba(20,48,96,0.10) 44vmin, rgba(8,31,69,0) 62vmin),
+        radial-gradient(140% 100% at 50% 45%, rgba(8,31,69,0) 45%, rgba(3,10,24,0.8) 100%),
+        var(--navy-deep); }
+    .backdrop-intro::before { content: ""; position: absolute; inset: -40px; background: url(images/backdrops/backdrop-weave.jpg) center / cover; filter: blur(14px) grayscale(0.35); opacity: 0.13; mix-blend-mode: luminosity; }
+    .backdrop-intro::after { content: ""; position: absolute; inset: 0; opacity: 0.08; mix-blend-mode: overlay;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0.5 0 0 0 0 0.5 0 0 0 0 0.5 0 0 0 1.2 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E"); }
     .on-photo { background: transparent; color: var(--on-navy); }
     /* keeps text legible when the bold medallion turns behind it */
     .on-photo :is(h2, h3, p, li, td, th):not(.feature *) { text-shadow: 0 1px 2px rgba(6,22,54,0.95), 0 0 10px rgba(6,22,54,0.85), 0 0 22px rgba(6,22,54,0.6); }
@@ -471,7 +502,8 @@
 <body>
   <a class="skip" href="#main">Skip to content</a>
   <div class="backdrop" aria-hidden="true">
-    <div class="backdrop-photo is-on" data-bg="services" style="background-image:url(images/backdrops/backdrop-brackets.jpg)"></div>
+    <div class="backdrop-photo backdrop-intro is-on" data-bg="intro"></div>
+    <div class="backdrop-photo" data-bg="services" style="background-image:url(images/backdrops/backdrop-brackets.jpg)"></div>
     <div class="backdrop-photo" data-bg="process" style="background-image:url(images/backdrops/backdrop-weave.jpg)"></div>
     <div class="backdrop-photo" data-bg="about" style="background-image:url(images/backdrops/backdrop-tube-mounts.jpg)"></div>
   </div>
@@ -501,10 +533,18 @@
   </header>
 
   <main id="main">
-    <section class="film" id="top" aria-label="Recent work, from weld to finished part">
+    <section class="intro" id="top" data-backdrop="intro" aria-label="Fort Wayne Specialty Welding &amp; Co.">
+      <div class="intro-inner">
+        <img class="intro-coin" data-coin-hero src="images/brand/coin-1400.webp" srcset="images/brand/coin-900.webp 900w, images/brand/coin-1400.webp 1400w" sizes="(max-width: 520px) min(60svh, 100vw, 700px), min(64svh, 82vw, 700px)" width="1400" height="1400" alt="Fort Wayne Specialty Welding &amp; Co. logo, made as a machined steel coin" fetchpriority="high">
+        <p class="intro-tag"><span>Precision TIG &amp; MIG</span><span class="sep" aria-hidden="true">·</span><span>Fort Wayne, Indiana</span></p>
+      </div>
+      <a class="intro-cue" href="#film">Scroll</a>
+    </section>
+
+    <section class="film" id="film" aria-label="Recent work, from weld to finished part">
       <div class="film-sticky">
         <div class="film-stage">
-          <img class="film-poster" src="images/film/d/f000.webp" srcset="images/film/m/f000.webp 720w, images/film/d/f000.webp 1080w" sizes="(max-width: 860px) 100vw, 58vw" alt="Close-up of a bronze gear TIG welded to a steel shaft, the weld ripples even all the way around" width="1080" height="1350" fetchpriority="high">
+          <img class="film-poster" src="images/film/d/f000.webp" srcset="images/film/m/f000.webp 720w, images/film/d/f000.webp 1080w" sizes="(max-width: 860px) 100vw, 58vw" alt="Close-up of a bronze gear TIG welded to a steel shaft, the weld ripples even all the way around" width="1080" height="1350">
           <canvas id="film-canvas" aria-hidden="true"></canvas>
           <div class="film-grain" aria-hidden="true"></div>
         </div>
@@ -548,7 +588,6 @@
             </div>
           </div>
         </div>
-        <div class="film-cue" aria-hidden="true">Scroll</div>
       </div>
     </section>
 
@@ -1024,6 +1063,15 @@
       });
     }
 
+    // center the intro's spotlight on the coin (the live coin keeps it in step as it moves)
+    var coinStill = document.querySelector('.intro-coin'), bd = document.querySelector('.backdrop');
+    function aimGlow() {
+      if (!coinStill || !bd) return;
+      var r = coinStill.getBoundingClientRect();
+      bd.style.setProperty('--coin-y', ((r.top + window.scrollY + r.height / 2) / window.innerHeight * 100).toFixed(2) + '%');
+    }
+    aimGlow(); addEventListener('resize', function () { if (!document.querySelector('#medallion.is-ready')) aimGlow(); });
+
     // swap the navy backdrop photo to match the section in view
     var photos = {};
     [].slice.call(document.querySelectorAll('.backdrop-photo')).forEach(function (el) { photos[el.dataset.bg] = el; });
@@ -1233,7 +1281,11 @@
     function onScroll() { target = progress() * (N - 1); request(); }
 
     size();
-    loadSet(wantSet());
+    // the film sits below the opening coin, so its frames start once the page is up or on the first scroll
+    var started = false;
+    function start() { if (!started) { started = true; loadSet(wantSet()); } }
+    setTimeout(start, 1200);
+    window.addEventListener('scroll', start, { passive: true, once: true });
     onScroll();
     window.addEventListener('scroll', onScroll, { passive: true });
     window.addEventListener('resize', function () {
@@ -1413,7 +1465,7 @@
   (function () {
     var btn = document.getElementById('to-top');
     if (!btn) return;
-    var film = document.getElementById('top'), limit = 0, shown = false, queued = false;
+    var film = document.getElementById('film'), top = document.getElementById('top'), limit = 0, shown = false, queued = false;
     function measure() {
       var filmEnd = film ? film.offsetTop + film.offsetHeight - window.innerHeight : 0;
       limit = Math.max(window.innerHeight * 1.2, filmEnd + window.innerHeight * 0.5);
@@ -1429,7 +1481,7 @@
       root.style.scrollBehavior = 'auto';           // jump straight there, no long glide
       window.scrollTo(0, 0);
       root.style.scrollBehavior = prev;
-      if (film) { if (!film.hasAttribute('tabindex')) film.setAttribute('tabindex', '-1'); film.focus({ preventScroll: true }); }
+      if (top) { if (!top.hasAttribute('tabindex')) top.setAttribute('tabindex', '-1'); top.focus({ preventScroll: true }); }
     });
     measure(); update();
     window.addEventListener('scroll', onScroll, { passive: true });
@@ -1437,7 +1489,7 @@
     window.addEventListener('load', function () { measure(); onScroll(); });
   })();
 
-  // 3D logo medallion: loads after the page so it never slows the first view
+  // 3D logo coin: the intro shows a still of it at once; the live coin loads right after and takes over
   (function () {
     var conn = navigator.connection;
     if ((conn && conn.saveData) || matchMedia('(prefers-reduced-motion: reduce)').matches) return;
@@ -1452,8 +1504,7 @@
       s.onload = function () { chain(['js/SVGLoader.r128.js', 'js/RoomEnvironment.r128.js', 'js/medallion.js']); };
       document.body.appendChild(s);
     }
-    var go = function () { ('requestIdleCallback' in window) ? requestIdleCallback(load, { timeout: 2500 }) : setTimeout(load, 1200); };
-    if (document.readyState === 'complete') go(); else addEventListener('load', go);
+    load();
   })();
   </script>
 </body>
