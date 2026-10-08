@@ -74,7 +74,7 @@ A one-person precision shop doing micro-TIG repair under a stereo microscope: to
 
 ## Terms of service (terms.html)
 - Written from scratch for this shop (not adapted from any other company's terms). Linked from the footer and the quote section.
-- Owner's choices: payment due at pickup for individuals, net 30 for approved business accounts; 15-day workmanship warranty (redo or refund); finished parts held free 60 days, then a storage fee (no amount stated, by choice); quotes good for 30 days. No photo rules in the terms (owner removed them so they don't conflict with the gallery); the confidentiality line for drawings and part details stays.
+- Owner's choices: payment due at pickup for individuals, net 30 for approved business accounts; 15-day workmanship warranty (redo or refund); finished parts held free 60 days, then a storage fee (no amount stated, by choice); quotes good for 30 days. Photos: finished work may appear in the gallery with identifying marks hidden; customers can opt out when placing the job (owner's choice, Oct 8). Drawings and part details stay confidential.
 - Draft until the owner's lawyer reviews it.
 
 ## Quote form
