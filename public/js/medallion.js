@@ -23,7 +23,9 @@
   try {
     renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true, powerPreference: 'low-power', preserveDrawingBuffer: !!window.FWSW_COIN_POSTER });
   } catch (e) { return; }
-  renderer.setPixelRatio(window.FWSW_COIN_POSTER ? 1 : Math.min(window.devicePixelRatio || 1, 2));
+  // phones draw the coin at 1.5x at most: it sits behind the page at 60%, so 2x pixels are wasted battery
+  var dprCap = window.innerWidth < 900 ? 1.5 : 2;
+  renderer.setPixelRatio(window.FWSW_COIN_POSTER ? 1 : Math.min(window.devicePixelRatio || 1, dprCap));
   renderer.outputEncoding = THREE.sRGBEncoding;
   renderer.toneMapping = THREE.ACESFilmicToneMapping;
   renderer.toneMappingExposure = 1.05;
@@ -106,7 +108,7 @@
     var enamel = [0x061A3D, 0x1F4626];
     var geos = data.paths.map(function (path) {
       return new THREE.ExtrudeGeometry(THREE.SVGLoader.createShapes(path),
-        { depth: 7, bevelEnabled: true, bevelThickness: 2.2, bevelSize: 1.1, bevelSegments: 3, curveSegments: 12 });
+        { depth: 7, bevelEnabled: true, bevelThickness: 2.2, bevelSize: 1.1, bevelSegments: POSTER ? 3 : 2, curveSegments: POSTER ? 12 : 8 });
     });
     geos[1].computeBoundingBox();
     var box = geos[1].boundingBox;
@@ -127,7 +129,7 @@
       roughnessMap: surf, bumpMap: surf, bumpScale: 0.45
     });
     coinMat.color.convertSRGBToLinear();
-    var coin = new THREE.Mesh(new THREE.LatheGeometry(pts, 220), coinMat);
+    var coin = new THREE.Mesh(new THREE.LatheGeometry(pts, POSTER ? 220 : 128), coinMat);
     coin.rotation.x = Math.PI / 2;   // lathe axis Y -> face the camera along Z
     badge.add(coin);
 

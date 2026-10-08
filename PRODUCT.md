@@ -98,3 +98,12 @@ A one-person precision shop doing micro-TIG repair under a stereo microscope: to
 - The domain has SPF for iCloud but no DMARC record (checked Oct 2026), so someone could more easily send email pretending to be sales@. Add DMARC with Cloudflare's free DMARC Management, in the Cloudflare dashboard under Email.
 - Also at go-live: turn on DNSSEC in Cloudflare (one click), add one rate-limiting rule for /api/quote (the free plan allows one), and turn on Hotlink Protection.
 
+## Redesign pass (Oct 7, 2026, owner-approved plan)
+- Hero film: shots A (gear) and D (four blocks) are now camera moves on the owner's real photos; no AI-generated frames anywhere in the film. Shot B is the owner's own iPhone time-lapse. Phone frame set is 640x800.
+- Copy: mission replaced by "How the shop runs"; quote CTA in every section; voice is tradesman-to-engineer.
+- Service landing pages: mold-die-repair, micro-tig-welding, farm-equipment-repair (content in service_pages.py, built by gen_pages.py), each with Service + FAQ schema.
+- LocalBusiness schema on the home page (no street address; 40 km service circle around Fort Wayne).
+- Testimonials: hidden placeholder section in index.html; never fill it with invented quotes.
+- Background video loops (Kling 3.0 std via Higgsfield, atmosphere only): slots at images/video/{intro-haze,sparks,steel-sweep,shop-haze}.{webm,mp4,jpg}. Missing files are removed quietly. Owner downloads chosen takes and attaches them; encode with ffmpeg as seamless loops.
+- Coin: single bundled js/coin.js (three.js r128 slim build via esbuild, see scratchpad coinbuild/build.sh), 1.5x pixel ratio on phones, lighter geometry, skipped on <2 GB devices.
+

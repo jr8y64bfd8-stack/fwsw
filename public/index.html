@@ -7,6 +7,33 @@
   <meta name="description" content="Precision TIG and micro-TIG welding in Fort Wayne, Indiana. Mold and die repair, tool steel build-up, stainless, aluminum and exotics, plus farm equipment repair. AWS D17.1 and D1.6 certified. Send drawings or photos for a quote.">
   <meta name="robots" content="noindex">
   <link rel="canonical" href="https://fwspecialtyweld.com/">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "LocalBusiness",
+    "@id": "https://fwspecialtyweld.com/#business",
+    "name": "Fort Wayne Specialty Welding & Co.",
+    "legalName": "Fort Wayne Specialty Welding & Co., LLC",
+    "url": "https://fwspecialtyweld.com/",
+    "telephone": "+1-260-515-3263",
+    "email": "sales@fwspecialtyweld.com",
+    "image": "https://fwspecialtyweld.com/images/hero-four-blocks-1600.jpg",
+    "logo": "https://fwspecialtyweld.com/images/brand/icon-512.png",
+    "description": "Precision TIG and micro-TIG welding repair for molds, dies and tool steel, plus stainless, aluminum, cast iron, farm equipment and on-site repair. AWS D17.1 and D1.6 certified. Fort Wayne, Indiana.",
+    "address": { "@type": "PostalAddress", "addressLocality": "Fort Wayne", "addressRegion": "IN", "addressCountry": "US" },
+    "areaServed": { "@type": "GeoCircle", "geoMidpoint": { "@type": "GeoCoordinates", "latitude": 41.0793, "longitude": -85.1394 }, "geoRadius": "40000" },
+    "openingHoursSpecification": [
+      { "@type": "OpeningHoursSpecification", "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday"], "opens": "07:00", "closes": "17:00" },
+      { "@type": "OpeningHoursSpecification", "dayOfWeek": ["Saturday","Sunday"], "description": "By arrangement" }
+    ],
+    "knowsAbout": ["Mold and die repair", "Tool steel TIG build-up", "Micro-TIG welding", "Stainless and aluminum TIG welding", "Cast iron repair", "Silver soldering", "Farm equipment repair", "On-site welding repair"],
+    "hasCredential": [
+      { "@type": "EducationalOccupationalCredential", "name": "AWS D17.1 welder qualification" },
+      { "@type": "EducationalOccupationalCredential", "name": "AWS D1.6 welder qualification" }
+    ],
+    "potentialAction": { "@type": "Action", "name": "Request a quote", "target": "https://fwspecialtyweld.com/#quote" }
+  }
+  </script>
   <meta name="theme-color" content="#0B2D63">
   <meta property="og:title" content="Fort Wayne Specialty Welding &amp; Co.">
   <meta property="og:description" content="Precision TIG repair for molds, dies and tool steel. AWS D17.1 and D1.6 certified. Fort Wayne, Indiana.">
@@ -169,15 +196,15 @@
         linear-gradient(90deg, var(--navy-deep) 0%, rgba(8,31,69,0.55) 12%, rgba(8,31,69,0) 34%),
         linear-gradient(0deg, rgba(8,31,69,0.65) 0%, rgba(8,31,69,0) 22%),
         radial-gradient(120% 90% at 60% 45%, rgba(5,13,29,0) 55%, rgba(5,13,29,0.55) 100%); }
-    .film-grain { position: absolute; inset: -50%; z-index: 3; pointer-events: none; opacity: 0.09; mix-blend-mode: overlay;
+    .film-grain { position: absolute; inset: 0; z-index: 3; pointer-events: none; opacity: 0.05;
       background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0.5 0 0 0 0 0.5 0 0 0 0 0.5 0 0 0 1.2 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E"); }
 
     .film-copy { position: relative; z-index: 4; height: 100%; display: grid; align-items: center; padding-top: 96px; padding-bottom: 48px; }
     .film-copy-inner { width: min(44%, 560px); display: grid; }
     .beat { grid-area: 1 / 1; display: flex; flex-direction: column; gap: 24px; align-self: center;
-      opacity: 0; visibility: hidden; transform: translateY(16px); filter: blur(6px);
-      transition: opacity 520ms var(--ease-out), transform 700ms var(--ease-out), filter 520ms var(--ease-out), visibility 0s linear 520ms; }
-    .beat.is-on { opacity: 1; visibility: visible; transform: none; filter: none; transition-delay: 0s; }
+      opacity: 0; visibility: hidden; transform: translateY(16px);
+      transition: opacity 520ms var(--ease-out), transform 700ms var(--ease-out), visibility 0s linear 520ms; }
+    .beat.is-on { opacity: 1; visibility: visible; transform: none; transition-delay: 0s; }
     .film h1 { color: #fff; }
     .film h1 em, .beat-title em { font-style: normal; color: var(--tan); }
     .beat-title { font-family: var(--display); font-stretch: 86%; font-weight: 800; font-size: clamp(2.2rem, 4.6vw, 3.9rem); line-height: 1.02; letter-spacing: -0.015em; color: #fff; text-wrap: balance; margin: 0; }
@@ -216,7 +243,7 @@
       .film-cue { display: none !important; }
     }
     @media (max-width: 860px) and (max-height: 700px) { .hero-lede { display: none; } }
-    @media (prefers-reduced-motion: reduce) { .beat { transition: none; filter: none; transform: none; } .film-cue::after { animation: none; } }
+    @media (prefers-reduced-motion: reduce) { .beat { transition: none; transform: none; } .film-cue::after { animation: none; } }
 
     /* ---------- background medallion ---------- */
     #medallion { position: fixed; inset: 0; z-index: 0; pointer-events: none; opacity: 0; transition: opacity 900ms ease; }
@@ -252,6 +279,8 @@
     @media (max-width: 860px) { .feature { grid-template-columns: 1fr; } .feature-photo { min-height: 0; aspect-ratio: 4 / 3; } }
 
     .service-list { list-style: none; margin: clamp(28px, 4vw, 44px) 0 0; padding: 0; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: 64px; }
+    .feature-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 12px 20px; } .more-link { color: var(--navy); font-weight: 650; }
+    .service-list h3 a { color: inherit; text-decoration: none; } .service-list h3 a:hover { text-decoration: underline; text-decoration-color: var(--tan); }
     .service-list li { display: grid; grid-template-columns: 88px minmax(0, 1fr); gap: 20px; align-items: start; padding: 26px 0; border-top: 1px solid var(--rule); }
     .service-list img { width: 88px; height: 88px; object-fit: cover; border-radius: 3px; }
     .service-list h3 { margin-bottom: 6px; }
@@ -312,6 +341,9 @@
     @media (max-width: 640px) { .lb-stage { padding: 0 8px; } .lb-prev, .lb-next { top: auto; bottom: -58px; translate: none; } .lb-prev { left: 16px; } .lb-next { right: 16px; } .lb-caption { padding-inline: 80px; } }
 
     /* ---------- process ---------- */
+    .section-cta { display: flex; flex-wrap: wrap; gap: 12px; margin-top: clamp(32px, 4vw, 48px); }
+    .about-cta { margin-top: 22px; justify-self: start; }
+    .more { display: flex; flex-wrap: wrap; gap: 12px; justify-content: center; }
     .steps { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 0; counter-reset: step; border-top: 2px solid var(--navy); }
     .steps li { padding: 26px 28px 0 0; counter-increment: step; display: grid; gap: 10px; align-content: start; }
     .steps li + li { padding-left: 28px; border-left: 1px solid var(--rule); }
@@ -319,6 +351,13 @@
     .steps p { color: var(--ink-soft); font-size: 1.05rem; }
     @media (max-width: 960px) { .steps { grid-template-columns: 1fr 1fr; row-gap: 36px; } .steps li:nth-child(3) { border-left: 0; padding-left: 0; } }
     @media (max-width: 560px) { .steps { grid-template-columns: 1fr; row-gap: 0; border-top: 0; } .steps li, .steps li + li { padding: 22px 0; border-left: 0; border-top: 1px solid var(--rule); grid-template-columns: 56px minmax(0, 1fr); } .steps li::before { grid-row: span 2; font-size: 2.4rem; } }
+
+    /* ---------- testimonials (hidden placeholder) ---------- */
+    .testimonials[hidden] { display: none; }
+    .testimonials { background: var(--ground); }
+    .quotes-grid { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 20px; }
+    .quotes-grid blockquote { margin: 0; padding: 24px 26px; background: var(--paper); border-left: 3px solid var(--tan); border-radius: var(--radius); display: grid; gap: 12px; }
+    .quotes-grid footer { font-size: 0.95rem; color: var(--ink-soft); }
 
     /* ---------- about ---------- */
     .about { display: grid; grid-template-columns: minmax(0, 0.9fr) minmax(0, 1fr); gap: clamp(32px, 6vw, 80px); align-items: center; }
@@ -468,6 +507,18 @@
     .backdrop-photo { position: absolute; inset: 0; background-size: cover; background-position: center; opacity: 0; transition: opacity 900ms ease; }
     .backdrop-photo.is-on { opacity: 1; }
     .backdrop::after { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(8,31,69,0.55), rgba(8,31,69,0.7)); }
+    .bg-video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0; transition: opacity 1200ms ease; pointer-events: none; }
+    .bg-video.is-playing { opacity: 0.55; }
+    .backdrop-intro .bg-video { z-index: 0; mix-blend-mode: screen; }
+    .backdrop-intro .bg-video.is-playing { opacity: 0.7; }
+    .backdrop-intro::before, .backdrop-intro::after { z-index: 1; }
+    .divider { position: relative; z-index: 1; height: clamp(90px, 14vw, 180px); overflow: hidden; background: var(--navy-deep); }
+    .divider::before, .divider::after { content: ""; position: absolute; left: 0; right: 0; height: 45%; z-index: 2; pointer-events: none; }
+    .divider::before { top: 0; background: linear-gradient(var(--navy-deep), rgba(8,31,69,0)); }
+    .divider::after { bottom: 0; background: linear-gradient(rgba(8,31,69,0), var(--navy-deep)); }
+    .divider .bg-video.is-playing { opacity: 0.85; }
+    .divider.is-empty { display: none; }
+    @media (prefers-reduced-motion: reduce) { .bg-video { display: none; } .divider { display: none; } }
     .backdrop-intro { z-index: 1; overflow: hidden; background:
         radial-gradient(circle at 50% var(--coin-y, 47%), rgba(126,160,212,0.46) 0, rgba(76,112,172,0.26) 24vmin, rgba(20,48,96,0.10) 44vmin, rgba(8,31,69,0) 62vmin),
         radial-gradient(140% 100% at 50% 45%, rgba(8,31,69,0) 45%, rgba(3,10,24,0.8) 100%),
@@ -502,10 +553,10 @@
 <body>
   <a class="skip" href="#main">Skip to content</a>
   <div class="backdrop" aria-hidden="true">
-    <div class="backdrop-photo backdrop-intro is-on" data-bg="intro"></div>
-    <div class="backdrop-photo" data-bg="services" style="background-image:url(images/backdrops/backdrop-brackets.jpg)"></div>
-    <div class="backdrop-photo" data-bg="process" style="background-image:url(images/backdrops/backdrop-weave.jpg)"></div>
-    <div class="backdrop-photo" data-bg="about" style="background-image:url(images/backdrops/backdrop-tube-mounts.jpg)"></div>
+    <div class="backdrop-photo backdrop-intro is-on" data-bg="intro"><video class="bg-video bg-video-intro" muted loop playsinline preload="none" poster="images/video/intro-haze.jpg" data-webm="images/video/intro-haze.webm" data-mp4="images/video/intro-haze.mp4" aria-hidden="true" tabindex="-1"></video></div>
+    <div class="backdrop-photo" data-bg="services" style="background-image:url(images/backdrops/backdrop-brackets.jpg)"><video class="bg-video" muted loop playsinline preload="none" poster="images/video/steel-sweep.jpg" data-webm="images/video/steel-sweep.webm" data-mp4="images/video/steel-sweep.mp4" aria-hidden="true" tabindex="-1"></video></div>
+    <div class="backdrop-photo" data-bg="process" style="background-image:url(images/backdrops/backdrop-weave.jpg)"><video class="bg-video" muted loop playsinline preload="none" poster="images/video/shop-haze.jpg" data-webm="images/video/shop-haze.webm" data-mp4="images/video/shop-haze.mp4" aria-hidden="true" tabindex="-1"></video></div>
+    <div class="backdrop-photo" data-bg="about" style="background-image:url(images/backdrops/backdrop-tube-mounts.jpg)"><video class="bg-video" muted loop playsinline preload="none" poster="images/video/shop-haze.jpg" data-webm="images/video/shop-haze.webm" data-mp4="images/video/shop-haze.mp4" aria-hidden="true" tabindex="-1"></video></div>
   </div>
   <div id="medallion" aria-hidden="true"></div>
 
@@ -544,7 +595,7 @@
     <section class="film" id="film" aria-label="Recent work, from weld to finished part">
       <div class="film-sticky">
         <div class="film-stage">
-          <img class="film-poster" src="images/film/d/f000.webp" srcset="images/film/m/f000.webp 720w, images/film/d/f000.webp 1080w" sizes="(max-width: 860px) 100vw, 58vw" alt="Close-up of a bronze gear TIG welded to a steel shaft, the weld ripples even all the way around" width="1080" height="1350">
+          <img class="film-poster" src="images/film/d/f000.webp" srcset="images/film/m/f000.webp 640w, images/film/d/f000.webp 1080w" sizes="(max-width: 860px) 100vw, 58vw" alt="Close-up of a bronze gear TIG welded to a steel shaft, the weld ripples even all the way around" width="1080" height="1350">
           <canvas id="film-canvas" aria-hidden="true"></canvas>
           <div class="film-grain" aria-hidden="true"></div>
         </div>
@@ -602,11 +653,12 @@
       </div>
     </section>
 
+    <div class="divider" aria-hidden="true"><video class="bg-video divider-video" muted loop playsinline preload="none" poster="images/video/sparks.jpg" data-webm="images/video/sparks.webm" data-mp4="images/video/sparks.mp4" tabindex="-1"></video></div>
     <section class="section services on-photo" id="services" data-backdrop="services">
       <div class="wrap">
         <div class="section-head reveal">
           <h2>Welding for parts that have to go back in the machine.</h2>
-          <p>Most of the work here is repair and build-up on parts that get re-machined to print afterward, so the weld has to be sound, clean and right where it needs to be.</p>
+          <p>Most of the work here is repair and build-up on parts that get re-machined to print afterward. The weld has to be sound, the heat has to stay where it belongs, and the part has to be back in your press on time.</p>
         </div>
 
         <article class="feature reveal">
@@ -620,37 +672,37 @@
             <ul class="alloys" aria-label="Materials">
               <li>H13</li><li>D2</li><li>4140</li><li>17-4</li><li>Beryllium copper</li><li>Stainless</li><li>Aluminum</li>
             </ul>
-            <div><a class="btn btn-line" href="#quote">Quote a repair</a></div>
+            <div class="feature-actions"><a class="btn btn-line" href="#quote">Quote a repair</a><a class="more-link" href="mold-die-repair.html">More on mold &amp; die repair</a></div>
           </div>
         </article>
 
         <ul class="service-list">
           <li class="reveal">
-            <img src="images/portfolio/tool-steels/thumbs/tool-steel-tig-edge-build-up-quarter-scale.jpg" alt="" loading="lazy" width="88" height="88">
-            <div><h3>Micro-TIG precision work</h3><p>Fine beads on small features and sharp edges, done under a stereo microscope so the heat goes only where it should.</p></div>
+            <img src="images/portfolio/tool-steels/thumbs/tool-steel-tig-edge-build-up-quarter-scale.jpg" alt="TIG edge build-up on a tool steel block next to a scale, beads stacked tight along the edge" loading="lazy" width="88" height="88">
+            <div><h3><a href="micro-tig-welding.html">Micro-TIG precision work</a></h3><p>Fine beads on small features and sharp edges, done under a stereo microscope so the heat goes only where it should.</p></div>
           </li>
           <li class="reveal">
-            <img src="images/portfolio/stainless-exotics/thumbs/tig-weld-flange-to-shaft-ring.jpg" alt="" loading="lazy" width="88" height="88">
+            <img src="images/portfolio/stainless-exotics/thumbs/tig-weld-flange-to-shaft-ring.jpg" alt="Stainless flange TIG welded to a shaft with an even fillet all the way around" loading="lazy" width="88" height="88">
             <div><h3>Stainless, aluminum &amp; exotics</h3><p>TIG welding on stainless, aluminum, 17-4 and beryllium copper, from single parts to fabricated assemblies.</p></div>
           </li>
           <li class="reveal">
-            <img src="images/portfolio/production-runs/thumbs/stainless-tig-welded-brackets-production-run.jpg" alt="" loading="lazy" width="88" height="88">
+            <img src="images/portfolio/production-runs/thumbs/stainless-tig-welded-brackets-production-run.jpg" alt="A production run of stainless brackets, each TIG weld matching the last" loading="lazy" width="88" height="88">
             <div><h3>Production runs</h3><p>Repeat weldments that match from the first part to the last, set up on a positioner for consistency.</p></div>
           </li>
           <li class="reveal">
-            <img src="images/portfolio/repair-buildup/thumbs/tig-weld-gear-to-shaft.jpg" alt="" loading="lazy" width="88" height="88">
+            <img src="images/portfolio/repair-buildup/thumbs/tig-weld-gear-to-shaft.jpg" alt="Gear TIG welded to a shaft, weld ripples even around the full circumference" loading="lazy" width="88" height="88">
             <div><h3>Shaft, gear &amp; machine repair</h3><p>Journals, hubs and worn shafts welded and built up for re-machining, plus heavy MIG work on fixtures and plate.</p></div>
           </li>
           <li class="reveal">
             <span class="svc-icon" aria-hidden="true"><svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="14" cy="33" r="9"/><circle cx="14" cy="33" r="3"/><circle cx="37" cy="36" r="6"/><circle cx="37" cy="36" r="1.5"/><path d="M8 25V11h11l4 12"/><path d="M23 25h13a4 4 0 0 1 4 4v1"/><path d="M33 25v-8"/><path d="M5 25h4"/></svg></span>
-            <div><h3>Farm &amp; agricultural repair</h3><p>Implements, hitches, buckets, frames and other farm equipment welded and repaired, at the shop or on site, so you can get back to work.</p></div>
+            <div><h3><a href="farm-equipment-repair.html">Farm &amp; agricultural repair</a></h3><p>Implements, hitches, buckets, frames and other farm equipment welded and repaired, at the shop or on site, so you can get back to work.</p></div>
           </li>
           <li class="reveal">
-            <img src="images/portfolio/fixtures/thumbs/mig-weld-slotted-fixture-plate.jpg" alt="" loading="lazy" width="88" height="88">
+            <img src="images/portfolio/fixtures/thumbs/mig-weld-slotted-fixture-plate.jpg" alt="MIG welded slotted fixture plate" loading="lazy" width="88" height="88">
             <div><h3>Fixtures &amp; fabrication</h3><p>Welding fixtures, plate work and custom fabrication, including ornamental and one-off pieces.</p></div>
           </li>
           <li class="reveal">
-            <img src="images/portfolio/production-runs/thumbs/tig-welded-tube-mounts-on-positioner.jpg" alt="" loading="lazy" width="88" height="88">
+            <img src="images/portfolio/production-runs/thumbs/tig-welded-tube-mounts-on-positioner.jpg" alt="Tube mounts TIG welded on a rotary positioner" loading="lazy" width="88" height="88">
             <div><h3>On-site &amp; mobile</h3><p>Repairs at your shop in Fort Wayne and the surrounding area, about 25 miles out. Call to talk through the job.</p></div>
           </li>
           <li class="reveal">
@@ -677,7 +729,7 @@
       <div class="wrap">
         <div class="section-head">
           <h2>Recent work</h2>
-          <p>Every photo here is a real part from this shop. Tap any one to see it full size.</p>
+          <p>Every photo is a real part from this shop, nothing staged. Tap one to see the bead up close. Have a part like these? <a href="#quote">Send photos for a quote</a>.</p>
         </div>
         <div class="filters" role="group" aria-label="Filter photos">
           <button type="button" data-filter="all" aria-pressed="true">All<span class="count">35</span></button>
@@ -829,7 +881,20 @@
             <figcaption>MIG fillet weld close-up</figcaption>
           </figure>
         </div>
-        <div class="more"><button class="btn btn-ghost" id="show-more" type="button">Show all 35 photos</button></div>
+        <div class="more"><button class="btn btn-ghost" id="show-more" type="button">Show all 35 photos</button><a class="btn btn-primary" href="#quote">Quote a part like this</a></div>
+      </div>
+    </section>
+
+    <div class="divider" aria-hidden="true"><video class="bg-video divider-video" muted loop playsinline preload="none" poster="images/video/sparks.jpg" data-webm="images/video/sparks.webm" data-mp4="images/video/sparks.mp4" tabindex="-1"></video></div>
+    <!-- TESTIMONIALS: placeholder, hidden until the owner supplies real customer quotes. Remove the `hidden` attribute and replace the sample text; never invent quotes. -->
+    <section class="section testimonials" id="testimonials" hidden aria-label="What customers say">
+      <div class="wrap">
+        <div class="section-head"><h2>What customers say</h2><p>Real words from real customers. Placeholder until collected.</p></div>
+        <ul class="quotes-grid">
+          <li><blockquote><p>[PLACEHOLDER: customer quote]</p><footer>[Name, company, city]</footer></blockquote></li>
+          <li><blockquote><p>[PLACEHOLDER: customer quote]</p><footer>[Name, company, city]</footer></blockquote></li>
+          <li><blockquote><p>[PLACEHOLDER: customer quote]</p><footer>[Name, company, city]</footer></blockquote></li>
+        </ul>
       </div>
     </section>
 
@@ -837,14 +902,15 @@
       <div class="wrap">
         <div class="section-head reveal">
           <h2>How a job works</h2>
-          <p>No forms or portals. You talk straight to the welder doing the work.</p>
+          <p>Four steps, one person. You talk to the welder doing the work, from quote to pickup.</p>
         </div>
         <ol class="steps reveal">
           <li><h3>Send drawings or photos</h3><p>Use the quote form or email the print and a few clear photos of the damage, plus the material and when you need it back.</p></li>
-          <li><h3>Get a quote</h3><p>You'll hear back with a price and timing. If it's urgent, call and say so.</p></li>
+          <li><h3>Get a price and a date</h3><p>You hear back with a price and a turnaround, usually the same day. Tool down? Call and say so; rush work and weekends are on the table.</p></li>
           <li><h3>Drop off or on-site</h3><p>Bring the part to the Fort Wayne shop by arrangement, or the work comes to you.</p></li>
-          <li><h3>Ready to machine</h3><p>The part goes back with sound, clean weld where you need it, ready for your toolroom.</p></li>
+          <li><h3>Ready to machine</h3><p>The part goes back with sound, clean weld only where you need it, left oversize for your toolroom to bring to print.</p></li>
         </ol>
+        <div class="section-cta reveal"><a class="btn btn-primary" href="#quote">Start a quote</a><a class="btn btn-ghost" href="tel:+12605153263">Call 260-515-3263</a></div>
       </div>
     </section>
 
@@ -858,8 +924,8 @@
           <p class="lead">Fort Wayne Specialty Welding &amp; Co. is a one-person shop. The person who answers the phone is the person under the microscope welding your part.</p>
           <p>That means straight answers about what can be saved, no hand-offs, and the same care on a single insert as on a production run.</p>
           <div class="mission">
-            <h3>Our mission</h3>
-            <p>Fort Wayne Specialty Welding &amp; Co. is committed to the highest level of quality in every job and in every dealing with our customers and suppliers. Through skilled craftsmanship, reliable fabrication, continuous improvement and strict safety standards, we strive to exceed every customer's requirements and expectations.</p>
+            <h3>How the shop runs</h3>
+            <p>Quote the repair the part needs, not the one that pads the ticket. Say so up front if a part can't be saved. Lay down clean, sound weld with enough stock to machine and no more, and hand it back on the date agreed. Treat your drawings and your parts as confidential. Do the same job on a single insert as on a run of fifty.</p>
           </div>
           <ul class="checks">
             <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>AWS D17.1 (aerospace) and D1.6 (stainless structural) certified</li>
@@ -867,6 +933,7 @@
             <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>15+ years of laser welding experience</li>
             <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Rush work and weekends available</li>
           </ul>
+          <a class="btn btn-primary about-cta" href="#quote">Send a part for a quote</a>
         </div>
       </div>
       <div class="wrap certs reveal">
@@ -893,7 +960,7 @@
       <div class="wrap quote-grid">
         <div class="quote-intro reveal">
           <h2>Send your drawings or photos for a quote.</h2>
-          <p>Fill out the form and attach the print or a few clear photos. You'll get a reply with price and timing. Tool down right now? Call.</p>
+          <p>Attach the print or a few clear photos of the damage, say what the material is if you know it, and when you need it back. You get a price and a turnaround, not a sales call. Tool down right now? Phone.</p>
         </div>
 
         <div class="quote-form-card reveal">
@@ -1018,7 +1085,7 @@
           <div><strong>Fort Wayne Specialty Welding <span class="nowrap">&amp; Co., LLC</span></strong>Precision TIG &amp; MIG · AWS D17.1 &amp; D1.6</div>
         </div>
         <nav class="footer-links" aria-label="Footer">
-          <a href="#services">Services</a><a href="#work">Work</a><a href="#process">How it works</a><a href="#quote">Quote</a><a href="terms.html">Terms</a><a href="privacy.html">Privacy</a>
+          <a href="#services">Services</a><a href="#work">Work</a><a href="#process">How it works</a><a href="#quote">Quote</a><a href="mold-die-repair.html">Mold &amp; die</a><a href="micro-tig-welding.html">Micro-TIG</a><a href="farm-equipment-repair.html">Farm repair</a><a href="terms.html">Terms</a><a href="privacy.html">Privacy</a>
           <a href="tel:+12605153263">260-515-3263</a>
         </nav>
       </div>
@@ -1071,6 +1138,27 @@
       bd.style.setProperty('--coin-y', ((r.top + window.scrollY + r.height / 2) / window.innerHeight * 100).toFixed(2) + '%');
     }
     aimGlow(); addEventListener('resize', function () { if (!document.querySelector('#medallion.is-ready')) aimGlow(); });
+    runVideo(document.querySelector('.backdrop-intro video'), true);
+
+    // background loops: a video loads the first time it's needed, plays only while on duty, and is removed if its file is missing
+    var videosOK = !matchMedia('(prefers-reduced-motion: reduce)').matches && !(navigator.connection && navigator.connection.saveData);
+    function armVideo(v) {
+      if (v.dataset.armed) return; v.dataset.armed = '1';
+      var canWebm = v.canPlayType('video/webm; codecs="vp9"');
+      var src = document.createElement('source'); src.src = canWebm ? v.dataset.webm : v.dataset.mp4; src.type = canWebm ? 'video/webm' : 'video/mp4';
+      src.onerror = function () { var d = v.closest('.divider'); if (d) d.classList.add('is-empty'); v.remove(); };
+      v.appendChild(src); v.load();
+    }
+    function runVideo(v, on) {
+      if (!videosOK || !v || !v.isConnected) return;
+      if (on) { armVideo(v); var p = v.play(); if (p && p.catch) p.catch(function () {}); v.classList.add('is-playing'); }
+      else { v.classList.remove('is-playing'); if (!v.paused) v.pause(); }
+    }
+    if ('IntersectionObserver' in window) {
+      var divio = new IntersectionObserver(function (entries) { entries.forEach(function (e) { runVideo(e.target.querySelector('video'), e.isIntersecting); }); }, { rootMargin: '200px 0px' });
+      [].slice.call(document.querySelectorAll('.divider')).forEach(function (d) { divio.observe(d); });
+    }
+    document.addEventListener('visibilitychange', function () { [].slice.call(document.querySelectorAll('.bg-video.is-playing')).forEach(function (v) { document.hidden ? v.pause() : v.play().catch(function () {}); }); });
 
     // swap the navy backdrop photo to match the section in view
     var photos = {};
@@ -1080,7 +1168,7 @@
         entries.forEach(function (e) {
           if (!e.isIntersecting) return;
           var key = e.target.dataset.backdrop;
-          Object.keys(photos).forEach(function (k) { photos[k].classList.toggle('is-on', k === key); });
+          Object.keys(photos).forEach(function (k) { var on = k === key; photos[k].classList.toggle('is-on', on); runVideo(photos[k].querySelector('video'), on); });
         });
       }, { rootMargin: '-45% 0px -45% 0px' });
       [].slice.call(document.querySelectorAll('[data-backdrop]')).forEach(function (el) { bgio.observe(el); });
@@ -1489,22 +1577,14 @@
     window.addEventListener('load', function () { measure(); onScroll(); });
   })();
 
-  // 3D logo coin: the intro shows a still of it at once; the live coin loads right after and takes over
+  // 3D logo coin: the intro shows a still of it at once; the live coin loads right after and takes over.
+  // Skipped for Save-Data, reduced motion, and phones with little memory (the still stays as the logo).
   (function () {
     var conn = navigator.connection;
     if ((conn && conn.saveData) || matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-    function chain(list) {
-      if (!list.length) return;
-      var el = document.createElement('script'); el.src = list[0];
-      el.onload = function () { chain(list.slice(1)); };
-      document.body.appendChild(el);
-    }
-    function load() {
-      var s = document.createElement('script'); s.src = 'js/three.r128.min.js';
-      s.onload = function () { chain(['js/SVGLoader.r128.js', 'js/RoomEnvironment.r128.js', 'js/medallion.js']); };
-      document.body.appendChild(s);
-    }
-    load();
+    if (navigator.deviceMemory && navigator.deviceMemory < 2) return;
+    var s = document.createElement('script'); s.src = 'js/coin.js'; s.async = true;
+    document.body.appendChild(s);
   })();
   </script>
 </body>
