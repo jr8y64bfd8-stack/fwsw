@@ -42,3 +42,7 @@ The hero is a scroll-driven film: 107 frames per screen size (`images/film/d/` 1
 
 ## Terms page
 `terms.html`, built by gen_terms.py from site_template.html (shared fonts, tokens, header, footer, back-to-top) plus terms_content.html. Navy title band with a tan rule, then a sticky numbered contents list beside a 46rem reading column (contents becomes a two-column box under 960px, one column under 560px). Numbered section heads, tan square bullets, white contact box at the end.
+
+## Accessibility
+Target: WCAG 2.2 AA (2.1 AA is the usual legal benchmark). Checked Oct 2026: axe-core scan with 0 violations on both pages, desktop and phone; keyboard pass (every control reachable with a visible focus ring, skip link, gallery viewer opens with Enter, arrows move, Escape closes and returns focus); reflow at 320px with no sideways scrolling; text over photos measured against the rendered pixels. Reduced motion: the film shows its still poster and the 3D coin isn't loaded. Keep new text at 4.5:1 contrast or better (tan on navy is fine; tan on the light ground is not, so use #73602F there).
+
