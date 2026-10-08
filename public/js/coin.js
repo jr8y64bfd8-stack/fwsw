@@ -3117,9 +3117,16 @@ three/build/three.module.js:
   try {
     renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true, powerPreference: 'low-power', preserveDrawingBuffer: !!window.FWSW_COIN_POSTER });
   } catch (e) { return; }
-  // phones draw the coin at 1.5x at most: it sits behind the page at 60%, so 2x pixels are wasted battery
-  var dprCap = window.innerWidth < 900 ? 1.5 : 2;
-  renderer.setPixelRatio(window.FWSW_COIN_POSTER ? 1 : Math.min(window.devicePixelRatio || 1, dprCap));
+  // resolution follows the screen and the browser zoom (zooming raises devicePixelRatio), so the coin stays
+  // sharp when someone zooms in. Up to 3x while it's the opening scene; 1.5x on phones once it's in the background.
+  var curDpr = 0;
+  function applyDpr(hero) {
+    var cap = hero ? 3 : (window.innerWidth < 900 ? 1.5 : 2);
+    var d = window.FWSW_COIN_POSTER ? 1 : Math.min(window.devicePixelRatio || 1, cap);
+    if (Math.abs(d - curDpr) > 0.01) { curDpr = d; renderer.setPixelRatio(d); return true; }
+    return false;
+  }
+  applyDpr(true);
   renderer.outputEncoding = THREE.sRGBEncoding;
   renderer.toneMapping = THREE.ACESFilmicToneMapping;
   renderer.toneMappingExposure = 1.05;
@@ -3281,6 +3288,7 @@ three/build/three.module.js:
 
   function measure() {
     vw = window.innerWidth; vh = window.innerHeight;
+    applyDpr(blend < 1);
     renderer.setSize(vw, vh, false);
     heroBox = heroImg && heroImg.offsetWidth ? true : null;
   }
@@ -3328,6 +3336,7 @@ three/build/three.module.js:
       if (blend < 1) host.style.transition = 'none';
       else setTimeout(function () { host.style.transition = 'none'; }, 950);
     }
+    if (applyDpr(blend < 1)) renderer.setSize(vw, vh, false);
     place(cx, cy, d);
     host.style.opacity = String(1 - 0.4 * blend);
     if (backdrop && Math.abs(cy - lastGlowY) > 0.5) {      // the spotlight behind the coin follows it
