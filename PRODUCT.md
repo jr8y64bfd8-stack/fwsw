@@ -85,3 +85,9 @@ A one-person precision shop doing micro-TIG repair under a stereo microscope: to
 - Until RESEND_API_KEY is set the form answers "not switched on yet" with the email and phone as fallback. In the claude.ai preview the form can't send (no Worker there).
 - Setup before go-live (owner, in their accounts): 1) resend.com account, add domain fwspecialtyweld.com, let it add DNS records in Cloudflare, create an API key; 2) Cloudflare > Turnstile > add widget for fwspecialtyweld.com, note site key and secret; 3) Cloudflare > Workers > fwspecialtyweld > Settings > Variables and secrets: add RESEND_API_KEY and TURNSTILE_SECRET as secrets; 4) give Claude the Turnstile site key (public) to put in the page.
 
+## Privacy, accessibility note, search engines
+- privacy.html (Oct 2026): plain-English policy matching how the site actually works: no cookies, analytics or trackers; the form's details go to sales@ through an email delivery service; Cloudflare hosts the site and runs the spam check; nothing is sold; drawings stay confidential; people can ask to see, fix or delete their info. If analytics, embeds or a newsletter are ever added, update this page first.
+- Footer: Terms and Privacy links, plus an accessibility help line (call or email and we'll help directly).
+- sitemap.xml and robots.txt list the clean URLs (/, /terms, /privacy), which is how Cloudflare serves .html pages. Every page has a canonical link to fwspecialtyweld.com.
+- Every page still carries <meta name="robots" content="noindex"> until go-live. Remove it at go-live, then submit the sitemap in Google Search Console and Bing Webmaster Tools.
+
