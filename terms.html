@@ -1,0 +1,434 @@
+<!doctype html>
+    <html lang="en">
+    <head>
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+      <title>Terms of Service | Fort Wayne Specialty Welding &amp; Co.</title>
+      <meta name="description" content="Terms of service for welding, repair and fabrication work by Fort Wayne Specialty Welding &amp; Co., LLC: quotes, payment, warranty, pickup, shipping and confidentiality.">
+      <meta name="robots" content="noindex">
+      <link rel="canonical" href="https://fwspecialtyweld.com/terms">
+      <meta name="theme-color" content="#0B2D63">
+      <link rel="icon" href="images/brand/favicon-32.png" sizes="32x32">
+      <link rel="icon" href="images/brand/logo.svg" type="image/svg+xml">
+      <link rel="apple-touch-icon" href="images/brand/apple-touch-icon.png">
+      <link rel="preload" href="fonts/archivo-var.woff2" as="font" type="font/woff2" crossorigin>
+      <style>
+        @font-face { font-family: "Archivo"; src: url("fonts/archivo-var.woff2") format("woff2-variations"); font-weight: 100 900; font-stretch: 62% 125%; font-display: swap; }
+    @font-face { font-family: "Source Sans 3"; src: url("fonts/source-sans-3-var.woff2") format("woff2-variations"); font-weight: 200 900; font-style: normal; font-display: swap; }
+    @font-face { font-family: "Source Sans 3"; src: url("fonts/source-sans-3-var-italic.woff2") format("woff2-variations"); font-weight: 200 900; font-style: italic; font-display: swap; }
+
+    :root {
+      --navy: #0B2D63;
+      --navy-deep: #081F45;
+      --ink: #14213A;
+      --ink-soft: #4A5568;
+      --green: #2F5D34;
+      --green-hover: #264D2B;
+      --tan: #C9B48A;
+      --tan-soft: #E7DCC4;
+      --ground: #F5F3EE;
+      --paper: #FFFFFF;
+      --rule: #DCD6C9;
+      --on-navy: #EEF1F6;
+      --on-navy-soft: #B7C3D8;
+
+      --display: "Archivo", "Arial Narrow", "Helvetica Neue", Arial, sans-serif;
+      --body: "Source Sans 3", "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+
+      --wrap: 1200px;
+      --gutter: clamp(20px, 4vw, 40px);
+      --radius: 4px;
+      --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
+      --section: clamp(72px, 10vw, 128px);
+    }
+
+    *, *::before, *::after { box-sizing: border-box; }
+    html { scroll-behavior: smooth; scroll-padding-top: 84px; -webkit-text-size-adjust: 100%; }
+    @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+    body { margin: 0; background: var(--ground); color: var(--ink); font-family: var(--body); font-size: 1.125rem; line-height: 1.6; -webkit-font-smoothing: antialiased; text-rendering: optimizeLegibility; }
+    img { max-width: 100%; display: block; }
+    a { color: inherit; text-underline-offset: 0.18em; text-decoration-thickness: 1px; }
+    ::selection { background: var(--tan); color: var(--navy-deep); }
+    :focus-visible { outline: 2px solid var(--tan); outline-offset: 3px; border-radius: 2px; }
+    html { scrollbar-color: #9AA3B2 var(--ground); }
+
+    h1, h2, h3 { font-family: var(--display); font-stretch: 88%; line-height: 1.04; letter-spacing: -0.015em; text-wrap: balance; margin: 0; color: var(--navy); }
+    h1 { font-size: clamp(2.6rem, 6vw, 4.6rem); font-weight: 800; }
+    h2 { font-size: clamp(2rem, 4vw, 3.1rem); font-weight: 780; }
+    h3 { font-size: 1.4rem; font-weight: 720; letter-spacing: -0.005em; }
+    p { margin: 0; text-wrap: pretty; }
+
+    .wrap { max-width: var(--wrap); margin: 0 auto; padding-inline: var(--gutter); }
+    .skip { position: absolute; left: -999px; top: 8px; background: var(--paper); color: var(--navy); padding: 8px 14px; z-index: 50; }
+    .skip:focus { left: 8px; }
+
+    /* ---------- buttons ---------- */
+    .btn { --bg: var(--green); display: inline-flex; align-items: center; gap: 10px; min-height: 52px; padding: 0 24px; border-radius: var(--radius); background: var(--bg); color: #fff; font-family: var(--display); font-stretch: 92%; font-weight: 680; font-size: 1.05rem; letter-spacing: 0.01em; text-decoration: none; border: 1px solid transparent; cursor: pointer; transition: background-color 160ms ease, transform 160ms var(--ease-out), border-color 160ms ease; }
+    .btn svg { width: 18px; height: 18px; flex: none; }
+    .btn:active { transform: scale(0.97); }
+    .btn-primary:hover { --bg: var(--green-hover); }
+    .btn-ghost { --bg: transparent; color: var(--on-navy); border-color: rgba(238,241,246,0.4); }
+    .btn-ghost:hover { border-color: var(--on-navy); background: rgba(255,255,255,0.06); }
+    .btn-line { --bg: transparent; color: var(--navy); border-color: var(--navy); }
+    .btn-line:hover { background: var(--navy); color: #fff; }
+
+    /* ---------- header ---------- */
+    .site-header { position: sticky; top: 0; z-index: 30; color: var(--on-navy); padding-top: env(safe-area-inset-top, 0px); background: rgba(8,31,69,0.97); box-shadow: 0 10px 30px -18px rgba(0,0,0,0.6); }
+    @supports (backdrop-filter: blur(8px)) { .site-header { background: rgba(8,31,69,0.9); backdrop-filter: blur(12px) saturate(1.2); } }
+    /* brochure stripes: tan over green along the bottom edge */
+    .site-header::after { content: ""; position: absolute; left: 0; right: 0; bottom: -6px; height: 6px; background: linear-gradient(180deg, var(--tan) 0 3px, var(--green) 3px 6px); pointer-events: none; }
+    .header-row { display: flex; align-items: center; gap: 28px; min-height: 92px; transition: min-height 260ms var(--ease-out); }
+    .brand { display: flex; align-items: center; gap: 18px; text-decoration: none; margin-right: auto; min-width: 0; }
+    .brand-mark { height: 54px; width: auto; flex: none; transition: height 260ms var(--ease-out); }
+    .brand-rule { width: 1px; align-self: stretch; margin-block: 22px; background: rgba(201,180,138,0.5); transition: margin 260ms var(--ease-out); }
+    .brand-name { font-family: var(--display); font-stretch: 82%; font-weight: 780; font-size: 1.32rem; line-height: 1; letter-spacing: 0.03em; text-transform: uppercase; color: #fff; }
+    .brand-name small { display: block; font-family: var(--display); font-weight: 600; font-size: 0.82rem; letter-spacing: 0.12em; color: var(--tan); margin-top: 6px; }
+    .nav { display: flex; gap: 28px; }
+    .nav a { position: relative; text-decoration: none; font-family: var(--display); font-stretch: 90%; font-weight: 640; font-size: 1.02rem; letter-spacing: 0.02em; color: var(--on-navy); padding-block: 8px; transition: color 160ms ease; }
+    .nav a::after { content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 2px; background: var(--tan); transform: scaleX(0); transform-origin: left; transition: transform 240ms var(--ease-out); }
+    .nav a:hover, .nav a[aria-current="true"] { color: #fff; }
+    .nav a:hover::after, .nav a[aria-current="true"]::after { transform: scaleX(1); }
+    .header-actions { display: flex; align-items: center; gap: 10px; }
+    .header-phone { display: inline-flex; align-items: center; gap: 8px; min-height: 46px; font-family: var(--display); font-stretch: 92%; font-weight: 680; text-decoration: none; padding: 0 16px; border: 1px solid rgba(201,180,138,0.55); border-radius: var(--radius); color: var(--tan-soft); font-variant-numeric: tabular-nums; transition: border-color 160ms ease, background-color 160ms ease; }
+    .header-phone:hover { border-color: var(--tan); background: rgba(201,180,138,0.1); }
+    .header-phone svg { width: 16px; height: 16px; }
+    .header-quote { min-height: 46px; padding: 0 18px; font-size: 1rem; }
+    .nav a, .header-phone, .header-quote { white-space: nowrap; }
+    .brand-name .br-narrow { display: none; }
+    .site-header.is-scrolled .header-row { min-height: 70px; }
+    .site-header.is-scrolled .brand-mark { height: 40px; }
+    .site-header.is-scrolled .brand-rule { margin-block: 16px; }
+    @media (max-width: 1180px) { .nav { gap: 18px; } .brand { gap: 14px; } .brand-mark { height: 48px; } .brand-name { font-size: 1.15rem; } .brand-name .br-wide { display: none; } .brand-name .br-narrow { display: inline; }
+      .header-phone { padding: 0 12px; } .header-quote { padding: 0 15px; } }
+    @media (max-width: 1040px) { .nav { display: none; } }
+    @media (max-width: 760px) { .header-phone span { display: none; } .header-phone { padding: 0 13px; } }
+    @media (max-width: 640px) {
+      .header-row { min-height: 72px; gap: 12px; }
+      .brand-mark { height: 40px; }
+      .brand-rule, .brand-name { display: none; }
+      .header-phone span { display: none; }
+      .header-phone { padding: 0 13px; }
+      .header-quote { padding: 0 14px; font-size: 0.95rem; }
+      .site-header.is-scrolled .header-row { min-height: 62px; }
+      .site-header.is-scrolled .brand-mark { height: 34px; }
+    }
+    @media (prefers-reduced-motion: reduce) { .header-row, .brand-mark, .brand-rule { transition: none; } }
+
+    /* ---------- footer ---------- */
+    .site-footer { background: var(--navy-deep); color: var(--on-navy-soft); padding-block: 48px calc(40px + env(safe-area-inset-bottom, 0px)); font-size: 0.98rem; }
+    .footer-row { display: flex; flex-wrap: wrap; gap: 24px 48px; justify-content: space-between; align-items: center; }
+    .footer-brand { display: flex; align-items: center; gap: 20px; }
+    .footer-mark { height: 84px; width: auto; flex: none; }
+    .nowrap { white-space: nowrap; }
+    .footer-brand strong { color: #fff; font-family: var(--display); font-stretch: 88%; font-weight: 740; font-size: 1.1rem; display: block; }
+    .footer-links { display: flex; flex-wrap: wrap; gap: 8px 24px; }
+    .footer-links a { text-decoration: none; } .footer-links a:hover { color: #fff; }
+    .legal { margin-top: 28px; padding-top: 22px; border-top: 1px solid rgba(255,255,255,0.1); font-size: 0.9rem; }
+    .a11y-note { margin-top: 8px; font-size: 0.9rem; }
+    .a11y-note a { color: var(--tan-soft); white-space: nowrap; } .a11y-note a:hover { color: #fff; }
+
+    /* ---------- back to top ---------- */
+    .to-top { position: fixed; z-index: 20; right: max(18px, env(safe-area-inset-right, 0px) + 12px); bottom: calc(18px + env(safe-area-inset-bottom, 0px));
+      width: 52px; height: 52px; display: grid; place-items: center; padding: 0; cursor: pointer;
+      color: var(--tan); background: rgba(8,31,69,0.94); border: 1px solid rgba(201,180,138,0.55); border-radius: 50%;
+      box-shadow: 0 10px 24px -10px rgba(0,0,0,0.6), 0 0 0 1px rgba(255,255,255,0.04) inset;
+      opacity: 0; visibility: hidden; transform: translateY(10px);
+      transition: opacity 240ms var(--ease-out), transform 240ms var(--ease-out), visibility 0s linear 240ms, background-color 160ms ease, color 160ms ease, border-color 160ms ease; }
+    .to-top.is-shown { opacity: 1; visibility: visible; transform: none; transition-delay: 0s; }
+    .to-top svg { width: 22px; height: 22px; }
+    .to-top:hover { background: var(--tan); color: var(--navy-deep); border-color: var(--tan); }
+    .to-top:active { transform: scale(0.93); }
+    .to-top:focus-visible { outline: 2px solid var(--tan); outline-offset: 3px; }
+    @media (max-width: 640px) { .to-top { width: 46px; height: 46px; right: max(14px, env(safe-area-inset-right, 0px) + 10px); bottom: calc(14px + env(safe-area-inset-bottom, 0px)); } }
+    @media (prefers-reduced-motion: reduce) { .to-top { transform: none; } }
+    @media (max-width: 640px) { .site-footer { padding-bottom: calc(80px + env(safe-area-inset-bottom, 0px)); } }
+
+    /* ---------- terms page ---------- */
+    body { background: var(--ground); }
+    .terms-hero { background: var(--navy); color: var(--on-navy); padding-block: clamp(48px, 7vw, 88px) clamp(40px, 6vw, 72px); border-bottom: 3px solid var(--tan); }
+    .terms-hero .wrap { display: grid; gap: 14px; }
+    .eyebrow { font-family: var(--display); font-stretch: 90%; font-weight: 680; font-size: 0.86rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--tan); }
+    .terms-hero h1 { color: #fff; }
+    .terms-hero .lede { color: var(--on-navy-soft); font-size: 1.2rem; max-width: 40em; }
+    .terms-hero .updated { color: var(--on-navy-soft); font-size: 0.95rem; }
+
+    .terms-layout { display: grid; grid-template-columns: 250px minmax(0, 1fr); gap: clamp(40px, 6vw, 88px); padding-block: clamp(44px, 6vw, 80px) clamp(72px, 9vw, 120px); align-items: start; }
+    .toc { position: sticky; top: 104px; font-size: 0.98rem; }
+    .toc-title { font-family: var(--display); font-stretch: 90%; font-weight: 700; color: var(--navy); margin-bottom: 10px; }
+    .toc ol { list-style: none; margin: 0; padding: 0; counter-reset: toc; display: grid; gap: 2px; }
+    .toc li { counter-increment: toc; }
+    .toc a { display: flex; gap: 10px; padding: 5px 0; color: var(--ink-soft); text-decoration: none; line-height: 1.35; }
+    .toc a::before { content: counter(toc, decimal-leading-zero); font-variant-numeric: tabular-nums; color: var(--tan); font-weight: 600; flex: none; }
+    .toc a:hover { color: var(--navy); }
+
+    .terms-body { max-width: 46rem; display: grid; }
+    .terms-body section { padding-block: 30px; border-top: 1px solid var(--rule); }
+    .terms-body section:first-child { border-top: 0; padding-top: 0; }
+    .terms-body h2 { font-size: clamp(1.45rem, 2.4vw, 1.75rem); font-weight: 760; display: flex; align-items: baseline; gap: 14px; margin-bottom: 14px; }
+    .terms-body .num { font-size: 0.95rem; font-weight: 700; color: #73602F; font-variant-numeric: tabular-nums; letter-spacing: 0.04em; flex: none; }
+    .terms-body p, .terms-body li { color: var(--ink); line-height: 1.65; }
+    .terms-body ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 12px; }
+    .terms-body li { position: relative; padding-left: 21px; }
+    .terms-body li::before { content: ""; position: absolute; left: 0; top: 0.68em; width: 7px; height: 7px; background: var(--tan); border-radius: 1px; }
+    .terms-body .sub-list { margin-top: 10px; gap: 8px; }
+    .terms-body .sub-list li::before { background: transparent; border: 1.5px solid var(--tan); width: 6px; height: 6px; }
+    main:focus { outline: none; }
+    .terms-body strong { color: var(--navy); font-weight: 650; }
+    .terms-body a { color: var(--navy); }
+    .terms-contact { margin-top: 18px; padding: 26px 28px; background: var(--paper); border: 1px solid var(--rule); border-left: 3px solid var(--tan); border-radius: var(--radius); display: grid; gap: 6px; }
+    .terms-contact h2 { font-size: 1.25rem; margin: 0; display: block; }
+    .terms-contact a { font-weight: 650; white-space: nowrap; }
+    .footer-links a[aria-current="page"] { color: #fff; }
+
+    @media (max-width: 960px) {
+      .terms-layout { grid-template-columns: 1fr; }
+      .toc { position: static; background: var(--paper); border: 1px solid var(--rule); border-radius: var(--radius); padding: 18px 22px; }
+      .toc ol { grid-template-columns: 1fr 1fr; column-gap: 28px; }
+    }
+    @media (max-width: 560px) { .toc ol { grid-template-columns: 1fr; } .terms-contact { padding: 22px 20px; } }
+  </style>
+    </head>
+    <body>
+      <a class="skip" href="#content">Skip to content</a>
+      <header class="site-header" id="site-header">
+    <div class="wrap header-row">
+      <a class="brand" href="index.html" aria-label="Fort Wayne Specialty Welding &amp; Co. Precision TIG &amp; MIG, home">
+        <img class="brand-mark" src="images/brand/fwsw-mark-white.svg" alt="" width="96" height="54">
+        <span class="brand-rule" aria-hidden="true"></span>
+        <span class="brand-name">Fort Wayne<br class="br-wide"> Specialty<br class="br-narrow"> Welding <span class="nowrap">&amp; Co.</span><small>Precision TIG &amp; MIG</small></span>
+      </a>
+      <nav class="nav" aria-label="Main">
+        <a href="index.html#services">Services</a>
+        <a href="index.html#work">Work</a>
+        <a href="index.html#process">How it works</a>
+        <a href="index.html#about">About</a>
+      </nav>
+      <div class="header-actions">
+        <a class="header-phone" href="tel:+12605153263" aria-label="Call 260-515-3263">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2z"/></svg>
+          <span>260-515-3263</span>
+        </a>
+        <a class="btn btn-primary header-quote" href="index.html#quote">Get a quote</a>
+      </div>
+    </div>
+  </header>
+
+      <main id="content">
+        <section class="terms-hero">
+      <div class="wrap">
+        <p class="eyebrow">Fort Wayne Specialty Welding &amp; Co., LLC</p>
+        <h1>Terms of service</h1>
+        <p class="lede">Plain-English terms for the welding, repair and fabrication work we do. Approving a quote, dropping off a part, or asking us to start work means you agree to them.</p>
+        <p class="updated">Last updated October 2026</p>
+      </div>
+    </section>
+
+    <div class="wrap terms-layout">
+      <nav class="toc" aria-label="On this page">
+        <p class="toc-title">On this page</p>
+        <ol>
+          <li><a href="#cover">Who these terms cover</a></li>
+          <li><a href="#quotes">Quotes and pricing</a></li>
+          <li><a href="#your-part">Your part and its details</a></li>
+          <li><a href="#heat">Heat, hardness and finishing</a></li>
+          <li><a href="#best-effort">Best-effort repairs</a></li>
+          <li><a href="#on-site">On-site work</a></li>
+          <li><a href="#payment">Payment</a></li>
+          <li><a href="#pickup">Pickup and unclaimed parts</a></li>
+          <li><a href="#shipping">Shipping and care of your part</a></li>
+          <li><a href="#warranty">Workmanship warranty</a></li>
+          <li><a href="#limits">Limits on our responsibility</a></li>
+          <li><a href="#confidentiality">Confidentiality</a></li>
+          <li><a href="#cancel">Cancelling a job</a></li>
+          <li><a href="#fine-print">The fine print</a></li>
+        </ol>
+      </nav>
+
+      <div class="terms-body">
+        <section id="cover">
+          <h2><span class="num">01</span>Who these terms cover</h2>
+          <p>These terms apply to all work Fort Wayne Specialty Welding &amp; Co., LLC (“we,” “us”) does for you, the customer, in our shop or at your site. If a written quote or agreement signed by both of us says something different, that document controls for that job.</p>
+        </section>
+
+        <section id="quotes">
+          <h2><span class="num">02</span>Quotes and pricing</h2>
+          <ul>
+            <li>A written quote is good for 30 days unless it says otherwise.</li>
+            <li>A price based on photos, drawings or a phone call is an estimate. Once the part is in hand, if the job turns out to be different (hidden cracks, a different material, more damage than expected), we’ll contact you with a revised price before going further. We don’t do extra work without your OK.</li>
+            <li>Rush, after-hours and weekend work may cost more. You’ll know the price before we start.</li>
+            <li>Turnaround dates are our best estimate when the quote is written. We’ll tell you if something changes them. A missed date doesn’t make the work free or make us responsible for what it costs you (see <a href="#limits">section 11</a>).</li>
+            <li>If we need your OK to continue and can’t reach you, the job waits until we hear from you. The part is held under <a href="#pickup">section 8</a> in the meantime.</li>
+          </ul>
+        </section>
+
+        <section id="your-part">
+          <h2><span class="num">03</span>Your part and its details</h2>
+          <ul>
+            <li>Tell us what the part is made of (alloy, hardness, heat treatment, plating or coatings) if you know. We plan the repair around what you tell us. If that information is wrong or missing, the result can be affected, and extra work to correct it is billed to you.</li>
+            <li>Parts should arrive with the repair area clean and free of heavy oil, grease, resin and coatings. We may charge for cleaning.</li>
+            <li>Tell us before we start if a part has been near anything hazardous: galvanized or cadmium plating, lead, chemical or food-process residue, asbestos, radioactive or biological contamination. We can decline any part we think is unsafe to work on.</li>
+            <li>By sending us a part or a drawing, you confirm you have the right to have that work done and that it doesn’t infringe anyone else’s rights. If someone claims otherwise, that’s between you and them, and you’ll cover any cost it causes us.</li>
+            <li>Whoever drops off, picks up, or gives instructions about a part on your behalf is treated as authorized to act for you.</li>
+            <li>A weld repairs the area we work on. It can’t fix cracks, fatigue, porosity, wear or earlier repairs elsewhere in the part, and it can’t extend the life of a part that is already worn out.</li>
+          </ul>
+        </section>
+
+        <section id="heat">
+          <h2><span class="num">04</span>Heat, hardness and finishing</h2>
+          <ul>
+            <li>Welding puts heat into a part. Hardness, color and dimensions near the weld can change, and some distortion is possible even with careful technique.</li>
+            <li>Unless your quote includes them, post-weld heat treatment, stress relieving, final machining, grinding, polishing, texturing, EDM, plating and coating are your responsibility.</li>
+            <li>Weld build-up is left oversize for you to machine to final size, unless the quote says otherwise.</li>
+            <li>We can’t guarantee an exact match of color, texture or polish to the surrounding surface.</li>
+          </ul>
+        </section>
+
+        <section id="best-effort">
+          <h2><span class="num">05</span>Best-effort repairs</h2>
+          <ul>
+            <li>Some repairs carry more risk however carefully they’re done: cast iron, castings of unknown material, and parts that are heavily cracked, corroded or fatigued. We’ll tell you before we start when a job falls in this group.</li>
+            <li>These repairs are done on a best-effort basis. They can crack during or after welding, they aren’t covered by the warranty, and charges for the work still apply.</li>
+          </ul>
+        </section>
+
+        <section id="on-site">
+          <h2><span class="num">06</span>On-site work</h2>
+          <ul>
+            <li>When we work at your location, you provide safe access, a clear work area, and any permits your site requires, including hot-work permits and a fire watch if your rules call for one.</li>
+            <li>Before we weld on machinery, you make sure it’s shut down, de-energized and locked out as your safety rules require, and that electronics, bearings and seals near the repair are protected or removed. Damage from current running through unprotected components is on you.</li>
+            <li>We can stop work if conditions aren’t safe. Travel time and mileage are charged as quoted. A trip we make and can’t complete because the site wasn’t ready is still billed.</li>
+          </ul>
+        </section>
+
+        <section id="payment">
+          <h2><span class="num">07</span>Payment</h2>
+          <ul>
+            <li><strong>Individuals and homeowners:</strong> payment is due when you pick up your part, or when on-site work is finished.</li>
+            <li><strong>Approved business accounts:</strong> invoices are due within 30 days of the invoice date. Until a business account is approved, payment is due at pickup.</li>
+            <li>We keep your part until the bill for the work on it is paid.</li>
+            <li>Past-due balances are charged interest at 1.5% per month (18% per year), or the highest rate Indiana law allows if that is lower, and you’re responsible for reasonable costs of collecting them, including collection agency and attorney fees.</li>
+            <li>If something on an invoice looks wrong, tell us within 10 days of the invoice date. After that, the invoice stands as sent.</li>
+            <li>A returned or reversed payment is charged back to you with any bank fees we’re charged.</li>
+          </ul>
+        </section>
+
+        <section id="pickup">
+          <h2><span class="num">08</span>Pickup and unclaimed parts</h2>
+          <ul>
+            <li>We’ll let you know when your part is ready.</li>
+            <li>Finished parts are held free for 60 days after that notice. After 60 days, a storage fee applies.</li>
+            <li>If a part is still unclaimed 90 days after the ready notice, and we’ve sent a written notice (email or mail to the contact details you gave us) at least 30 days before acting, we may sell, scrap or otherwise dispose of it as Indiana law allows, apply anything received to what you owe, and bill you for any shortfall. The same applies to parts left after a cancelled job.</li>
+          </ul>
+        </section>
+
+        <section id="shipping">
+          <h2><span class="num">09</span>Shipping and care of your part</h2>
+          <ul>
+            <li>Pack parts securely when you send them. We aren’t responsible for damage that happens on the way to us.</li>
+            <li>Return shipping is at your cost, by the carrier and insurance you choose, or a standard carrier if you don’t say.</li>
+            <li>Responsibility for the part passes to you when it’s picked up or handed to the carrier.</li>
+            <li>We take reasonable care of every part in our shop. Keep high-value molds, dies and tooling covered by your own insurance while they’re here; our responsibility for loss or damage is limited as described in <a href="#limits">section 11</a>.</li>
+          </ul>
+        </section>
+
+        <section id="warranty">
+          <h2><span class="num">10</span>Workmanship warranty</h2>
+          <ul>
+            <li>We stand behind our welds. If a weld we made fails because of our workmanship within <strong>15 days</strong> after you pick up the part (or after we finish on-site work), tell us in writing within those 15 days (email is fine) and return the part. We’ll inspect it and, at our choice, redo the repair at no charge or refund what you paid for that repair.</li>
+            <li>The warranty doesn’t cover problems that were already in the part (<a href="#your-part">section 3</a>); best-effort repairs (<a href="#best-effort">section 5</a>); misuse, accidents, overloading or normal wear; heat treatment, machining or finishing done by others; parts changed or repaired by anyone else after they leave us; or results affected by wrong or missing information about the part.</li>
+            <li>The warranty is for you, the original customer, and doesn’t transfer with the part. For on-site work, we inspect at your site instead of you returning the part.</li>
+            <li>This is the only warranty we give. We make no other warranties, spoken or implied, including implied warranties of merchantability or fitness for a particular purpose. Whether a repaired part performs in your machine, process or product is your call and your responsibility.</li>
+          </ul>
+        </section>
+
+        <section id="limits">
+          <h2><span class="num">11</span>Limits on our responsibility</h2>
+          <ul>
+            <li>Our total responsibility for any claim connected with a job is limited to the amount you paid us for that job.</li>
+            <li>We aren’t responsible for indirect or follow-on losses, such as downtime, lost production, lost profits, missed deadlines or the cost of replacement tooling.</li>
+            <li>We aren’t responsible for delay, loss or damage caused by things outside our reasonable control: fire, storm, flood, power or equipment failure, supplier or carrier delays, illness, or theft despite reasonable care.</li>
+            <li>Any claim connected with a job must be brought within one year of the date the work was finished.</li>
+            <li>Nothing in these terms limits responsibility that Indiana law doesn’t allow us to limit.</li>
+          </ul>
+        </section>
+
+        <section id="confidentiality">
+          <h2><span class="num">12</span>Confidentiality</h2>
+          <ul>
+            <li>Drawings, prints, models and the technical details you send us are kept confidential, used only for your job, and never published or passed to anyone else, except as the law requires or as needed to do the work (for example, a heat-treat or machining vendor you’ve asked us to use).</li>
+            <li>This doesn’t cover information that is already public or that you’ve shared with us without restriction.</li>
+            <li>Photos of finished work may appear in our gallery or marketing, with part numbers, logos and other identifying marks hidden. If you don’t want your part shown, tell us when you place the job and it won’t be.</li>
+            <li>If you need a signed non-disclosure agreement, send it with your request and we’ll sign before anything is shared.</li>
+          </ul>
+        </section>
+
+        <section id="cancel">
+          <h2><span class="num">13</span>Cancelling a job</h2>
+          <p>You can cancel a job at any time before it’s finished. You pay for the work done up to that point and for any material or supplies bought for your job. A rush or after-hours charge already incurred isn’t refunded. The part is returned as-is once that bill is paid.</p>
+        </section>
+
+        <section id="fine-print">
+          <h2><span class="num">14</span>The fine print</h2>
+          <ul>
+            <li>These terms are governed by Indiana law, and any dispute will be handled in the courts of Allen County, Indiana.</li>
+            <li>If any part of these terms can’t be enforced, the rest still applies.</li>
+            <li>These terms, your quote and any agreement signed by both of us are the whole deal for a job. Terms printed on your purchase order or other paperwork don’t apply unless we’ve signed them.</li>
+            <li>If we let something slide once, that doesn’t mean we’ve given it up for next time.</li>
+            <li>You can’t hand your rights or duties under these terms to someone else without our written OK.</li>
+            <li>Notices between us can be sent by email to the addresses on the quote or invoice.</li>
+            <li>By placing a job you confirm you’re at least 18 and, if you’re acting for a company, that you’re allowed to commit it.</li>
+            <li>We may update these terms from time to time. The version posted when you approve a quote applies to that job.</li>
+          </ul>
+        </section>
+
+        <aside class="terms-contact">
+          <h2>Questions about these terms?</h2>
+          <p>Call <a href="tel:+12605153263">260-515-3263</a> or email <a href="mailto:sales@fwspecialtyweld.com">sales@fwspecialtyweld.com</a>.</p>
+        </aside>
+      </div>
+    </div>
+  </main>
+
+      <footer class="site-footer">
+    <div class="wrap">
+      <div class="footer-row">
+        <div class="footer-brand">
+          <img class="footer-mark" src="images/brand/fwsw-logo-white.svg" alt="" width="110" height="84">
+          <div><strong>Fort Wayne Specialty Welding <span class="nowrap">&amp; Co., LLC</span></strong>Precision TIG &amp; MIG · AWS D17.1 &amp; D1.6</div>
+        </div>
+        <nav class="footer-links" aria-label="Footer">
+          <a href="index.html#services">Services</a><a href="index.html#work">Work</a><a href="index.html#process">How it works</a><a href="index.html#quote">Quote</a><a href="mold-die-repair.html">Mold &amp; die</a><a href="micro-tig-welding.html">Micro-TIG</a><a href="farm-equipment-repair.html">Farm repair</a><a href="terms.html" aria-current="page">Terms</a><a href="privacy.html">Privacy</a>
+          <a href="tel:+12605153263">260-515-3263</a>
+        </nav>
+      </div>
+      <p class="legal">© <span id="year">2026</span> Fort Wayne Specialty Welding &amp; Co., LLC · Fort Wayne, Indiana. All photos are our own work and may not be reused without permission.</p>
+      <p class="a11y-note">Having trouble using this site? Call <a href="tel:+12605153263">260-515-3263</a> or email <a href="mailto:sales@fwspecialtyweld.com">sales@fwspecialtyweld.com</a> and we’ll help you directly.</p>
+    </div>
+  </footer>
+
+      <button class="to-top" type="button" id="to-top" aria-label="Back to top" title="Back to top">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 19V5M5.5 11.5 12 5l6.5 6.5"/></svg>
+      </button>
+
+      <script>
+      (function () {
+        var y = document.getElementById('year'); if (y) y.textContent = new Date().getFullYear();
+        var header = document.getElementById('site-header'), btn = document.getElementById('to-top');
+        var queued = false;
+        function update() {
+          queued = false;
+          header.classList.toggle('is-scrolled', window.scrollY > 24);
+          btn.classList.toggle('is-shown', window.scrollY > window.innerHeight * 1.2);
+        }
+        addEventListener('scroll', function () { if (!queued) { queued = true; requestAnimationFrame(update); } }, { passive: true });
+        update();
+        btn.addEventListener('click', function () {
+          var root = document.documentElement, prev = root.style.scrollBehavior;
+          root.style.scrollBehavior = 'auto'; window.scrollTo(0, 0); root.style.scrollBehavior = prev;
+          var main = document.getElementById('content'); main.setAttribute('tabindex', '-1'); main.focus({ preventScroll: true });
+        });
+      })();
+      </script>
+    </body>
+    </html>
+    
