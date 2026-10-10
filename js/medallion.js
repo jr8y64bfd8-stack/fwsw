@@ -24,10 +24,12 @@
     renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true, powerPreference: 'low-power', preserveDrawingBuffer: !!window.FWSW_COIN_POSTER });
   } catch (e) { return; }
   // resolution follows the screen and the browser zoom (zooming raises devicePixelRatio), so the coin stays
-  // sharp when someone zooms in. Up to 3x while it's the opening scene; 1.5x on phones once it's in the background.
+  // sharp when someone zooms in. Up to 3x while it's the opening scene (2x on phones), 2x in the background
+  // (1.5x on phones). Lite mode, for computers that can't keep up, draws at 1.5x and 1x.
   var curDpr = 0;
   function applyDpr(hero) {
-    var cap = hero ? 3 : (window.innerWidth < 900 ? 1.5 : 2);
+    var small = window.innerWidth < 900;
+    var cap = window.FWSW_LITE ? (hero ? 1.5 : 1) : hero ? (small ? 2 : 3) : (small ? 1.5 : 2);
     var d = window.FWSW_COIN_POSTER ? 1 : Math.min(window.devicePixelRatio || 1, cap);
     if (Math.abs(d - curDpr) > 0.01) { curDpr = d; renderer.setPixelRatio(d); return true; }
     return false;
@@ -62,7 +64,9 @@
   var blend = 1, idleOn = false, idleStart = 0, lastIdle = 0, shown = false, animT = 0;
   var lastActive = performance.now(), REST_AFTER = 60000;   // the opening sway rests after a minute with no activity
   var vw = 1, vh = 1, lastGlowY = -1;
-  var backdrop = POSTER ? null : document.querySelector('.backdrop');
+  var glow = POSTER ? null : document.querySelector('.intro-glow');
+  // while the scroll film fills the screen it hides the coin completely, so the coin isn't drawn then
+  var filmCover = POSTER ? null : document.querySelector('.film-sticky'), hidden = false;
 
   // a small studio light that travels close across the face while the coin is the opening scene,
   // so a glint moves over the metal instead of the whole face lighting up at once
@@ -179,6 +183,7 @@
     window.addEventListener('resize', function () { measure(); frame(performance.now()); });
     window.addEventListener('scroll', onScroll, { passive: true });
     document.addEventListener('visibilitychange', function () { if (!document.hidden) wake(); });
+    window.addEventListener('fwsw-lite', function () { if (applyDpr(blend < 1)) renderer.setSize(vw, vh, false); frame(performance.now()); });
     ['pointermove', 'touchstart', 'keydown'].forEach(function (ev) {
       window.addEventListener(ev, function () { var idleWasOff = performance.now() - lastActive > REST_AFTER; lastActive = performance.now(); if (idleWasOff) wake(); }, { passive: true });
     });
@@ -245,9 +250,14 @@
     if (applyDpr(blend < 1)) renderer.setSize(vw, vh, false);
     place(cx, cy, d);
     host.style.opacity = String(1 - 0.4 * blend);
-    if (backdrop && Math.abs(cy - lastGlowY) > 0.5) {      // the spotlight behind the coin follows it
+    if (glow && blend < 1 && Math.abs(cy - lastGlowY) > 0.5) {      // the spotlight behind the coin follows it
       lastGlowY = cy;
-      backdrop.style.setProperty('--coin-y', (cy / vh * 100).toFixed(2) + '%');
+      glow.style.transform = 'translate3d(0,' + cy.toFixed(1) + 'px,0)';
+    }
+    if (shown && filmCover) {
+      var fr = filmCover.getBoundingClientRect(), cover = fr.top <= 0 && fr.bottom >= vh;
+      if (cover !== hidden) { hidden = cover; host.style.visibility = cover ? 'hidden' : ''; }
+      if (cover) return;
     }
     var idle = reduce ? 0 : 1 - blend;
     // the sway's clock only runs while it's animating, so after a rest it picks up where it stopped
@@ -274,9 +284,10 @@
   function tick(now) {
     current += (target - current) * (reduce ? 1 : 0.08);
     if (Math.abs(target - current) < 0.0005) current = target;
-    // the opening sway keeps going while the intro is on screen (about 40 fps is plenty)
-    var idling = heroBox && blend < 1 && !reduce && !document.hidden && now - lastActive < REST_AFTER;
-    if (current !== target || !idling || now - lastIdle > 24) { frame(now); lastIdle = now; }
+    // the opening sway keeps going while the intro is on screen (30 fps is plenty for a motion this slow)
+    // (lite mode skips the sway: the coin holds still until the page scrolls)
+    var idling = heroBox && blend < 1 && !reduce && !window.FWSW_LITE && !document.hidden && now - lastActive < REST_AFTER;
+    if (current !== target || !idling || now - lastIdle > 32) { frame(now); lastIdle = now; }
     if (current !== target || idling) requestAnimationFrame(tick); else { running = false; idleOn = false; }
   }
 })();

@@ -74,7 +74,6 @@
 
     /* ---------- header ---------- */
     .site-header { position: sticky; top: 0; z-index: 30; color: var(--on-navy); padding-top: env(safe-area-inset-top, 0px); background: rgba(8,31,69,0.97); box-shadow: 0 10px 30px -18px rgba(0,0,0,0.6); }
-    @supports (backdrop-filter: blur(8px)) { .site-header { background: rgba(8,31,69,0.9); backdrop-filter: blur(12px) saturate(1.2); } }
     /* brochure stripes: tan over green along the bottom edge */
     .site-header::after { content: ""; position: absolute; left: 0; right: 0; bottom: -6px; height: 6px; background: linear-gradient(180deg, var(--tan) 0 3px, var(--green) 3px 6px); pointer-events: none; }
     .header-row { display: flex; align-items: center; gap: 28px; min-height: 92px; transition: min-height 260ms var(--ease-out); }
