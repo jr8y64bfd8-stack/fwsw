@@ -76,10 +76,10 @@
     .site-header { position: sticky; top: 0; z-index: 30; color: var(--on-navy); padding-top: env(safe-area-inset-top, 0px); background: rgba(8,31,69,0.97); box-shadow: 0 10px 30px -18px rgba(0,0,0,0.6); }
     /* brochure stripes: tan over green along the bottom edge */
     .site-header::after { content: ""; position: absolute; left: 0; right: 0; bottom: -6px; height: 6px; background: linear-gradient(180deg, var(--tan) 0 3px, var(--green) 3px 6px); pointer-events: none; }
-    .header-row { display: flex; align-items: center; gap: 28px; min-height: 92px; transition: min-height 260ms var(--ease-out); }
+    .header-row { display: flex; align-items: center; gap: 28px; min-height: 92px; }
     .brand { display: flex; align-items: center; gap: 18px; text-decoration: none; margin-right: auto; min-width: 0; }
-    .brand-mark { height: 54px; width: auto; flex: none; transition: height 260ms var(--ease-out); }
-    .brand-rule { width: 1px; align-self: stretch; margin-block: 22px; background: rgba(201,180,138,0.5); transition: margin 260ms var(--ease-out); }
+    .brand-mark { height: 54px; width: auto; flex: none; transform-origin: 0 50%; }
+    .brand-rule { width: 1px; align-self: stretch; margin-block: 22px; background: rgba(201,180,138,0.5); }
     .brand-name { font-family: var(--display); font-stretch: 82%; font-weight: 780; font-size: 1.32rem; line-height: 1; letter-spacing: 0.03em; text-transform: uppercase; color: #fff; }
     .brand-name small { display: block; font-family: var(--display); font-weight: 600; font-size: 0.82rem; letter-spacing: 0.12em; color: var(--tan); margin-top: 6px; }
     .nav { display: flex; gap: 28px; }
@@ -94,10 +94,17 @@
     .header-quote { min-height: 46px; padding: 0 18px; font-size: 1rem; }
     .nav a, .header-phone, .header-quote { white-space: nowrap; }
     .brand-name .br-narrow { display: none; }
-    .site-header.is-scrolled .header-row { min-height: 70px; }
-    .site-header.is-scrolled .brand-mark { height: 40px; }
-    .site-header.is-scrolled .brand-rule { margin-block: 16px; }
-    @media (max-width: 1180px) { .nav { gap: 18px; } .brand { gap: 14px; } .brand-mark { height: 48px; } .brand-name { font-size: 1.15rem; } .brand-name .br-wide { display: none; } .brand-name .br-narrow { display: inline; }
+    /* compact header once the page scrolls, drawn with transforms only so nothing under it moves or re-lays out:
+       --shrink is how much shorter it gets, --mark-k how much the mark scales (54px to 40px tall),
+       --mark-dx how far the name slides in as the mark narrows, --rule-k how much the divider shortens */
+    .site-header { --shrink: 22px; --mark-k: 0.7407; --mark-dx: -24.89px; --rule-k: 0.7917; transition: transform 260ms var(--ease-out); }
+    .header-row > *, .brand-mark, .brand-rule, .brand-name { transition: transform 260ms var(--ease-out); }
+    .site-header.is-scrolled { transform: translateY(calc(-1 * var(--shrink))); }
+    .site-header.is-scrolled .header-row > * { transform: translateY(calc(var(--shrink) / 2)); }
+    .site-header.is-scrolled .brand-mark { transform: scale(var(--mark-k)); }
+    .site-header.is-scrolled .brand-rule { transform: translateX(var(--mark-dx)) scaleY(var(--rule-k)); }
+    .site-header.is-scrolled .brand-name { transform: translateX(var(--mark-dx)); }
+    @media (max-width: 1180px) { .nav { gap: 18px; } .brand { gap: 14px; } .brand-mark { height: 48px; } .site-header { --mark-k: 0.8333; --mark-dx: -14.22px; } .brand-name { font-size: 1.15rem; } .brand-name .br-wide { display: none; } .brand-name .br-narrow { display: inline; }
       .header-phone { padding: 0 12px; } .header-quote { padding: 0 15px; } }
     @media (max-width: 1040px) { .nav { display: none; } }
     @media (max-width: 760px) { .header-phone span { display: none; } .header-phone { padding: 0 13px; } }
@@ -108,10 +115,9 @@
       .header-phone span { display: none; }
       .header-phone { padding: 0 13px; }
       .header-quote { padding: 0 14px; font-size: 0.95rem; }
-      .site-header.is-scrolled .header-row { min-height: 62px; }
-      .site-header.is-scrolled .brand-mark { height: 34px; }
+      .site-header { --shrink: 10px; --mark-k: 0.85; }
     }
-    @media (prefers-reduced-motion: reduce) { .header-row, .brand-mark, .brand-rule { transition: none; } }
+    @media (prefers-reduced-motion: reduce) { .site-header, .header-row > *, .brand-mark, .brand-rule, .brand-name { transition: none; } }
 
     /* ---------- footer ---------- */
     .site-footer { background: var(--navy-deep); color: var(--on-navy-soft); padding-block: 48px calc(40px + env(safe-area-inset-bottom, 0px)); font-size: 0.98rem; }
@@ -414,9 +420,21 @@
         var y = document.getElementById('year'); if (y) y.textContent = new Date().getFullYear();
         var header = document.getElementById('site-header'), btn = document.getElementById('to-top');
         var queued = false;
+        // the compact header is drawn with transforms; their sizes come from the header as it's laid out
+        function compactSizes() {
+          var mark = header.querySelector('.brand-mark'), rule = header.querySelector('.brand-rule');
+          if (!mark || !mark.offsetHeight) return;
+          var k = (matchMedia('(max-width: 640px)').matches ? 34 : 40) / mark.offsetHeight;
+          header.style.setProperty('--mark-k', k.toFixed(4));
+          header.style.setProperty('--mark-dx', (-mark.offsetHeight * (+mark.getAttribute('width') / +mark.getAttribute('height') || mark.offsetWidth / mark.offsetHeight) * (1 - k)).toFixed(2) + 'px');
+          if (rule && rule.offsetHeight) header.style.setProperty('--rule-k', ((rule.offsetHeight + 12) / rule.offsetHeight).toFixed(4));
+        }
+        var scrolled = null;
+        addEventListener('resize', function () { if (scrolled) compactSizes(); });
         function update() {
           queued = false;
-          header.classList.toggle('is-scrolled', window.scrollY > 24);
+          var on = window.scrollY > 24;
+          if (on !== scrolled) { scrolled = on; if (on) compactSizes(); header.classList.toggle('is-scrolled', on); }
           btn.classList.toggle('is-shown', window.scrollY > window.innerHeight * 1.2);
         }
         addEventListener('scroll', function () { if (!queued) { queued = true; requestAnimationFrame(update); } }, { passive: true });
