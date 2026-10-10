@@ -107,10 +107,10 @@
     .site-header { position: sticky; top: 0; z-index: 30; color: var(--on-navy); padding-top: env(safe-area-inset-top, 0px); background: rgba(8,31,69,0.97); box-shadow: 0 10px 30px -18px rgba(0,0,0,0.6); }
     /* brochure stripes: tan over green along the bottom edge */
     .site-header::after { content: ""; position: absolute; left: 0; right: 0; bottom: -6px; height: 6px; background: linear-gradient(180deg, var(--tan) 0 3px, var(--green) 3px 6px); pointer-events: none; }
-    .header-row { display: flex; align-items: center; gap: 28px; min-height: 92px; transition: min-height 260ms var(--ease-out); }
+    .header-row { display: flex; align-items: center; gap: 28px; min-height: 92px; }
     .brand { display: flex; align-items: center; gap: 18px; text-decoration: none; margin-right: auto; min-width: 0; }
-    .brand-mark { height: 54px; width: auto; flex: none; transition: height 260ms var(--ease-out); }
-    .brand-rule { width: 1px; align-self: stretch; margin-block: 22px; background: rgba(201,180,138,0.5); transition: margin 260ms var(--ease-out); }
+    .brand-mark { height: 54px; width: auto; flex: none; transform-origin: 0 50%; }
+    .brand-rule { width: 1px; align-self: stretch; margin-block: 22px; background: rgba(201,180,138,0.5); }
     .brand-name { font-family: var(--display); font-stretch: 82%; font-weight: 780; font-size: 1.32rem; line-height: 1; letter-spacing: 0.03em; text-transform: uppercase; color: #fff; }
     .brand-name small { display: block; font-family: var(--display); font-weight: 600; font-size: 0.82rem; letter-spacing: 0.12em; color: var(--tan); margin-top: 6px; }
     .nav { display: flex; gap: 28px; }
@@ -125,10 +125,17 @@
     .header-quote { min-height: 46px; padding: 0 18px; font-size: 1rem; }
     .nav a, .header-phone, .header-quote { white-space: nowrap; }
     .brand-name .br-narrow { display: none; }
-    .site-header.is-scrolled .header-row { min-height: 70px; }
-    .site-header.is-scrolled .brand-mark { height: 40px; }
-    .site-header.is-scrolled .brand-rule { margin-block: 16px; }
-    @media (max-width: 1180px) { .nav { gap: 18px; } .brand { gap: 14px; } .brand-mark { height: 48px; } .brand-name { font-size: 1.15rem; } .brand-name .br-wide { display: none; } .brand-name .br-narrow { display: inline; }
+    /* compact header once the page scrolls, drawn with transforms only so nothing under it moves or re-lays out:
+       --shrink is how much shorter it gets, --mark-k how much the mark scales (54px to 40px tall),
+       --mark-dx how far the name slides in as the mark narrows, --rule-k how much the divider shortens */
+    .site-header { --shrink: 22px; --mark-k: 0.7407; --mark-dx: -24.89px; --rule-k: 0.7917; transition: transform 260ms var(--ease-out); }
+    .header-row > *, .brand-mark, .brand-rule, .brand-name { transition: transform 260ms var(--ease-out); }
+    .site-header.is-scrolled { transform: translateY(calc(-1 * var(--shrink))); }
+    .site-header.is-scrolled .header-row > * { transform: translateY(calc(var(--shrink) / 2)); }
+    .site-header.is-scrolled .brand-mark { transform: scale(var(--mark-k)); }
+    .site-header.is-scrolled .brand-rule { transform: translateX(var(--mark-dx)) scaleY(var(--rule-k)); }
+    .site-header.is-scrolled .brand-name { transform: translateX(var(--mark-dx)); }
+    @media (max-width: 1180px) { .nav { gap: 18px; } .brand { gap: 14px; } .brand-mark { height: 48px; } .site-header { --mark-k: 0.8333; --mark-dx: -14.22px; } .brand-name { font-size: 1.15rem; } .brand-name .br-wide { display: none; } .brand-name .br-narrow { display: inline; }
       .header-phone { padding: 0 12px; } .header-quote { padding: 0 15px; } }
     @media (max-width: 1040px) { .nav { display: none; } }
     @media (max-width: 760px) { .header-phone span { display: none; } .header-phone { padding: 0 13px; } }
@@ -139,10 +146,9 @@
       .header-phone span { display: none; }
       .header-phone { padding: 0 13px; }
       .header-quote { padding: 0 14px; font-size: 0.95rem; }
-      .site-header.is-scrolled .header-row { min-height: 62px; }
-      .site-header.is-scrolled .brand-mark { height: 34px; }
+      .site-header { --shrink: 10px; --mark-k: 0.85; }
     }
-    @media (prefers-reduced-motion: reduce) { .header-row, .brand-mark, .brand-rule { transition: none; } }
+    @media (prefers-reduced-motion: reduce) { .site-header, .header-row > *, .brand-mark, .brand-rule, .brand-name { transition: none; } }
 
     /* ---------- intro: the coin opens the page ---------- */
     /* sits under the sticky header (negative margin) so the header floats over the opening scene */
@@ -245,9 +251,10 @@
     @media (prefers-reduced-motion: reduce) { .beat { transition: none; transform: none; } .film-cue::after { animation: none; } }
 
     /* ---------- background medallion ---------- */
-    #medallion { position: fixed; inset: 0; z-index: 0; pointer-events: none; opacity: 0; transition: opacity 900ms ease; }
+    #medallion { position: fixed; inset: 0; z-index: 0; pointer-events: none; overflow: hidden; opacity: 0; transition: opacity 900ms ease; }
     #medallion.is-ready { opacity: 0.6; }
-    #medallion canvas { width: 100% !important; height: 100% !important; display: block; }
+    /* the canvas covers just the coin; the script sizes it and moves it with transforms */
+    #medallion canvas { position: absolute; left: 0; top: 0; display: block; }
     main, .site-footer { position: relative; z-index: 1; }
 
     /* ---------- facts band ---------- */
@@ -665,7 +672,7 @@
 
         <article class="feature reveal">
           <div class="feature-photo">
-            <img src="images/portfolio/tool-steels/thumbs/tool-steel-tig-build-up-sloped-face.jpg" alt="Multi-pass TIG build-up covering a sloped face of a tool steel part" loading="lazy" width="540" height="720">
+            <img src="images/portfolio/tool-steels/thumbs/tool-steel-tig-build-up-sloped-face.jpg" alt="Multi-pass TIG build-up covering a sloped face of a tool steel part" loading="lazy" decoding="async" width="540" height="720">
           </div>
           <div class="feature-body">
             <h3 class="feature-title">Mold &amp; die repair, tool steel build-up</h3>
@@ -680,19 +687,19 @@
 
         <ul class="service-list">
           <li class="reveal">
-            <img src="images/portfolio/tool-steels/thumbs/tool-steel-tig-edge-build-up-quarter-scale.jpg" alt="TIG edge build-up on a tool steel block next to a scale, beads stacked tight along the edge" loading="lazy" width="88" height="88">
+            <img src="images/portfolio/tool-steels/thumbs/tool-steel-tig-edge-build-up-quarter-scale.jpg" alt="TIG edge build-up on a tool steel block next to a scale, beads stacked tight along the edge" loading="lazy" decoding="async" width="88" height="88">
             <div><h3><a href="micro-tig-welding.html">Micro-TIG precision work</a></h3><p>Fine beads on small features and sharp edges, done under a stereo microscope so the heat goes only where it should.</p></div>
           </li>
           <li class="reveal">
-            <img src="images/portfolio/stainless-exotics/thumbs/tig-weld-flange-to-shaft-ring.jpg" alt="Stainless flange TIG welded to a shaft with an even fillet all the way around" loading="lazy" width="88" height="88">
+            <img src="images/portfolio/stainless-exotics/thumbs/tig-weld-flange-to-shaft-ring.jpg" alt="Stainless flange TIG welded to a shaft with an even fillet all the way around" loading="lazy" decoding="async" width="88" height="88">
             <div><h3>Stainless, aluminum &amp; exotics</h3><p>TIG welding on stainless, aluminum, 17-4 and beryllium copper, from single parts to fabricated assemblies.</p></div>
           </li>
           <li class="reveal">
-            <img src="images/portfolio/production-runs/thumbs/stainless-tig-welded-brackets-production-run.jpg" alt="A production run of stainless brackets, each TIG weld matching the last" loading="lazy" width="88" height="88">
+            <img src="images/portfolio/production-runs/thumbs/stainless-tig-welded-brackets-production-run.jpg" alt="A production run of stainless brackets, each TIG weld matching the last" loading="lazy" decoding="async" width="88" height="88">
             <div><h3>Production runs</h3><p>Repeat weldments that match from the first part to the last, set up on a positioner for consistency.</p></div>
           </li>
           <li class="reveal">
-            <img src="images/portfolio/repair-buildup/thumbs/tig-weld-gear-to-shaft.jpg" alt="Gear TIG welded to a shaft, weld ripples even around the full circumference" loading="lazy" width="88" height="88">
+            <img src="images/portfolio/repair-buildup/thumbs/tig-weld-gear-to-shaft.jpg" alt="Gear TIG welded to a shaft, weld ripples even around the full circumference" loading="lazy" decoding="async" width="88" height="88">
             <div><h3>Shaft, gear &amp; machine repair</h3><p>Journals, hubs and worn shafts welded and built up for re-machining, plus heavy MIG work on fixtures and plate.</p></div>
           </li>
           <li class="reveal">
@@ -700,11 +707,11 @@
             <div><h3><a href="farm-equipment-repair.html">Farm &amp; agricultural repair</a></h3><p>Implements, hitches, buckets, frames and other farm equipment welded and repaired, at the shop or on site, so you can get back to work.</p></div>
           </li>
           <li class="reveal">
-            <img src="images/portfolio/fixtures/thumbs/mig-weld-slotted-fixture-plate.jpg" alt="MIG welded slotted fixture plate" loading="lazy" width="88" height="88">
+            <img src="images/portfolio/fixtures/thumbs/mig-weld-slotted-fixture-plate.jpg" alt="MIG welded slotted fixture plate" loading="lazy" decoding="async" width="88" height="88">
             <div><h3>Fixtures &amp; fabrication</h3><p>Welding fixtures, plate work and custom fabrication, including ornamental and one-off pieces.</p></div>
           </li>
           <li class="reveal">
-            <img src="images/portfolio/production-runs/thumbs/tig-welded-tube-mounts-on-positioner.jpg" alt="Tube mounts TIG welded on a rotary positioner" loading="lazy" width="88" height="88">
+            <img src="images/portfolio/production-runs/thumbs/tig-welded-tube-mounts-on-positioner.jpg" alt="Tube mounts TIG welded on a rotary positioner" loading="lazy" decoding="async" width="88" height="88">
             <div><h3>On-site &amp; mobile</h3><p>Repairs at your shop in Fort Wayne and the surrounding area, about 25 miles out. Call to talk through the job.</p></div>
           </li>
           <li class="reveal">
@@ -775,7 +782,7 @@ __TILES__
     <section class="section about-section on-photo" id="about" data-backdrop="about">
       <div class="wrap about">
         <figure class="about-photo reveal">
-          <img src="images/portfolio/tool-steels/thumbs/tool-steel-tig-edge-build-up-half-bore-scale.jpg" alt="Fine TIG build-up bead along the edge of a half-round bore, with a steel rule laid across for scale" loading="lazy" width="540" height="720">
+          <img src="images/portfolio/tool-steels/thumbs/tool-steel-tig-edge-build-up-half-bore-scale.jpg" alt="Fine TIG build-up bead along the edge of a half-round bore, with a steel rule laid across for scale" loading="lazy" decoding="async" width="540" height="720">
         </figure>
         <div class="about-copy reveal">
           <h2>One welder.<br>25&nbsp;years. Your part.</h2>
@@ -995,14 +1002,22 @@ __TILES__
       function f(now) {
         if (window.FWSW_LITE) return;
         if (document.hidden) { last = 0; requestAnimationFrame(f); return; }
-        if (last) { var d = now - last; n++; span += d; if (d > 34) slow++; }
+        if (last) {
+          var d = now - last;
+          // a one-off stall (the 3D logo setting itself up, a tab switch) says nothing about everyday smoothness
+          if (d < 200) { n++; span += d; if (d > 34) slow++; }
+        }
         last = now;
         if (span < 3000) requestAnimationFrame(f);
         else if (n / (span / 1000) < 45 || slow / n > 0.15) goLite();
       }
       requestAnimationFrame(f);
     }
-    addEventListener('load', function () { setTimeout(sample, 1500); });
+    // the first look waits until the 3D logo has finished setting up (or 8 s, if it never loads)
+    var looked = false;
+    function firstLook() { if (!looked) { looked = true; setTimeout(sample, 500); } }
+    addEventListener('fwsw-coin-ready', firstLook);
+    addEventListener('load', function () { setTimeout(firstLook, 8000); });
     addEventListener('scroll', function first() { removeEventListener('scroll', first); setTimeout(sample, 400); }, { passive: true });
   })();
 
@@ -1084,8 +1099,26 @@ __TILES__
 
     // header: compact once the page scrolls, and mark the section in view
     var header = document.getElementById('site-header');
-    var setScrolled = function () { header.classList.toggle('is-scrolled', window.scrollY > 24); };
+    // the compact header is drawn with transforms; their sizes come from the header as it's laid out
+    // (mark 40px tall, or 34px on phones; the divider gains the 12px its margins give up)
+    function compactSizes() {
+      var mark = header.querySelector('.brand-mark'), rule = header.querySelector('.brand-rule');
+      if (!mark || !mark.offsetHeight) return;
+      var k = (matchMedia('(max-width: 640px)').matches ? 34 : 40) / mark.offsetHeight;
+      header.style.setProperty('--mark-k', k.toFixed(4));
+      header.style.setProperty('--mark-dx', (-mark.offsetHeight * (+mark.getAttribute('width') / +mark.getAttribute('height') || mark.offsetWidth / mark.offsetHeight) * (1 - k)).toFixed(2) + 'px');
+      if (rule && rule.offsetHeight) header.style.setProperty('--rule-k', ((rule.offsetHeight + 12) / rule.offsetHeight).toFixed(4));
+    }
+    var scrolled = null;
+    function setScrolled() {
+      var on = window.scrollY > 24;
+      if (on === scrolled) return;
+      scrolled = on;
+      if (on) compactSizes();
+      header.classList.toggle('is-scrolled', on);
+    }
     setScrolled(); addEventListener('scroll', setScrolled, { passive: true });
+    addEventListener('resize', function () { if (scrolled) compactSizes(); });
     var navLinks = [].slice.call(document.querySelectorAll('.nav a'));
     if ('IntersectionObserver' in window) {
       var navio = new IntersectionObserver(function (entries) {
@@ -1161,7 +1194,10 @@ __TILES__
     lb.addEventListener('touchend', function (e) { if (sx === null) return; var dx = e.changedTouches[0].clientX - sx; if (Math.abs(dx) > 50) show(idx + (dx < 0 ? 1 : -1)); sx = null; });
   })();
 
-  // Hero film: real footage scrubbed by scroll, one frame set per screen size
+  // Hero film: real footage scrubbed by scroll, one frame set per screen size.
+  // Frames are fetched once and decoded into ready-to-draw bitmaps on a background thread (js/film-frames.js),
+  // a window at a time around where the film is, so scrolling never waits on unpacking an image and memory stays
+  // modest. Browsers that can't do that get the frames as plain images.
   (function () {
     var section = document.querySelector('.film');
     var canvas = document.getElementById('film-canvas');
@@ -1170,6 +1206,7 @@ __TILES__
     if (matchMedia('(prefers-reduced-motion: reduce)').matches || (conn && conn.saveData)) return;
 
     var N = 107;
+    var DIMS = { d: [1080, 1350], m: [640, 800] };      // frame sizes (corrected from the first frame if they differ)
     document.documentElement.classList.add('film-on');
     var ctx = canvas.getContext('2d', { alpha: false });
     var stage = canvas.parentElement;
@@ -1179,71 +1216,169 @@ __TILES__
     });
     var rail = section.querySelector('.film-rail span');
     var cue = section.querySelector('.film-cue');
-    var frames = [], ready = [], set = null, cw = 0, ch = 0;
-    var cur = 0, target = 0, running = false, drawn = -1;
+    var store = null, set = null, cw = 0, ch = 0, crop = { iw: 0 }, lastKey = '';
+    var cur = 0, target = 0, running = false;
 
     function wantSet() { return !window.FWSW_LITE && stage.clientWidth * Math.min(window.devicePixelRatio || 1, 2) > 760 ? 'd' : 'm'; }
-
-    function loadSet(name) {
-      set = name; frames = new Array(N); ready = new Array(N);
-      // coarse pass first so scrubbing works early, then fill in the gaps
+    function frameUrl(name, i) { return 'images/film/' + name + '/f' + ('00' + i).slice(-3) + '.webp'; }
+    // coarse pass first so scrubbing works early, then fill in the gaps
+    function fetchOrder() {
       var order = [], seen = {};
       [16, 8, 4, 2, 1].forEach(function (step) {
         for (var i = 0; i < N; i += step) if (!seen[i]) { seen[i] = 1; order.push(i); }
       });
       if (!seen[N - 1]) order.push(N - 1);
-      var next = 0, active = 0;
+      return order;
+    }
+    function keep() { return set === 'd' ? 12 : 18; }      // decoded frames kept either side of the film's position
+
+    // ---- frames decoded by the background worker ----
+    var worker = null, useWorker = !!(window.Worker && window.createImageBitmap), gen = 0;
+    function WorkerStore(name) {
+      var my = ++gen, have = [], bmp = [], pending = {}, busy = 0, got = 0, fails = 0, urls = [];
+      for (var i = 0; i < N; i++) urls.push(new URL(frameUrl(name, i), document.baseURI).href);
+      worker.postMessage({ type: 'load', gen: my, urls: urls, order: fetchOrder() });
+      var watchdog = setTimeout(function () { if (!got && my > 0) fallback(); }, 6000);   // nothing arriving: use plain images
+      function far(i) { return Math.abs(i - Math.round(target)) > keep() + 3; }
       function pump() {
-        while (set === name && active < 6 && next < order.length) {
+        var c = Math.round(target), dir = target >= cur ? 1 : -1, K = keep();
+        while (busy < 2) {
+          var pick = -1;
+          // nearest first, alternating ahead and behind, ahead first
+          for (var k = 0; k <= 2 * K && pick < 0; k++) {
+            var i = c + Math.ceil(k / 2) * (k % 2 ? dir : -dir);
+            if (i >= 0 && i < N && have[i] && !bmp[i] && !pending[i]) pick = i;
+          }
+          if (pick < 0) return;
+          pending[pick] = 1; busy++;
+          worker.postMessage({ type: 'decode', gen: my, i: pick });
+        }
+      }
+      this.get = function (i) { return bmp[i] || null; };
+      this.msg = function (m) {
+        if (m.gen !== my) { if (m.bmp) m.bmp.close(); return; }
+        if (m.type === 'have') { have[m.i] = true; pump(); return; }
+        if (m.type === 'nodecode') { fallback(); return; }
+        busy--; delete pending[m.i];
+        if (m.type === 'bmp') {
+          got++;
+          if (far(m.i)) m.bmp.close();
+          else { bmp[m.i] = m.bmp; arrived(m.i, m.bmp.width, m.bmp.height); }
+        } else if (++fails > 4 && !got) { fallback(); return; }
+        pump();
+      };
+      // the film moved: let go of frames that are now far away, decode the ones coming up
+      this.focus = function () {
+        for (var i = 0; i < N; i++) if (bmp[i] && far(i)) { bmp[i].close(); bmp[i] = null; }
+        pump();
+      };
+      this.drop = function () {
+        clearTimeout(watchdog);
+        if (worker) worker.postMessage({ type: 'drop', gen: my });
+        bmp.forEach(function (b) { if (b) b.close(); });
+        bmp = []; my = -1;
+      };
+    }
+
+    // ---- fallback: plain images, decoded by the browser ----
+    function ImageStore(name) {
+      var frames = [], live = true, order = fetchOrder(), next = 0, active = 0;
+      (function pump() {
+        while (live && active < 6 && next < order.length) {
           (function (i) {
             var img = new Image();
             active++;
             var done = function () {
               active--;
-              if (img.naturalWidth && set === name) { frames[i] = img; ready[i] = true; if (Math.abs(i - cur) < 3) request(true); }
+              if (live && img.naturalWidth) { frames[i] = img; arrived(i, img.naturalWidth, img.naturalHeight); }
               pump();
             };
-            img.src = 'images/film/' + name + '/f' + ('00' + i).slice(-3) + '.webp';
-            // decode off the main thread before the frame is used, so scrolling never waits on it
+            img.src = frameUrl(name, i);
             if (img.decode) img.decode().then(done, done); else img.onload = img.onerror = done;
           })(order[next++]);
         }
-      }
-      pump();
+      })();
+      this.get = function (i) { return frames[i] || null; };
+      this.focus = function () {};
+      this.drop = function () { live = false; frames = []; };
     }
 
+    function loadSet(name) {
+      var old = store;
+      set = name; size();
+      // carry the frame on screen over into the resized canvas, so switching sets never shows a blank
+      if (old) { var a = nearest(Math.round(cur)); if (a >= 0) paint(old.get(a)); old.drop(); }
+      store = null;
+      if (useWorker && !worker) {
+        try {
+          worker = new Worker('js/film-frames.js');
+          worker.onmessage = function (e) { if (store && store.msg) store.msg(e.data); };
+          worker.onerror = function () { fallback(); };
+        } catch (e) { worker = null; useWorker = false; }
+      }
+      if (useWorker && worker) { try { store = new WorkerStore(name); } catch (e) { useWorker = false; } }
+      if (!store) store = new ImageStore(name);
+      lastKey = '';
+    }
+    function fallback() {
+      if (!useWorker) return;
+      useWorker = false;
+      if (worker) { try { worker.terminate(); } catch (e) {} worker = null; }
+      if (set) loadSet(set);
+    }
+    function arrived(i, w, h) {
+      var dims = DIMS[set];
+      if (dims && (dims[0] !== w || dims[1] !== h)) { DIMS[set] = [w, h]; size(); }
+      if (lastKey === '' || Math.abs(i - cur) < 3) request(true);
+    }
+
+    // The canvas shows the part of each frame the stage shows (cover, anchored 42% down), drawn at the frame's own
+    // resolution or the screen's, whichever is smaller: the browser scales the canvas up on screen for free, so
+    // drawing more pixels than the frame has would only cost time.
+    function cropFor(iw, ih) {
+      var W = stage.clientWidth || 1, H = stage.clientHeight || 1;
+      var sw = iw, sh = iw * H / W;
+      if (sh > ih) { sh = ih; sw = ih * W / H; }
+      sw = Math.round(sw); sh = Math.round(sh);
+      return { iw: iw, ih: ih, x: Math.round((iw - sw) / 2), y: Math.round((ih - sh) * 0.42), w: sw, h: sh };
+    }
     function size() {
-      // the lite frames are 640 wide, so a sharper canvas than 1x would only cost drawing time
-      var dpr = window.FWSW_LITE ? 1 : Math.min(window.devicePixelRatio || 1, 2);
-      cw = Math.round(stage.clientWidth * dpr); ch = Math.round(stage.clientHeight * dpr);
-      canvas.width = cw; canvas.height = ch;
-      drawn = -1;
+      var dims = DIMS[set || 'd'], c = cropFor(dims[0], dims[1]);
+      var f = Math.min(1, (stage.clientWidth || 1) * Math.min(window.devicePixelRatio || 1, 2) / c.w);
+      var nw = Math.max(1, Math.round(c.w * f)), nh = Math.max(1, Math.round(c.h * f));
+      if (nw !== cw || nh !== ch) { cw = canvas.width = nw; ch = canvas.height = nh; }
+      crop = { iw: 0 };
+      lastKey = '';
+    }
+    function paint(img) {
+      var iw = img.naturalWidth || img.width, ih = img.naturalHeight || img.height;
+      if (iw !== crop.iw || ih !== crop.ih) crop = cropFor(iw, ih);
+      ctx.drawImage(img, crop.x, crop.y, crop.w, crop.h, 0, 0, cw, ch);
     }
 
     function nearest(i) {
-      if (ready[i]) return i;
+      if (!store) return -1;
+      if (store.get(i)) return i;
       for (var d = 1; d < N; d++) {
-        if (i - d >= 0 && ready[i - d]) return i - d;
-        if (i + d < N && ready[i + d]) return i + d;
+        if (i - d >= 0 && store.get(i - d)) return i - d;
+        if (i + d < N && store.get(i + d)) return i + d;
       }
       return -1;
-    }
-
-    function cover(img) {
-      var s = Math.max(cw / img.naturalWidth, ch / img.naturalHeight);
-      var w = img.naturalWidth * s, h = img.naturalHeight * s;
-      ctx.drawImage(img, (cw - w) / 2, (ch - h) * 0.42, w, h);
     }
 
     function draw(f) {
       var i0 = Math.floor(f), t = f - i0, i1 = Math.min(N - 1, i0 + 1);
       var a = nearest(i0);
       if (a < 0) return;
-      ctx.globalAlpha = 1; cover(frames[a]);
-      // blend toward the next frame for motion smoother than the frame count
-      if (!window.FWSW_LITE && t > 0.03 && a === i0 && ready[i1]) { ctx.globalAlpha = t; cover(frames[i1]); ctx.globalAlpha = 1; }
+      // blend toward the next frame for motion smoother than the frame count (24 steps is finer than the eye sees);
+      // nothing is redrawn until the picture would actually change
+      var q = !window.FWSW_LITE && a === i0 && store.get(i1) ? Math.round(t * 24) : 0;
+      var key = a + ':' + q;
+      if (key === lastKey) return;
+      lastKey = key;
+      ctx.globalAlpha = 1; paint(store.get(a));
+      if (q) { ctx.globalAlpha = q / 24; paint(store.get(i1)); ctx.globalAlpha = 1; }
       if (poster && !poster.classList.contains('is-hidden')) poster.classList.add('is-hidden');
-      drawn = f;
     }
 
     function progress() {
@@ -1256,7 +1391,7 @@ __TILES__
         var on = f >= b.from && f <= b.to;
         if (on !== b.el.classList.contains('is-on')) b.el.classList.toggle('is-on', on);
       });
-      if (rail) rail.style.setProperty('--p', (f / (N - 1)).toFixed(4));
+      if (rail) rail.style.transform = 'scaleY(' + (f / (N - 1)).toFixed(4) + ')';
       if (cue) cue.classList.toggle('is-gone', f > 1.5);
     }
 
@@ -1266,17 +1401,21 @@ __TILES__
       last = now;
       cur += (target - cur) * (1 - Math.exp(-dt * 11));
       if (Math.abs(target - cur) < 0.01) cur = target;
-      if (Math.abs(cur - drawn) > 0.004) draw(cur);
+      draw(cur);
       ui(cur);
       if (cur !== target) requestAnimationFrame(tick); else { running = false; last = 0; }
     }
 
     function request(force) {
-      if (force) drawn = -1;
+      if (force) lastKey = '';
       if (!running) { running = true; requestAnimationFrame(tick); }
     }
 
-    function onScroll() { target = progress() * (N - 1); request(); }
+    function onScroll() {
+      target = progress() * (N - 1);
+      if (store) store.focus();
+      request();
+    }
 
     size();
     // the film sits below the opening coin, so its frames start once the page is up or on the first scroll
@@ -1293,7 +1432,6 @@ __TILES__
     });
     // lite mode: switch to the lighter frame set (a third of the memory) and stop blending frames
     window.addEventListener('fwsw-lite', function () {
-      size(); draw(cur);            // redraw at once from the frames already here, so there's no blank moment
       if (set === 'd') loadSet('m');
       request(true);
     });
@@ -1493,14 +1631,26 @@ __TILES__
     window.addEventListener('load', function () { measure(); onScroll(); });
   })();
 
-  // 3D logo coin: the intro shows a still of it at once; the live coin loads right after and takes over.
+  // 3D logo coin: the intro shows a still of it at once; the live coin loads once the page has finished loading,
+  // builds itself in the pauses between scrolls, and takes over from the still (they match, so nothing jumps).
   // Skipped for Save-Data, reduced motion, and phones with little memory (the still stays as the logo).
   (function () {
     var conn = navigator.connection;
     if ((conn && conn.saveData) || matchMedia('(prefers-reduced-motion: reduce)').matches) return;
     if (navigator.deviceMemory && navigator.deviceMemory < 2) return;
-    var s = document.createElement('script'); s.src = 'js/coin.js'; s.async = true;
-    document.body.appendChild(s);
+    var lastScroll = 0;
+    addEventListener('scroll', function () { lastScroll = Date.now(); }, { passive: true });
+    function fetchIt() {
+      var l = document.createElement('link'); l.rel = 'preload'; l.as = 'script'; l.href = 'js/coin.js';
+      document.head.appendChild(l);
+      setTimeout(run, 200);
+    }
+    // the file downloads right away but only runs in a pause between scrolls
+    function run() {
+      if (document.hidden || Date.now() - lastScroll < 400) { setTimeout(run, 150); return; }
+      var s = document.createElement('script'); s.src = 'js/coin.js'; s.async = true; document.body.appendChild(s);
+    }
+    if (document.readyState === 'complete') fetchIt(); else window.addEventListener('load', fetchIt);
   })();
   </script>
 </body>

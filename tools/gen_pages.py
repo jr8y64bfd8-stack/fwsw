@@ -114,9 +114,21 @@ def build(slug, title, desc):
         var y = document.getElementById('year'); if (y) y.textContent = new Date().getFullYear();
         var header = document.getElementById('site-header'), btn = document.getElementById('to-top');
         var queued = false;
+        // the compact header is drawn with transforms; their sizes come from the header as it's laid out
+        function compactSizes() {{
+          var mark = header.querySelector('.brand-mark'), rule = header.querySelector('.brand-rule');
+          if (!mark || !mark.offsetHeight) return;
+          var k = (matchMedia('(max-width: 640px)').matches ? 34 : 40) / mark.offsetHeight;
+          header.style.setProperty('--mark-k', k.toFixed(4));
+          header.style.setProperty('--mark-dx', (-mark.offsetHeight * (+mark.getAttribute('width') / +mark.getAttribute('height') || mark.offsetWidth / mark.offsetHeight) * (1 - k)).toFixed(2) + 'px');
+          if (rule && rule.offsetHeight) header.style.setProperty('--rule-k', ((rule.offsetHeight + 12) / rule.offsetHeight).toFixed(4));
+        }}
+        var scrolled = null;
+        addEventListener('resize', function () {{ if (scrolled) compactSizes(); }});
         function update() {{
           queued = false;
-          header.classList.toggle('is-scrolled', window.scrollY > 24);
+          var on = window.scrollY > 24;
+          if (on !== scrolled) {{ scrolled = on; if (on) compactSizes(); header.classList.toggle('is-scrolled', on); }}
           btn.classList.toggle('is-shown', window.scrollY > window.innerHeight * 1.2);
         }}
         addEventListener('scroll', function () {{ if (!queued) {{ queued = true; requestAnimationFrame(update); }} }}, {{ passive: true }});
@@ -273,9 +285,21 @@ def build_service(svc):
     var y = document.getElementById('year'); if (y) y.textContent = new Date().getFullYear();
     var header = document.getElementById('site-header'), btn = document.getElementById('to-top');
     var queued = false;
+    // the compact header is drawn with transforms; their sizes come from the header as it's laid out
+    function compactSizes() {{
+      var mark = header.querySelector('.brand-mark'), rule = header.querySelector('.brand-rule');
+      if (!mark || !mark.offsetHeight) return;
+      var k = (matchMedia('(max-width: 640px)').matches ? 34 : 40) / mark.offsetHeight;
+      header.style.setProperty('--mark-k', k.toFixed(4));
+      header.style.setProperty('--mark-dx', (-mark.offsetHeight * (+mark.getAttribute('width') / +mark.getAttribute('height') || mark.offsetWidth / mark.offsetHeight) * (1 - k)).toFixed(2) + 'px');
+      if (rule && rule.offsetHeight) header.style.setProperty('--rule-k', ((rule.offsetHeight + 12) / rule.offsetHeight).toFixed(4));
+    }}
+    var scrolled = null;
+    addEventListener('resize', function () {{ if (scrolled) compactSizes(); }});
     function update() {{
       queued = false;
-      header.classList.toggle('is-scrolled', window.scrollY > 24);
+      var on = window.scrollY > 24;
+      if (on !== scrolled) {{ scrolled = on; if (on) compactSizes(); header.classList.toggle('is-scrolled', on); }}
       btn.classList.toggle('is-shown', window.scrollY > window.innerHeight * 1.2);
     }}
     addEventListener('scroll', function () {{ if (!queued) {{ queued = true; requestAnimationFrame(update); }} }}, {{ passive: true }});
